@@ -6,7 +6,7 @@
             "id": "44eb2c5c-bbab-4c50-be1c-cfc040dbe41f",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Fire",
                     "type": "Button",
                     "id": "e9e2d76a-2016-4eac-892c-4f6454f26481",
                     "expectedControlType": "Button",
@@ -41,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -59,7 +59,7 @@
                 {
                     "name": "up",
                     "id": "ef7739d9-d8e0-4690-92b0-6c4989a42ad3",
-                    "path": "",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -70,7 +70,7 @@
                 {
                     "name": "down",
                     "id": "87370879-9139-4296-b0d3-feecc492d10b",
-                    "path": "",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -81,7 +81,7 @@
                 {
                     "name": "left",
                     "id": "722f11bb-5d9a-488c-8be9-48143196b668",
-                    "path": "",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -92,7 +92,7 @@
                 {
                     "name": "right",
                     "id": "654f3d02-4740-4b31-8300-941e3e3511a0",
-                    "path": "",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
