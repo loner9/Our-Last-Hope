@@ -15,15 +15,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        ApplyMovement();
-    }
-
-    private void ApplyMovement()
-    {
         controls = new PlayerControls();
 
         controls.Character.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.Character.Movement.canceled += ctx => moveInput = Vector2.zero;
+
     }
 
     private void Start()
@@ -33,8 +29,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        ApplyMovement();
+    }
+
+    private void ApplyMovement()
+    {
         moveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
-        
+
         if (moveDirection.magnitude > 0)
         {
             characterController.Move(moveDirection * Time.deltaTime * moveSpeed);
