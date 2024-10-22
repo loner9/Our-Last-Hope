@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController characterController;
+    private Animator animator;
     private Vector3 moveDirection;
     private PlayerControls controls;
     private Vector2 moveInput;
@@ -34,12 +35,15 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
         ApplyMovement();
         AimToMouse();
+        AnimatorController();
     }
 
     private void AimToMouse()
@@ -76,6 +80,14 @@ public class PlayerMovement : MonoBehaviour
         }else{
             verticalVelocity = -0.5f;
         }
+    }
+
+    private void AnimatorController(){
+        float XVelocity = Vector3.Dot(moveDirection.normalized, transform.right);
+        float ZVelocity = Vector3.Dot(moveDirection.normalized, transform.forward);
+
+        animator.SetFloat("XVelocity", XVelocity, .1f, Time.deltaTime);
+        animator.SetFloat("ZVelocity", ZVelocity, .1f, Time.deltaTime);
     }
 
     private void Shoot()
