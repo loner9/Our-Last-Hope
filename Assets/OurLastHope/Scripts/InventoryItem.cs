@@ -5,7 +5,7 @@ using UnityEngine;
 public enum ItemType
 {
     Weapon,
-    Kit,
+    Consumable,
     KeyItem,
     Note
 }
