@@ -14,12 +14,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 aimInput;
     public float moveSpeed = 5f;
+    public float runSpeed = 10f;
+    private float speed;
     private float verticalVelocity;
     [SerializeField]
     private LayerMask aimLayerMask;
     [SerializeField]
     private Transform aim;
     private Vector3 lookingDirection;
+    private bool IsRunning;
 
     private void Awake()
     {
@@ -30,6 +33,26 @@ public class PlayerMovement : MonoBehaviour
 
         controls.Character.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
         controls.Character.Aim.canceled += ctx => aimInput = Vector2.zero;
+
+        controls.Character.Run.performed += ctx =>
+        {
+            if (moveDirection.magnitude > 0)
+            {
+                speed = runSpeed;
+                IsRunning = true;
+            }
+
+        };
+        controls.Character.Run.canceled += ctx =>
+        {
+            if (moveDirection.magnitude > 0)
+            {
+                speed = moveSpeed;
+                IsRunning = false;
+            }
+
+        };
+
     }
 
     private void Start()
@@ -37,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
 
         animator = GetComponentInChildren<Animator>();
+
+        speed = moveSpeed;
     }
 
     private void Update()
@@ -68,26 +93,31 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveDirection.magnitude > 0)
         {
-            characterController.Move(moveDirection * Time.deltaTime * moveSpeed);
+            characterController.Move(moveDirection * Time.deltaTime * speed);
         }
     }
 
     private void ApplyGravity()
     {
-        if (!characterController.isGrounded){
+        if (!characterController.isGrounded)
+        {
             verticalVelocity -= 9.8f * Time.deltaTime;
             moveDirection.y = verticalVelocity;
-        }else{
+        }
+        else
+        {
             verticalVelocity = -0.5f;
         }
     }
 
-    private void AnimatorController(){
+    private void AnimatorController()
+    {
         float XVelocity = Vector3.Dot(moveDirection.normalized, transform.right);
         float ZVelocity = Vector3.Dot(moveDirection.normalized, transform.forward);
 
         animator.SetFloat("XVelocity", XVelocity, .1f, Time.deltaTime);
         animator.SetFloat("ZVelocity", ZVelocity, .1f, Time.deltaTime);
+        animator.SetBool("IsRunning", IsRunning);
     }
 
     private void Shoot()
