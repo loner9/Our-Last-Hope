@@ -10,7 +10,7 @@ public enum ItemType
     Note
 }
 
-[CreateAssetMenu(menuName = "ScriptableObjects/InventoryItem")]
+[CreateAssetMenu(menuName = "Items/Item")]
 
 public class InventoryItem : ScriptableObject
 {
