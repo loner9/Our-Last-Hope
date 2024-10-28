@@ -4,26 +4,20 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    public static System.Action<bool> OnWeaponStatusChanged;
-
     private PlayerControls controls;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject meleeWeapon;
-    [SerializeField] private GameObject rangedWeapon;
     private bool isRangedActive = true;
 
     private void Awake()
     {
         controls = new PlayerControls();
         controls.Character.Fire.performed += ctx => Fire();
-        controls.Character.SwitchToMelee.performed += ctx => SwitchToMelee();
-        controls.Character.SwitchToRanged.performed += ctx => SwitchToRanged();
     }
 
     private void Start()
     {
-        UpdateWeaponStatus();
+
     }
 
     private void Fire()
@@ -35,30 +29,7 @@ public class WeaponManager : MonoBehaviour
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.velocity = firePoint.forward * 20f;
         }
-        else
-        {
-            Debug.Log("Fire Melee Weapon");
-        }
-    }
-
-    private void SwitchToMelee()
-    {
-        isRangedActive = false;
-        UpdateWeaponStatus();
-        OnWeaponStatusChanged?.Invoke(isRangedActive); // Notify listeners
-    }
-
-    private void SwitchToRanged()
-    {
-        isRangedActive = true;
-        UpdateWeaponStatus();
-        OnWeaponStatusChanged?.Invoke(isRangedActive); // Notify listeners
-    }
-
-    private void UpdateWeaponStatus()
-    {
-        meleeWeapon.SetActive(!isRangedActive);
-        rangedWeapon.SetActive(isRangedActive);
+     
     }
 
     void OnEnable()

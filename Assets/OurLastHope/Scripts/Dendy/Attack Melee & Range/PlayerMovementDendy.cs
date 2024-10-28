@@ -31,13 +31,6 @@ public class PlayerMovementDendy : MonoBehaviour
         controls.Character.Aim.canceled += ctx => aimInput = Vector2.zero;
         controls.Character.Fire.performed += ctx => isFiring = true;
         controls.Character.Fire.canceled += ctx => isFiring = false;
-
-        WeaponManager.OnWeaponStatusChanged += UpdateWeaponStatus;
-    }
-
-    private void OnDestroy()
-    {
-        WeaponManager.OnWeaponStatusChanged -= UpdateWeaponStatus;
     }
 
     private void Start()
@@ -98,13 +91,8 @@ public class PlayerMovementDendy : MonoBehaviour
 
         if (isRangedActive)
         {
-            animator.SetBool("toMelee", false);
-            animator.SetFloat("XVelocity", XVelocity, .1f, Time.deltaTime);
-            animator.SetFloat("ZVelocity", ZVelocity, .1f, Time.deltaTime);
             animator.SetBool("gunWalk", isFiring && moveDirection.magnitude > 0);
             animator.SetBool("gunIdle", isFiring && moveDirection.magnitude == 0);
-            animator.SetBool("meleeWalk", false);
-            animator.SetBool("meleeIdle", false);
             if (!isFiring && moveDirection.magnitude == 0)
             {
                 animator.SetBool("gunIdle", false);
@@ -114,31 +102,7 @@ public class PlayerMovementDendy : MonoBehaviour
                 animator.SetBool("gunWalk", false);
             }
         }
-        else
-        {
-            animator.SetBool("toMelee", true);
-            animator.SetFloat("X2Velocity", XVelocity, .1f, Time.deltaTime);
-            animator.SetFloat("Z2Velocity", ZVelocity, .1f, Time.deltaTime);
-            animator.SetBool("meleeWalk", isFiring && moveDirection.magnitude > 0);
-            animator.SetBool("meleeIdle", isFiring && moveDirection.magnitude == 0);
-            animator.SetBool("gunWalk", false);
-            animator.SetBool("gunIdle", false);
-
-            if (!isFiring && moveDirection.magnitude == 0)
-            {
-                animator.SetBool("meleeIdle", false);
-            }
-            else if (!isFiring && moveDirection.magnitude > 0)
-            {
-                animator.SetBool("meleeWalk", false);
-            }
-
-        }
-    }
-
-    private void UpdateWeaponStatus(bool isRanged)
-    {
-        isRangedActive = isRanged;
+        
     }
 
     void OnEnable()
