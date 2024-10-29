@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public PlayerStats StatsHid => Stats;
     public PlayerHealths playerHealths {get; private set;}
 
+    public PlayerStaminas playerStaminas {get; private set;}
+
     public void resetPlayer(){
         Stats.resetPlayerStats();
     }
