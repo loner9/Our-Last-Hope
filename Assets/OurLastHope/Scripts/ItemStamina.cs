@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemStamina : MonoBehaviour
+[CreateAssetMenu(fileName ="ItemStamina", menuName ="Items/Stamina")]
+public class ItemStamina : InventoryItem
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Config")]
+    public float StaminaValue;
 
-    // Update is called once per frame
-    void Update()
+    public override bool UseItem()
     {
-        
+        if (GameManager.Instance.Player.playerStaminas.CanRecoverStamina())
+        {
+            GameManager.Instance.Player.playerStaminas.RecoverStaminaOrdinary(StaminaValue);
+            return true;
+        }
+
+        return false;
     }
 }

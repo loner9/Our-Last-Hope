@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5062b122cdc23408158e8b9856f7d3, type: 3}
   m_Name: ItemMedkit
   m_EditorClassIdentifier: 
-  ID: 
-  Icon: {fileID: 0}
-  Name: 
-  Description: 
-  ItemType: 0
-  IsConsumable: 0
-  IsStackable: 0
-  MaxStack: 0
+  ID: Medkit
+  Icon: {fileID: 566099185, guid: 7da6e095d43ec1c4191a7cf002692fbd, type: 3}
+  Name: Medical Kit
+  Description: Medical kit to care wound
+  ItemType: 1
+  IsConsumable: 1
+  IsStackable: 1
+  MaxStack: 10
   MaxQuantity: 0
-  HealthValue: 0
+  HealthValue: 2

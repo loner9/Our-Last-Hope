@@ -23,7 +23,14 @@ public class PlayerStaminas : MonoBehaviour
         CurrentStamina = stats.stamina;
     }
 
-    public void RecoverStamina(float amount)
+    public void RecoverStaminaUpdate(float amount)
+    {
+        stats.stamina += amount;
+        stats.stamina = Mathf.Clamp(stats.stamina, 0.0f, stats.maxStamina);
+        CurrentStamina = stats.stamina;
+    }
+
+    public void RecoverStaminaOrdinary(float amount)
     {
         stats.stamina += amount;
         stats.stamina = Mathf.Clamp(stats.stamina, 0.0f, stats.maxStamina);

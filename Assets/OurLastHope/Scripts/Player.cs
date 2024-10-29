@@ -12,13 +12,14 @@ public class Player : MonoBehaviour
     public PlayerStaminas playerStaminas {get; private set;}
 
     [Header("Test")]
-    public ItemMedkit medkit;   
+    public ItemMedkit medkit;
+    public ItemStamina itemStamina;   
 
     private void Awake(){
         playerHealths = GetComponent<PlayerHealths>();
         playerStaminas = GetComponent<PlayerStaminas>();
     }
-    
+
     private void Update(){
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -26,10 +27,13 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("Use Medkit");
             }
+
+            if(itemStamina.UseItem())
+            {
+                Debug.Log("Use Stamina item");
+            }
         }
     }
-
-    
 
     public void resetPlayer(){
         Stats.resetPlayerStats();
