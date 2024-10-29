@@ -16,8 +16,9 @@ public class Player : MonoBehaviour
 
     private void Awake(){
         playerHealths = GetComponent<PlayerHealths>();
+        playerStaminas = GetComponent<PlayerStaminas>();
     }
-
+    
     private void Update(){
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -27,6 +28,8 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    
 
     public void resetPlayer(){
         Stats.resetPlayerStats();

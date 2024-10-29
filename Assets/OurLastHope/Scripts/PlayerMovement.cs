@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 lookingDirection;
     private bool IsRunning;
     private float StaminaRegenTimer = 0.0f;
-    private const float StaminaDecreasePerFrame = 55.0f;
+    private const float StaminaDecreasePerFrame = 75.0f;
     private const float StaminaIncreasePerFrame = 25.0f;
     private float StaminaTimeToRegen = 3.0f;
     private Player player;
@@ -54,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (moveDirection.magnitude > 0)
             {
+                speed = moveSpeed;
+                IsRunning = false;
+            }else{
                 speed = moveSpeed;
                 IsRunning = false;
             }
@@ -98,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
         ApplyGravity();
 
-        if (player.StatsHid.stamina <= 0)
+        if (player.playerStaminas.CurrentStamina <= 0)
         {
             speed = moveSpeed; 
             IsRunning = false;
@@ -110,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
             
             if (IsRunning)
             {
-                player.StatsHid.stamina -= StaminaDecreasePerFrame * Time.unscaledDeltaTime;
+                player.playerStaminas.UseStamina(StaminaDecreasePerFrame * Time.unscaledDeltaTime);
                 StaminaRegenTimer = 0.0f;
             }
             else
@@ -121,18 +124,20 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             RegenerateStamina();
+            speed = moveSpeed;
+            IsRunning = false;
         }
         
-        player.StatsHid.stamina = Mathf.Clamp(player.StatsHid.stamina, 0.0f, player.StatsHid.maxStamina);
+        // player.StatsHid.stamina = Mathf.Clamp(player.StatsHid.stamina, 0.0f, player.StatsHid.maxStamina);
     }
 
     private void RegenerateStamina()
     {
-        if (player.StatsHid.stamina < player.StatsHid.maxStamina)
+        if (player.playerStaminas.CurrentStamina < player.StatsHid.maxStamina)
         {
             if (StaminaRegenTimer >= StaminaTimeToRegen)
             {
-                player.StatsHid.stamina += StaminaIncreasePerFrame * Time.unscaledDeltaTime;
+                player.playerStaminas.RecoverStamina(StaminaIncreasePerFrame * Time.unscaledDeltaTime);
             }
             else
             {
