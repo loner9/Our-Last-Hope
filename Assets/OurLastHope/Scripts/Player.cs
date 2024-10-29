@@ -9,6 +9,23 @@ public class Player : MonoBehaviour
     public PlayerStats StatsHid => Stats;
     public PlayerHealths playerHealths {get; private set;}
 
+    [Header("Test")]
+    public ItemMedkit medkit;   
+
+    private void Awake(){
+        playerHealths = GetComponent<PlayerHealths>();
+    }
+
+    private void Update(){
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if(medkit.UseItem())
+            {
+                Debug.Log("Use Medkit");
+            }
+        }
+    }
+
     public void resetPlayer(){
         Stats.resetPlayerStats();
     }

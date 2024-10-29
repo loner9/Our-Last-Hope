@@ -15,4 +15,6 @@ public class Weapon : ScriptableObject
     public Sprite Icon;
     public WeaponType WeaponType;
     public float Damage;
+    public int MagazineSize;
+    public float ReloadTime;
 }

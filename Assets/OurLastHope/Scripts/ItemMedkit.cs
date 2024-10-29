@@ -10,7 +10,12 @@ public class ItemMedkit : InventoryItem
 
     public override bool UseItem()
     {
-        // GameManager.Instance.Player.PlayerHealth.
-        return true;
+        if (GameManager.Instance.Player.playerHealths.CanRestoreHealth())
+        {
+            GameManager.Instance.Player.playerHealths.RestoreHealth(HealthValue);
+            return true;
+        }
+
+        return false;
     }
 }

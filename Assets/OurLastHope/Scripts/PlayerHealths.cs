@@ -23,6 +23,20 @@ public class PlayerHealths : MonoBehaviour, IDamagable
         }
     }
 
+    public void RestoreHealth(float health)
+    {
+        stats.health += health;
+        if (stats.health > stats.maxHealth)
+        {
+            stats.health = stats.maxHealth;
+        }
+    }
+
+    public bool CanRestoreHealth()
+    {
+        return stats.health > 0 && stats.health < stats.maxHealth;
+    }
+
     private void playerDead()
     {
         Debug.Log("Player mati");
