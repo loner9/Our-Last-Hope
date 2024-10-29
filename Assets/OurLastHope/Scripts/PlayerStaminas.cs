@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerStaminas : MonoBehaviour
+{
+    [Header("Config")] 
+    [SerializeField] private PlayerStats stats;
+
+    public float CurrentStamina { get; private set; }
+    public void UseStamina(float amount)
+    {
+        stats.stamina = Mathf.Max(stats.stamina -= amount, 0f);
+        CurrentStamina = stats.stamina;
+    }
+
+    public void RecoverStamina(float amount)
+    {
+        stats.stamina += amount;
+        stats.stamina = Mathf.Min(stats.stamina, stats.maxStamina);
+    }
+    
+    public bool CanRecoverStamina()
+    {
+        return stats.stamina > 0 && stats.stamina < stats.maxStamina;
+    }
+}
