@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public PlayerStats StatsHid => Stats;
     public PlayerHealths playerHealths {get; private set;}
 
+    public PlayerStaminas playerStaminas {get; private set;}
+
     [Header("Test")]
     public ItemMedkit medkit;   
 
