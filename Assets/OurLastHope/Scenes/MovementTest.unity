@@ -1234,6 +1234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stats: {fileID: 11400000, guid: 31f632070c142b641838601df44997e4, type: 2}
   medkit: {fileID: 11400000, guid: 0091cd5845f1e1649900599f690de8b6, type: 2}
+  itemStamina: {fileID: 11400000, guid: 7da00b36b89959449aa6be33e3b1fad5, type: 2}
 --- !u!114 &1989329269
 MonoBehaviour:
   m_ObjectHideFlags: 0
