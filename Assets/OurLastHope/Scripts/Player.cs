@@ -11,6 +11,11 @@ public class Player : MonoBehaviour
 
     public PlayerStaminas playerStaminas {get; private set;}
 
+    private void Awake(){
+        playerHealths = GetComponent<PlayerHealths>();
+        playerStaminas = GetComponent<PlayerStaminas>();
+    }
+
     public void resetPlayer(){
         Stats.resetPlayerStats();
     }
