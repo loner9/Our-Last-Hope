@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 890b2ee0770c67b458391da847d4e8c5, type: 3}
+  m_Name: WeaponMachete
+  m_EditorClassIdentifier: 
+  ID: 2
+  Icon: {fileID: 92335290, guid: a051cd959536a9c438df58c75e9ec8f5, type: 3}
+  Name: Machete
+  Description: It's a rusty machete
+  ItemType: 0
+  IsConsumable: 0
+  IsStackable: 0
+  MaxStack: 1
+  MaxQuantity: 0
+  weapon: {fileID: 11400000, guid: fdad3cf7259c42b42a3c1cce8f575ee8, type: 2}
