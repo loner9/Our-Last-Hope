@@ -39,14 +39,14 @@ public class InventoryItem : ScriptableObject
         return true;
     }
 
-    public virtual bool EquipItem()
+    public virtual void EquipItem()
     {
-        return true;
+        
     }
 
-    public virtual bool RemoveItem()
+    public virtual void RemoveItem()
     {
-        return true;
+        
     }
 
 }

@@ -20,5 +20,5 @@ MonoBehaviour:
   IsConsumable: 1
   IsStackable: 1
   MaxStack: 10
-  MaxQuantity: 0
+  Quantity: 0
   HealthValue: 2

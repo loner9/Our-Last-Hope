@@ -197,14 +197,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.52156866}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9f4aece3566763c409c86d612e3954cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d68cbee7b77d3504d88ab057273f02f1, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -612,7 +612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &530625737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9f4aece3566763c409c86d612e3954cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d68cbee7b77d3504d88ab057273f02f1, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -931,14 +931,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9f4aece3566763c409c86d612e3954cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d68cbee7b77d3504d88ab057273f02f1, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1293,7 +1293,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1061167836}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1780998387}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: RemoveItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1061167836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1383,14 +1395,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9f4aece3566763c409c86d612e3954cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d68cbee7b77d3504d88ab057273f02f1, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2376,6 +2388,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotPrefab: {fileID: 2795985874129421136, guid: 953702f59392717418cfa98343127209, type: 3}
   container: {fileID: 84809120}
+  descPanel: {fileID: 530625736}
+  itemIcon: {fileID: 2068699581}
+  itemName: {fileID: 871460424}
+  itemDescription: {fileID: 298805114}
+  inventoryTransform: {fileID: 1426906702}
 --- !u!1 &1898014652
 GameObject:
   m_ObjectHideFlags: 0
@@ -2787,6 +2804,7 @@ MonoBehaviour:
   Stats: {fileID: 11400000, guid: 31f632070c142b641838601df44997e4, type: 2}
   medkit: {fileID: 11400000, guid: 0091cd5845f1e1649900599f690de8b6, type: 2}
   itemStamina: {fileID: 11400000, guid: 7da00b36b89959449aa6be33e3b1fad5, type: 2}
+  inventoryTransform: {fileID: 1426906702}
 --- !u!114 &1989329269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2880,14 +2898,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9f4aece3566763c409c86d612e3954cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d68cbee7b77d3504d88ab057273f02f1, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3200,7 +3218,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2109413404}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1780998387}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: UseItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2109413404
 MonoBehaviour:
   m_ObjectHideFlags: 0

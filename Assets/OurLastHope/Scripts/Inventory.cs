@@ -9,6 +9,8 @@ public class Inventory : MonoBehaviour
     [Header("Config")]
     [SerializeField] private int inventorySize;
     [SerializeField] private InventoryItem[] inventoryItems;
+
+    public InventoryItem[] InventoryItems => inventoryItems;
     public int InventorySize => inventorySize;
 
     [Header("Testing")]
@@ -22,6 +24,7 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         inventoryItems = new InventoryItem[inventorySize];
+        VerifyItemsForDraw();
     }
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            AddItem(testItem, 5);
+            AddItem(testItem, 1);
         }
     }
 
@@ -39,7 +42,8 @@ public class Inventory : MonoBehaviour
         List<int> indexes = CheckItemStock(item.ID);
         if (item.IsStackable && indexes.Count > 0)
         {
-            foreach (int index in indexes){
+            foreach (int index in indexes)
+            {
                 int maxStack = item.MaxStack;
                 if (inventoryItems[index].Quantity < maxStack)
                 {
@@ -54,15 +58,32 @@ public class Inventory : MonoBehaviour
                     InventoryUI.Instance.DrawItem(inventoryItems[index], index);
                     return;
                 }
-            }            
+            }
         }
 
         int quantityToAdd = quantity > item.MaxStack ? item.MaxStack : quantity;
         AddItemFreeSlot(item, quantityToAdd);
         int remainingAmount = quantity - quantityToAdd;
-        if (remainingAmount > 0){
+        if (remainingAmount > 0)
+        {
             AddItem(item, remainingAmount);
         }
+    }
+
+    public void UseItem(int index)
+    {
+        if (inventoryItems[index] == null) return;
+        if (inventoryItems[index].UseItem())
+        {
+            DecreaseItemStock(index);
+        }
+    }
+
+    public void RemoveItem(int index){
+        if (inventoryItems[index] == null) return;
+        inventoryItems[index].RemoveItem();
+        inventoryItems[index] = null;
+        InventoryUI.Instance.DrawItem(null, index);
     }
 
     private void AddItemFreeSlot(InventoryItem item, int quantity)
@@ -74,6 +95,20 @@ public class Inventory : MonoBehaviour
             inventoryItems[i].Quantity = quantity;
             InventoryUI.Instance.DrawItem(inventoryItems[i], i);
             return;
+        }
+    }
+
+    private void DecreaseItemStock(int index)
+    {
+        inventoryItems[index].Quantity--;
+        if (inventoryItems[index].Quantity <= 0)
+        {
+            inventoryItems[index] = null;
+            InventoryUI.Instance.DrawItem(null, index);
+        }
+        else
+        {
+            InventoryUI.Instance.DrawItem(inventoryItems[index], index);
         }
     }
 
@@ -90,5 +125,15 @@ public class Inventory : MonoBehaviour
         }
 
         return itemIndexes;
+    }
+
+    private void VerifyItemsForDraw(){
+
+        for (int i = 0; i < inventorySize; i++){
+            if (inventoryItems[i] == null)
+            {
+                InventoryUI.Instance.DrawItem(null, i);                
+            }
+        }
     }
 }
