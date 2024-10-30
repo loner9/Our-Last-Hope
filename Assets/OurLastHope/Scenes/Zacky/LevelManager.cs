@@ -4,67 +4,29 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
-{   // Pastikan scene ini sudah dimasukkan dalam Build Settings di Unity
-    public string[] levelNames = { "Level 1", "Level 2", "Level 3", "Level 4", "Level 5" };
+{   //Cek dulu di unity editor apakah scene sudah diadd di build setting
 
-    // Simpan progres terakhir di PlayerPrefs dengan key ini
-    private string progressKey = "LastCompletedLevel";
+    //public variable untuk nama scene
+    public string sceneName;
 
-    private void Start()
+    //tombol untuk ganti scene (contoh saja untuk debug)
+    public KeyCode loadSceneKey = KeyCode.L;
+
+    void Update()
     {
-        // Bisa digunakan untuk melakukan inisialisasi jika dibutuhkan
-    }
-
-    // Fungsi untuk memuat level berdasarkan index level
-    public void LoadLevel(int levelIndex)
-    {
-        if (levelIndex < levelNames.Length)
+        //cek apakah tombol sudah ditekan
+        if (Input.GetKeyDown(loadSceneKey))
         {
-            // Pastikan levelIndex valid sebelum memuat level
-            string levelName = levelNames[levelIndex];
-            Debug.Log("Loading level: " + levelName);
-            SceneManager.LoadScene(levelName);
-        }
-        else
-        {
-            Debug.LogError("Level index out of bounds!");
-        }
-    }
-
-    // Fungsi untuk menyimpan progres pemain (level yang sudah selesai)
-    public void CompleteLevel(int levelIndex)
-    {
-        if (levelIndex < levelNames.Length)
-        {
-            // Simpan level yang sudah diselesaikan ke PlayerPrefs
-            PlayerPrefs.SetInt(progressKey, levelIndex);
-            PlayerPrefs.Save();
-            Debug.Log("Level " + levelNames[levelIndex] + " completed!");
-        }
-    }
-
-    // Fungsi untuk mendapatkan level terakhir yang diselesaikan
-    public int GetLastCompletedLevel()
-    {
-        // Default adalah level 0 jika belum ada progres
-        return PlayerPrefs.GetInt(progressKey, 0);
-    }
-
-    // Fungsi untuk membuka level selanjutnya setelah menyelesaikan level
-    public void LoadNextLevel()
-    {
-        int lastCompletedLevel = GetLastCompletedLevel();
-        int nextLevelIndex = lastCompletedLevel + 1;
-
-        // Cek apakah ada level selanjutnya
-        if (nextLevelIndex < levelNames.Length)
-        {
-            // Load level berikutnya
-            LoadLevel(nextLevelIndex);
-        }
-        else
-        {
-            Debug.Log("Semua level sudah diselesaikan! Tidak ada level selanjutnya.");
+            //cek apakah sceneName tidak kosong
+            if (!string.IsNullOrEmpty(sceneName))
+            {
+                Debug.Log("Masuk ke=" + sceneName);
+                SceneManager.LoadScene(sceneName);
+            }
+            else
+            {
+                Debug.LogError("tidak ada nama scene");
+            }
         }
     }
 }
