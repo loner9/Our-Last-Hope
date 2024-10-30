@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class Inventory : MonoBehaviour
 
     [Header("Testing")]
     public InventoryItem testItem;
-    
+
     private void Awake()
     {
         Instance = this;
@@ -26,10 +27,68 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H)){
-            inventoryItems[0] = testItem.CopyItem();
-            inventoryItems[0].Quantity = 1;
-            InventoryUI.Instance.DrawItem(inventoryItems[0], 0);
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            AddItem(testItem, 5);
         }
+    }
+
+    public void AddItem(InventoryItem item, int quantity)
+    {
+        if (item == null || quantity <= 0) return;
+        List<int> indexes = CheckItemStock(item.ID);
+        if (item.IsStackable && indexes.Count > 0)
+        {
+            foreach (int index in indexes){
+                int maxStack = item.MaxStack;
+                if (inventoryItems[index].Quantity < maxStack)
+                {
+                    inventoryItems[index].Quantity += quantity;
+                    if (inventoryItems[index].Quantity > maxStack)
+                    {
+                        int diff = inventoryItems[index].Quantity - maxStack;
+                        inventoryItems[index].Quantity = maxStack;
+                        AddItem(item, diff);
+                    }
+
+                    InventoryUI.Instance.DrawItem(inventoryItems[index], index);
+                    return;
+                }
+            }            
+        }
+
+        int quantityToAdd = quantity > item.MaxStack ? item.MaxStack : quantity;
+        AddItemFreeSlot(item, quantityToAdd);
+        int remainingAmount = quantity - quantityToAdd;
+        if (remainingAmount > 0){
+            AddItem(item, remainingAmount);
+        }
+    }
+
+    private void AddItemFreeSlot(InventoryItem item, int quantity)
+    {
+        for (int i = 0; i < inventorySize; i++)
+        {
+            if (inventoryItems[i] != null) continue;
+            inventoryItems[i] = item.CopyItem();
+            inventoryItems[i].Quantity = quantity;
+            InventoryUI.Instance.DrawItem(inventoryItems[i], i);
+            return;
+        }
+    }
+
+    private List<int> CheckItemStock(String itemId)
+    {
+        List<int> itemIndexes = new List<int>();
+        for (int i = 0; i < inventoryItems.Length; i++)
+        {
+            if (inventoryItems[i] == null) continue;
+            if (inventoryItems[i].ID == itemId)
+            {
+                itemIndexes.Add(i);
+            }
+        }
+
+        return itemIndexes;
     }
 }

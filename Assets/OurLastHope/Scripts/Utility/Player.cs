@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private PlayerControls controls;
 
     private bool isInventoryOpen = false;
+    public bool IsInventoryOpen => isInventoryOpen;
     [SerializeField]
     private Transform inventoryTransform;
     private void Awake(){
