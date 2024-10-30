@@ -26,7 +26,7 @@ public class InventoryItem : ScriptableObject
     public bool IsStackable;
     public int MaxStack;
 
-    [HideInInspector] public int MaxQuantity;
+    [HideInInspector] public int Quantity;
 
     public InventoryItem CopyItem()
     {
