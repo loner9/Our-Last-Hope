@@ -170,6 +170,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9da8f02b-f42d-4231-9d0f-288b596f7b4c"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToMelee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66835347-ca18-421d-8f01-29c213615f4e"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToRanged"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -218,28 +240,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9da8f02b-f42d-4231-9d0f-288b596f7b4c"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwitchToMelee"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""66835347-ca18-421d-8f01-29c213615f4e"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwitchToRanged"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -252,12 +252,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Character_Movement = m_Character.FindAction("Movement", throwIfNotFound: true);
         m_Character_Aim = m_Character.FindAction("Aim", throwIfNotFound: true);
         m_Character_Run = m_Character.FindAction("Run", throwIfNotFound: true);
+        m_Character_SwitchToMelee = m_Character.FindAction("SwitchToMelee", throwIfNotFound: true);
+        m_Character_SwitchToRanged = m_Character.FindAction("SwitchToRanged", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
         m_UI_Inventory = m_UI.FindAction("Inventory", throwIfNotFound: true);
-        m_Character_SwitchToMelee = m_Character.FindAction("SwitchToMelee", throwIfNotFound: true);
-        m_Character_SwitchToRanged = m_Character.FindAction("SwitchToRanged", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -461,12 +461,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
+        void OnSwitchToMelee(InputAction.CallbackContext context);
+        void OnSwitchToRanged(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
         void OnPause(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
-        void OnSwitchToMelee(InputAction.CallbackContext context);
-        void OnSwitchToRanged(InputAction.CallbackContext context);
+        
     }
 }

@@ -1103,7 +1103,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1989329265}
-  - component: {fileID: 1989329261}
   - component: {fileID: 1989329266}
   - component: {fileID: 1989329268}
   - component: {fileID: 1989329267}
@@ -1114,23 +1113,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1989329261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989329260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 020f5b7eb3f467340813b77b7fe06f39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2.5
-  aimLayerMask:
-    serializedVersion: 2
-    m_Bits: 192
-  aim: {fileID: 1898014656}
 --- !u!4 &1989329265
 Transform:
   m_ObjectHideFlags: 0
@@ -1203,7 +1185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e779b2db002a04aad2eed05e91b795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 2
   aimLayerMask:
     serializedVersion: 2
     m_Bits: 192

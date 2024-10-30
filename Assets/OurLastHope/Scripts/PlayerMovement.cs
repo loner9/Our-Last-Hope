@@ -28,7 +28,8 @@ public class PlayerMovement : MonoBehaviour
     private const float StaminaIncreasePerFrame = 15.0f;
     private float StaminaTimeToRegen = 3.0f;
     private Player player;
-
+    private bool isRangedActive = true; // Status senjata aktif
+    private bool isFiring = false;
     private void Awake()
     {
         controls = new PlayerControls();
@@ -62,6 +63,11 @@ public class PlayerMovement : MonoBehaviour
             }
 
         };
+
+        controls.Character.Fire.performed += ctx => isFiring = true;
+        controls.Character.Fire.canceled += ctx => isFiring = false;
+
+        WeaponManager.OnWeaponStatusChanged += UpdateWeaponStatus;
 
     }
 
@@ -167,6 +173,50 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("XVelocity", XVelocity, .1f, Time.deltaTime);
         animator.SetFloat("ZVelocity", ZVelocity, .1f, Time.deltaTime);
         animator.SetBool("IsRunning", IsRunning);
+
+        if (isRangedActive)
+        {
+            animator.SetBool("toMelee", false);
+            animator.SetFloat("XVelocity", XVelocity, .1f, Time.deltaTime);
+            animator.SetFloat("ZVelocity", ZVelocity, .1f, Time.deltaTime);
+            animator.SetBool("gunWalk", isFiring && moveDirection.magnitude > 0);
+            animator.SetBool("gunIdle", isFiring && moveDirection.magnitude == 0);
+            animator.SetBool("meleeWalk", false);
+            animator.SetBool("meleeIdle", false);
+            if (!isFiring && moveDirection.magnitude == 0)
+            {
+                animator.SetBool("gunIdle", false);
+            }
+            else if (!isFiring && moveDirection.magnitude > 0)
+            {
+                animator.SetBool("gunWalk", false);
+            }
+        }
+        else
+        {
+            animator.SetBool("toMelee", true);
+            animator.SetFloat("X2Velocity", XVelocity, .1f, Time.deltaTime);
+            animator.SetFloat("Z2Velocity", ZVelocity, .1f, Time.deltaTime);
+            animator.SetBool("meleeWalk", isFiring && moveDirection.magnitude > 0);
+            animator.SetBool("meleeIdle", isFiring && moveDirection.magnitude == 0);
+            animator.SetBool("gunWalk", false);
+            animator.SetBool("gunIdle", false);
+
+            if (!isFiring && moveDirection.magnitude == 0)
+            {
+                animator.SetBool("meleeIdle", false);
+            }
+            else if (!isFiring && moveDirection.magnitude > 0)
+            {
+                animator.SetBool("meleeWalk", false);
+            }
+
+        }
+    }
+
+    private void UpdateWeaponStatus(bool isRanged)
+    {
+        isRangedActive = isRanged;
     }
 
     private void Shoot()
@@ -182,5 +232,10 @@ public class PlayerMovement : MonoBehaviour
     void OnDisable()
     {
         controls.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        WeaponManager.OnWeaponStatusChanged -= UpdateWeaponStatus;
     }
 }
