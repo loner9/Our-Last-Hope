@@ -5,22 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/OurLastHope/Scenes/LevelSelection.unity
     guid: a09cc5c2736cee9468234a20ea3a96f0
-  - enabled: 1
+  - enabled: 0
     path: Assets/OurLastHope/Scenes/Zacky/Level 1.unity
     guid: 7ab2143b55817b64fba3863fd753b875
-  - enabled: 1
+  - enabled: 0
     path: Assets/OurLastHope/Scenes/Zacky/Level 2.unity
     guid: 8e1c79fd1e8a67849a27d71a7a84b95f
-  - enabled: 1
+  - enabled: 0
     path: Assets/OurLastHope/Scenes/Zacky/Level 3.unity
     guid: e3f9eebf4c04d9741a1fa3fda63b91d5
-  - enabled: 1
+  - enabled: 0
     path: Assets/OurLastHope/Scenes/Zacky/Level 4.unity
     guid: fe706698b224ec844b5b76977e4b7fb5
-  - enabled: 1
+  - enabled: 0
     path: Assets/OurLastHope/Scenes/Zacky/Level 5.unity
     guid: 964a6377604a3c743b2e71ff7f2685ff
   m_configObjects: {}
