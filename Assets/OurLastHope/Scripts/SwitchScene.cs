@@ -7,7 +7,7 @@ public class SwitchScene : MonoBehaviour
 {
     public void playgame()
     {
-        SceneManager.LoadScene("MovementTest");
+        SceneManager.LoadScene("PlayScene");
     }
     public void Optionsgame()
     {

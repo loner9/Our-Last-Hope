@@ -18,7 +18,6 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemDescription;
-    [SerializeField] private GameObject pausePanel;
 
     private PlayerControls controls;
     private bool isInventoryOpen = false;
@@ -35,21 +34,30 @@ public class InventoryUI : MonoBehaviour
 
         controls.UI.Inventory.performed += ctx => ToggleInventory();
     }
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     private void ToggleInventory()
     {
-        if (pausePanel.activeSelf) return;
+        Debug.Log("Toggle Inventory");
         if (!isInventoryOpen)
         {
             inventoryTransform.gameObject.SetActive(true);
-            PauseManager.Instance.Pause();
         }
         else
         {
             inventoryTransform.gameObject.SetActive(false);
             descPanel.SetActive(false);
             SelectedSlot = null;
-            PauseManager.Instance.Resume();
         }
 
         isInventoryOpen = !isInventoryOpen;

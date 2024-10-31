@@ -28,6 +28,21 @@ public class Player : MonoBehaviour
 
         
         controls = new PlayerControls();
+
+        controls.UI.Inventory.performed += ctx => ToggleInventory();
+    }
+
+    private void ToggleInventory()
+    {
+        Debug.Log("Toggle Inventory");
+        if (!isInventoryOpen)
+        {
+            inventoryTransform.gameObject.SetActive(true);
+        }else{
+            inventoryTransform.gameObject.SetActive(false);
+        }
+
+        isInventoryOpen = !isInventoryOpen;
     }
 
     private void Update(){
