@@ -36,4 +36,5 @@ public class PauseManager : MonoBehaviour
         weaponManager.GetComponent<WeaponManager>().enabled = false;
         isGamePaused = true;
     }
+    
 }
