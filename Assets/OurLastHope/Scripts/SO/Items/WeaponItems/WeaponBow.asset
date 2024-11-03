@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 890b2ee0770c67b458391da847d4e8c5, type: 3}
+  m_Name: WeaponBow
+  m_EditorClassIdentifier: 
+  ID: 1
+  Icon: {fileID: 309867387, guid: a051cd959536a9c438df58c75e9ec8f5, type: 3}
+  Name: Bow
+  Description: It's a simple bow
+  ItemType: 0
+  IsConsumable: 0
+  IsStackable: 0
+  MaxStack: 1
+  MaxQuantity: 0
+  weapon: {fileID: 11400000, guid: f8723859dc7d65c4ba5644653bacb8d7, type: 2}
