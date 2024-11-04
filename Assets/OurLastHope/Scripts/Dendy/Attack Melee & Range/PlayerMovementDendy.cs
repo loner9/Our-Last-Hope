@@ -18,9 +18,12 @@ public class PlayerMovementDendy : MonoBehaviour
     [SerializeField]
     private Transform aim;
     private Vector3 lookingDirection;
-
     private bool isRangedActive = true; // Status senjata aktif
     private bool isFiring = false; // Status tembakan
+    [SerializeField] private AudioClip footstepSound; // Suara langkah kaki
+    private AudioSource audioSource; // Sumber audio
+    private bool isMoving = false; // Status gerakan pemain
+    private bool isAttack = false;
 
     private void Awake()
     {
@@ -33,6 +36,7 @@ public class PlayerMovementDendy : MonoBehaviour
         controls.Character.Fire.canceled += ctx => isFiring = false;
 
         WeaponManager.OnWeaponStatusChanged += UpdateWeaponStatus;
+        audioSource = GetComponent<AudioSource>(); // Inisialisasi sumber audio
     }
 
     private void OnDestroy()
@@ -51,6 +55,7 @@ public class PlayerMovementDendy : MonoBehaviour
         ApplyMovement();
         AimToMouse();
         AnimatorController();
+        PlayFootstepSound();
     }
 
     private void AimToMouse()
@@ -73,6 +78,17 @@ public class PlayerMovementDendy : MonoBehaviour
         if (moveDirection.magnitude > 0)
         {
             characterController.Move(moveDirection * Time.deltaTime * moveSpeed);
+            if (!isMoving)
+            {
+                isMoving = true;
+            }
+        }
+        else
+        {
+            if (isMoving)
+            {
+                isMoving = false;
+            }
         }
     }
 
@@ -123,7 +139,6 @@ public class PlayerMovementDendy : MonoBehaviour
             animator.SetBool("meleeIdle", isFiring && moveDirection.magnitude == 0);
             animator.SetBool("gunWalk", false);
             animator.SetBool("gunIdle", false);
-
             if (!isFiring && moveDirection.magnitude == 0)
             {
                 animator.SetBool("meleeIdle", false);
@@ -132,9 +147,17 @@ public class PlayerMovementDendy : MonoBehaviour
             {
                 animator.SetBool("meleeWalk", false);
             }
-
         }
     }
+
+    private void PlayFootstepSound()
+    {
+        if (isMoving && characterController.isGrounded && !audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(footstepSound);
+        }
+    }
+
 
     private void UpdateWeaponStatus(bool isRanged)
     {

@@ -11,7 +11,17 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject meleeWeapon;
     [SerializeField] private GameObject rangedWeapon;
+    [SerializeField] private AudioClip rangedAttackSound; // Suara tembakan
+    [SerializeField] private AudioClip meleeAttackSound; // Suara serangan melee
+    private AudioSource audioSource; // Sumber audio
+    private bool canPlaySound = true;
+    private float soundCooldown = 0.2f; // Waktu jeda antara suara
+    private float soundTimer = 0f;
+
     private bool isRangedActive = true;
+
+    // Tambahan untuk efek tembakan
+    [SerializeField] private GameObject muzzleFlashPrefab;
 
     private void Awake()
     {
@@ -19,6 +29,8 @@ public class WeaponManager : MonoBehaviour
         controls.Character.Fire.performed += ctx => Fire();
         controls.Character.SwitchToMelee.performed += ctx => SwitchToMelee();
         controls.Character.SwitchToRanged.performed += ctx => SwitchToRanged();
+
+        audioSource = GetComponent<AudioSource>(); // Inisialisasi sumber audio
     }
 
     private void Start()
@@ -26,18 +38,41 @@ public class WeaponManager : MonoBehaviour
         UpdateWeaponStatus();
     }
 
+    private void Update()
+    {
+        if (!canPlaySound)
+        {
+            soundTimer += Time.deltaTime;
+            if (soundTimer >= soundCooldown)
+            {
+                canPlaySound = true;
+                soundTimer = 0f;
+            }
+        }
+    }
+
     private void Fire()
     {
-        if (isRangedActive)
+        if (canPlaySound)
         {
-            Debug.Log("Fire Ranged Weapon");
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.velocity = firePoint.forward * 20f;
-        }
-        else
-        {
-            Debug.Log("Fire Melee Weapon");
+            if (isRangedActive)
+            {
+                Debug.Log("Fire Ranged Weapon");
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                rb.velocity = firePoint.forward * 20f;
+                audioSource.PlayOneShot(rangedAttackSound); // Mainkan suara tembakan
+
+                // Menampilkan dan menghancurkan efek tembakan
+                GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
+                Destroy(muzzleFlash, 0.2f);
+            }
+            else
+            {
+                Debug.Log("Fire Melee Weapon");
+                audioSource.PlayOneShot(meleeAttackSound); // Mainkan suara serangan melee
+            }
+            canPlaySound = false; // Set cooldown untuk suara
         }
     }
 
