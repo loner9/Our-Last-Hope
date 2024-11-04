@@ -20,8 +20,8 @@ public class PlayerMovementDendy : MonoBehaviour
     private Vector3 lookingDirection;
     private bool isRangedActive = true; // Status senjata aktif
     private bool isFiring = false; // Status tembakan
-    [SerializeField] private AudioClip footstepSound; // Suara langkah kaki
-    private AudioSource audioSource; // Sumber audio
+    
+
     private bool isMoving = false; // Status gerakan pemain
     private bool isAttack = false;
 
@@ -36,7 +36,7 @@ public class PlayerMovementDendy : MonoBehaviour
         controls.Character.Fire.canceled += ctx => isFiring = false;
 
         WeaponManager.OnWeaponStatusChanged += UpdateWeaponStatus;
-        audioSource = GetComponent<AudioSource>(); // Inisialisasi sumber audio
+        
     }
 
     private void OnDestroy()
@@ -152,10 +152,10 @@ public class PlayerMovementDendy : MonoBehaviour
 
     private void PlayFootstepSound()
     {
-        if (isMoving && characterController.isGrounded && !audioSource.isPlaying)
-        {
-            audioSource.PlayOneShot(footstepSound);
-        }
+        
+        
+            
+        
     }
 
 
