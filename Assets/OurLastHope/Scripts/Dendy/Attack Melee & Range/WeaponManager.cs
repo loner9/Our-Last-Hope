@@ -20,8 +20,8 @@ public class WeaponManager : MonoBehaviour
 
     private bool isRangedActive = true;
 
-    // Tambahan untuk efek tembakan
-    [SerializeField] private GameObject muzzleFlashPrefab;
+    
+
 
     private void Awake()
     {
@@ -63,9 +63,9 @@ public class WeaponManager : MonoBehaviour
                 rb.velocity = firePoint.forward * 20f;
                 audioSource.PlayOneShot(rangedAttackSound); // Mainkan suara tembakan
 
-                // Menampilkan dan menghancurkan efek tembakan
-                GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
-                Destroy(muzzleFlash, 0.2f);
+                
+
+
             }
             else
             {
