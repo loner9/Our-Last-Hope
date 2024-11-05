@@ -3897,14 +3897,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -890455188537637067, guid: aec2fdd85550bf641b38f120577bf2c0, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3341876380017714341, guid: aec2fdd85550bf641b38f120577bf2c0, type: 3}
+    - target: {fileID: -890455188537637067, guid: aec2fdd85550bf641b38f120577bf2c0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: aec2fdd85550bf641b38f120577bf2c0, type: 3}
       propertyPath: m_Name
       value: 3D_MainCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aec2fdd85550bf641b38f120577bf2c0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: aec2fdd85550bf641b38f120577bf2c0, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 1f33d293dcd13a14c8eef0d892d99898, type: 2}
+      objectReference: {fileID: 9100000, guid: 2b8a53a4f833a534888aff0bf8526b95, type: 2}
+    - target: {fileID: 5866666021909216657, guid: aec2fdd85550bf641b38f120577bf2c0, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: aec2fdd85550bf641b38f120577bf2c0, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
@@ -7466,8 +7482,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7414244838387794784}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 99e22f7869e4b8142b7bbe544a3d0ec1, type: 3}
-  m_Controller: {fileID: 9100000, guid: 1f33d293dcd13a14c8eef0d892d99898, type: 2}
+  m_Avatar: {fileID: 9000000, guid: aec2fdd85550bf641b38f120577bf2c0, type: 3}
+  m_Controller: {fileID: 9100000, guid: 362cdd64236808843bfb3005d80d65fb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
