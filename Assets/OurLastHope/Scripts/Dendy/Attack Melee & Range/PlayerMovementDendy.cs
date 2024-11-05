@@ -22,6 +22,11 @@ public class PlayerMovementDendy : MonoBehaviour
     private bool isRangedActive = true; // Status senjata aktif
     private bool isFiring = false; // Status tembakan
 
+    [Header("Dialog | Dendy")]
+    [SerializeField] private DialogueUI dialogueUI;
+    public DialogueUI DialogueUI => dialogueUI;
+    public IInteractable Interactable { get; set; }
+
     private void Awake()
     {
         controls = new PlayerControls();
@@ -51,6 +56,13 @@ public class PlayerMovementDendy : MonoBehaviour
         ApplyMovement();
         AimToMouse();
         AnimatorController();
+
+        if (dialogueUI.IsOpen) return;
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Interactable?.Interact(this);
+            Debug.Log("I Jalan");
+        }
     }
 
     private void AimToMouse()
