@@ -32,12 +32,12 @@ public class PlayerMovementDendy : MonoBehaviour
         controls.Character.Fire.performed += ctx => isFiring = true;
         controls.Character.Fire.canceled += ctx => isFiring = false;
 
-        WeaponManager.OnWeaponStatusChanged += UpdateWeaponStatus;
+        // WeaponManager.OnWeaponStatusChanged += UpdateWeaponStatus;
     }
 
     private void OnDestroy()
     {
-        WeaponManager.OnWeaponStatusChanged -= UpdateWeaponStatus;
+        // WeaponManager.OnWeaponStatusChanged -= UpdateWeaponStatus;
     }
 
     private void Start()
