@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class ResponseHandler : MonoBehaviour
 {
     [SerializeField] private RectTransform responseBox;
-    [SerializeField] private RectTransform responseButtonTemplate;
-    [SerializeField] private RectTransform responseContainer;
+    [SerializeField] private GameObject responseContainerPrefab;
+    [SerializeField] private GameObject responseButtonTemplatePrefab;
 
     private DialogueUI dialogueUI;
     private ResponseEvent[] responseEvents;
 
-    private List<GameObject> tempResponseButtons = new List<GameObject>();
+    private List<GameObject> tempResponseContainers = new List<GameObject>();
 
     private void Start()
     {
@@ -23,43 +23,45 @@ public class ResponseHandler : MonoBehaviour
     {
         this.responseEvents = responseEvents;
     }
-    
+
     public void ShowResponses(Response[] responses)
     {
-        float responseBoxHeight = 0;
-
-        for (int i = 0; i < responses.Length; i++)
+        foreach (Response response in responses)
         {
-            Response response = responses[i];
-            int responseIndex = i;
-            
-            GameObject responseButton = Instantiate(responseButtonTemplate.gameObject, responseContainer);
-            responseButton.gameObject.SetActive(true);
-            responseButton.GetComponent<TMP_Text>().text = response.ResponseText;
-            responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response, responseIndex));
-            
-            tempResponseButtons.Add(responseButton);
+            // Instantiate responseContainer
+            GameObject responseContainer = Instantiate(responseContainerPrefab, responseBox.transform);
+            responseContainer.SetActive(true);
 
-            responseBoxHeight += responseButtonTemplate.sizeDelta.y;
+            // Instantiate responseButtonTemplate inside the responseContainer
+            GameObject responseButton = Instantiate(responseButtonTemplatePrefab, responseContainer.transform);
+            responseButton.SetActive(true);
+            responseButton.GetComponent<TMP_Text>().text = response.ResponseText;
+            responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response));
+
+            tempResponseContainers.Add(responseContainer);
         }
 
-        responseBox.sizeDelta = new Vector2(responseBox.sizeDelta.x, responseBoxHeight);
         responseBox.gameObject.SetActive(true);
     }
 
-    private void OnPickedResponse(Response response, int responseIndex)
+    private void OnPickedResponse(Response response)
     {
         responseBox.gameObject.SetActive(false);
 
-        foreach (GameObject button in tempResponseButtons)
+        foreach (GameObject container in tempResponseContainers)
         {
-            Destroy(button);
+            Destroy(container);
         }
-        tempResponseButtons.Clear();
+        tempResponseContainers.Clear();
 
-        if (responseEvents != null && responseIndex <= responseEvents.Length)
+        if (responseEvents != null)
         {
-            responseEvents[responseIndex].OnPickedResponse?.Invoke();
+            // Temukan indeks event berdasarkan urutan dalam array
+            int responseIndex = System.Array.IndexOf(responseEvents, response);
+            if (responseIndex >= 0 && responseIndex < responseEvents.Length)
+            {
+                responseEvents[responseIndex].OnPickedResponse?.Invoke();
+            }
         }
 
         responseEvents = null;

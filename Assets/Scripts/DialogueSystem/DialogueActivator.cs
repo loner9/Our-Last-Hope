@@ -3,6 +3,7 @@ using UnityEngine;
 public class DialogueActivator : MonoBehaviour, IInteractable
 {
     [SerializeField] private DialogueObject dialogueObject;
+    public AudioSource sc;
 
     public void UpdateDialogueObject(DialogueObject dialogueObject)
     {
@@ -14,6 +15,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovementDendy player))
         {
             player.Interactable = this;
+            sc.Play();
         }
     }
 

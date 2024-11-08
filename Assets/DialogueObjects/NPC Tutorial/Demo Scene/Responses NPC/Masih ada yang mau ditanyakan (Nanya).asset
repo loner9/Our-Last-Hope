@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc92cc2f17423b2408e04324597c279e, type: 3}
-  m_Name: No
+  m_Name: Masih ada yang mau ditanyakan (Nanya)
   m_EditorClassIdentifier: 
   dialogue:
-  - You said no.
-  responses: []
+  - Gimana, masih ada yang mau ditanyakan?
+  responses:
+  - responseText: Masih ada yang belum aku pahami
+    dialogueObject: {fileID: 11400000, guid: d1249cab9924296408813640a6012a24, type: 2}
