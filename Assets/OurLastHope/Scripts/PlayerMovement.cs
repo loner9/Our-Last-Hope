@@ -212,8 +212,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("toMelee", true);
             animator.SetBool("toRange", false);
             animator.SetBool("unArmed", false);
-            animator.SetFloat("X2Velocity", XVelocity, .1f, Time.deltaTime);
-            animator.SetFloat("Z2Velocity", ZVelocity, .1f, Time.deltaTime);
+            animator.SetFloat("XVelocity", XVelocity, .1f, Time.deltaTime);
+            animator.SetFloat("ZVelocity", ZVelocity, .1f, Time.deltaTime);
             animator.SetBool("meleeWalk", isFiring && moveDirection.magnitude > 0);
             animator.SetBool("meleeIdle", isFiring && moveDirection.magnitude == 0);
 
