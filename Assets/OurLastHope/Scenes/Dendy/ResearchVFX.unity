@@ -152,7 +152,7 @@ Transform:
   m_GameObject: {fileID: 332646940}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.019, y: 1.079, z: 0.512}
+  m_LocalPosition: {x: 0.019, y: 1.079, z: 0.589}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -474,55 +474,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!1 &1441688363
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1441688364}
-  - component: {fileID: 1441688365}
-  m_Layer: 0
-  m_Name: Weapon Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1441688364
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441688363}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1989329265}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1441688365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441688363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bf86c7f65490c44a90e6d7d1053e736, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5445910562494945250, guid: c9600d03fce9d91438d88250b833422e, type: 3}
-  firePoint: {fileID: 332646941}
-  meleeWeapon: {fileID: 1745047140740981407}
-  rangedWeapon: {fileID: 4882427966734837458}
-  muzzleFlashPrefab: {fileID: 404345497676564375, guid: f2b6fd194296eb145b27854520c17a5c, type: 3}
 --- !u!1 &1488217197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,8 +1042,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1.1238065}
-  m_Center: {x: 0, y: 0, z: -0.061903108}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1957750540
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1152,9 +1103,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1989329265}
-  - component: {fileID: 1989329261}
   - component: {fileID: 1989329266}
   - component: {fileID: 1989329268}
+  - component: {fileID: 1989329267}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1162,23 +1113,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1989329261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989329260}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 020f5b7eb3f467340813b77b7fe06f39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2.5
-  aimLayerMask:
-    serializedVersion: 2
-    m_Bits: 192
-  aim: {fileID: 1898014656}
 --- !u!4 &1989329265
 Transform:
   m_ObjectHideFlags: 0
@@ -1195,7 +1129,6 @@ Transform:
   - {fileID: 113040480}
   - {fileID: 332646941}
   - {fileID: 1939768141092982219}
-  - {fileID: 1441688364}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1989329266
@@ -1224,6 +1157,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.63, z: 0}
+--- !u!114 &1989329267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989329260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf86c7f65490c44a90e6d7d1053e736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 2847064759128135003, guid: 501b07ccbc1ff86489be65dfc492621c, type: 3}
+  firePoint: {fileID: 332646941}
+  meleeWeapon: {fileID: 1745047140740981407}
+  rangedWeapon: {fileID: 4882427966734837458}
 --- !u!114 &1989329268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,7 +1185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e779b2db002a04aad2eed05e91b795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 2
   aimLayerMask:
     serializedVersion: 2
     m_Bits: 192

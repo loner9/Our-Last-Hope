@@ -33,6 +33,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Run",
+                    "type": "Button",
+                    "id": "c2cfc199-3871-4819-9e86-f89de44ec12b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "SwitchToMelee",
                     "type": "Button",
                     "id": "383fd7aa-f397-44f9-ba29-95957e17ac1b",
@@ -131,6 +140,17 @@
                 },
                 {
                     "name": "",
+                    "id": "265b4364-2124-4851-a9c4-9f4002bcd52b",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9da8f02b-f42d-4231-9d0f-288b596f7b4c",
                     "path": "<Keyboard>/1",
                     "interactions": "",
@@ -148,6 +168,54 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwitchToRanged",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "d2ab2e88-be39-4beb-ae13-7020eddece2c",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "ec90054e-7b53-4c30-b332-55c127417917",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Inventory",
+                    "type": "Button",
+                    "id": "d5fcee46-18c1-4a04-a8d9-66128023af3c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "54d1479d-86e8-4259-98c2-15ebb7ee6d74",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aef18ae2-c748-4acf-b852-d52b2ca430db",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
