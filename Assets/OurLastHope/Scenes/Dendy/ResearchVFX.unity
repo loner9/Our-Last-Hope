@@ -1169,10 +1169,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf86c7f65490c44a90e6d7d1053e736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2847064759128135003, guid: 501b07ccbc1ff86489be65dfc492621c, type: 3}
+  bulletPrefab: {fileID: 5445910562494945250, guid: c9600d03fce9d91438d88250b833422e, type: 3}
   firePoint: {fileID: 332646941}
   meleeWeapon: {fileID: 1745047140740981407}
   rangedWeapon: {fileID: 4882427966734837458}
+  muzzleFlashPrefab: {fileID: 404345497676564375, guid: f2b6fd194296eb145b27854520c17a5c, type: 3}
 --- !u!114 &1989329268
 MonoBehaviour:
   m_ObjectHideFlags: 0

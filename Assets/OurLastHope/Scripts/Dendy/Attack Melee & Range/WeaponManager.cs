@@ -20,8 +20,11 @@ public class WeaponManager : MonoBehaviour
 
     private bool isRangedActive = true;
 
-    // Tambahan untuk efek tembakan
+    // Efek tembakan
     [SerializeField] private GameObject muzzleFlashPrefab;
+
+    // Efek Melee
+    [SerializeField] private GameObject meleeTrailPrefab;
 
     private void Awake()
     {
@@ -70,12 +73,13 @@ public class WeaponManager : MonoBehaviour
             else
             {
                 Debug.Log("Fire Melee Weapon");
-                
+
             }
             
         
     }
 
+    
     private void SwitchToMelee()
     {
         isRangedActive = false;
