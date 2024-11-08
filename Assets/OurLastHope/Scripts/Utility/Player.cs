@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     private PlayerControls controls;
 
+    public PlayerControls Controls => controls;
+
     private bool isInventoryOpen = false;
     public bool IsInventoryOpen => isInventoryOpen;
     [SerializeField]

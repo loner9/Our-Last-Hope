@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     private Animator animator;
     private Vector3 moveDirection;
-    private PlayerControls controls;
     private Vector2 moveInput;
     private Vector2 aimInput;
     public float moveSpeed = 5f;
@@ -34,17 +33,30 @@ public class PlayerMovement : MonoBehaviour
     private bool isFiring = false;
     private void Awake()
     {
-        controls = new PlayerControls();
-
         player = GetComponent<Player>();
+        WeaponManager.OnWeaponStatusChanged += UpdateWeaponStatus;
 
-        controls.Character.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        controls.Character.Movement.canceled += ctx => moveInput = Vector2.zero;
+    }
 
-        controls.Character.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
-        controls.Character.Aim.canceled += ctx => aimInput = Vector2.zero;
+    private void Start()
+    {
+        characterController = GetComponent<CharacterController>();
 
-        controls.Character.Run.performed += ctx =>
+        animator = GetComponentInChildren<Animator>();
+
+        speed = moveSpeed;
+
+        AssignInputEvents();
+    }
+
+    private void AssignInputEvents(){
+        player.Controls.Character.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        player.Controls.Character.Movement.canceled += ctx => moveInput = Vector2.zero;
+
+        player.Controls.Character.Aim.performed += ctx => aimInput = ctx.ReadValue<Vector2>();
+        player.Controls.Character.Aim.canceled += ctx => aimInput = Vector2.zero;
+
+        player.Controls.Character.Run.performed += ctx =>
         {
             if (moveDirection.magnitude > 0 && player.StatsHid.stamina > 0)
             {
@@ -53,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
         };
-        controls.Character.Run.canceled += ctx =>
+        player.Controls.Character.Run.canceled += ctx =>
         {
             if (moveDirection.magnitude > 0)
             {
@@ -68,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
         };
 
-        controls.Character.Fire.performed += ctx =>
+        player.Controls.Character.Fire.performed += ctx =>
         {
             if (!isUnArmedActive)
             {
@@ -76,19 +88,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
         };
-        controls.Character.Fire.canceled += ctx => isFiring = false;
-
-        WeaponManager.OnWeaponStatusChanged += UpdateWeaponStatus;
-
-    }
-
-    private void Start()
-    {
-        characterController = GetComponent<CharacterController>();
-
-        animator = GetComponentInChildren<Animator>();
-
-        speed = moveSpeed;
+        player.Controls.Character.Fire.canceled += ctx => isFiring = false;
     }
 
     private void Update()
@@ -109,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
             transform.forward = lookingDirection;
 
-            aim.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            aim.position = new Vector3(hit.point.x, transform.position.y+1, hit.point.z);
         }
     }
 
@@ -239,16 +239,6 @@ public class PlayerMovement : MonoBehaviour
     private void Shoot()
     {
         Debug.Log("Shoot");
-    }
-
-    void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    void OnDisable()
-    {
-        controls.Disable();
     }
 
     private void OnDestroy()
