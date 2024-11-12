@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class WeaponManager : MonoBehaviour
 {
     public static System.Action<bool, bool, bool> OnWeaponStatusChanged;
-
+    public static Action<string> OnWeaponTypeChanged;
     private PlayerControls controls;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
@@ -13,8 +15,8 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private GameObject rangedWeapon;
     private bool isRangedActive = false;
     private bool isMeleeActive = false;
-
     private bool isUnArmed = true;
+    [SerializeField] private Rig rig;
 
 
     private void Awake()
@@ -28,7 +30,22 @@ public class WeaponManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateWeaponStatus();
+        rig.weight = 0f;
+        OnWeaponTypeChanged += SetWeaponType;
+    }
+
+    private void SetWeaponType(string obj)
+    {
+        if (obj.ToLower().Equals("melee"))
+        {
+            SwitchToMelee();
+        }
+        else if (obj.ToLower().Equals("ranged"))
+        {
+            SwitchToRanged();
+        }else{
+            SwitchToUnarmed();
+        }
     }
 
     private void Fire()
@@ -50,6 +67,7 @@ public class WeaponManager : MonoBehaviour
 
     private void SwitchToMelee()
     {
+        rig.weight = 0f;
         isRangedActive = false;
         isMeleeActive = true;
         isUnArmed = false;
@@ -59,6 +77,7 @@ public class WeaponManager : MonoBehaviour
 
     private void SwitchToRanged()
     {
+        rig.weight = 1f;
         isRangedActive = true;
         isMeleeActive = false;
         isUnArmed = false;
@@ -68,6 +87,7 @@ public class WeaponManager : MonoBehaviour
 
     private void SwitchToUnarmed()
     {
+        rig.weight = 0f;
         isRangedActive = false;
         isMeleeActive = false;
         isUnArmed = true;
@@ -77,8 +97,7 @@ public class WeaponManager : MonoBehaviour
 
     private void UpdateWeaponStatus()
     {
-        meleeWeapon.SetActive(!isRangedActive);
-        rangedWeapon.SetActive(isRangedActive);
+        
     }
 
     void OnEnable()

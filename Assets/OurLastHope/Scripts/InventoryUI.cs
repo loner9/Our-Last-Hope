@@ -19,6 +19,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemDescription;
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private TextMeshProUGUI equipTxt;
+    [SerializeField] private GameObject player;
 
     private PlayerControls controls;
     private bool isInventoryOpen = false;
@@ -42,6 +44,7 @@ public class InventoryUI : MonoBehaviour
         if (!isInventoryOpen)
         {
             inventoryTransform.gameObject.SetActive(true);
+            player.GetComponent<Animator>().enabled = false;
             PauseManager.Instance.Pause();
         }
         else
@@ -49,6 +52,7 @@ public class InventoryUI : MonoBehaviour
             inventoryTransform.gameObject.SetActive(false);
             descPanel.SetActive(false);
             SelectedSlot = null;
+            player.GetComponent<Animator>().enabled = true;
             PauseManager.Instance.Resume();
         }
 
@@ -76,6 +80,10 @@ public class InventoryUI : MonoBehaviour
         Inventory.Instance.RemoveItem(SelectedSlot.index);
     }
 
+    public void EquipItem(){
+        Inventory.Instance.EquipItem(SelectedSlot.index);
+    }
+
     public void DrawItem(InventoryItem item, int index)
     {
         InventorySlot slot = slots[index];
@@ -88,7 +96,7 @@ public class InventoryUI : MonoBehaviour
         slot.UpdateSlot(item);
     }
 
-    public void ShowItemDescription(int index)
+    public void ShowItemStuff(int index)
     {
         if (Inventory.Instance.InventoryItems[index] == null) return;
         {
@@ -96,13 +104,18 @@ public class InventoryUI : MonoBehaviour
             itemIcon.sprite = Inventory.Instance.InventoryItems[index].Icon;
             itemName.text = Inventory.Instance.InventoryItems[index].Name;
             itemDescription.text = Inventory.Instance.InventoryItems[index].Description;
+            if (Inventory.Instance.InventoryItems[index] is ItemWeapon itemWeapon)
+            {
+                equipTxt.text = itemWeapon.isEquipped ? "Unequip" : "Equip";
+            }
         }
     }
 
     private void SlotSelectedCallBack(int index)
     {
         SelectedSlot = slots[index];
-        ShowItemDescription(index);
+        ShowItemStuff(index);
+        Debug.Log("Slot " + index + " selected");
     }
 
     void OnEnable()

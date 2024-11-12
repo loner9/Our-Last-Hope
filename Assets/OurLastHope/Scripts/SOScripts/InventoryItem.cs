@@ -49,4 +49,9 @@ public class InventoryItem : ScriptableObject
         
     }
 
+    public virtual bool Removable()
+    {
+        return true;
+    }
+
 }

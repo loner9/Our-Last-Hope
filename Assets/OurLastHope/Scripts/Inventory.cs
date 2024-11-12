@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
 
     [Header("Testing")]
     public InventoryItem testItem;
+    private int lastEquipedIndex = -1;
 
     private void Awake()
     {
@@ -73,17 +74,59 @@ public class Inventory : MonoBehaviour
     public void UseItem(int index)
     {
         if (inventoryItems[index] == null) return;
+        if (inventoryItems[index].ItemType != ItemType.Consumable) return;
         if (inventoryItems[index].UseItem())
         {
             DecreaseItemStock(index);
         }
     }
 
-    public void RemoveItem(int index){
+    public void RemoveItem(int index)
+    {
         if (inventoryItems[index] == null) return;
-        inventoryItems[index].RemoveItem();
-        inventoryItems[index] = null;
-        InventoryUI.Instance.DrawItem(null, index);
+        if (inventoryItems[index].Removable())
+        {
+            inventoryItems[index].RemoveItem();
+            inventoryItems[index] = null;
+            InventoryUI.Instance.DrawItem(null, index);
+        }
+
+    }
+
+    public void EquipItem(int index)
+    {
+        if (inventoryItems[index] == null) return;
+        if (inventoryItems[index].ItemType != ItemType.Weapon) return;
+        WeaponVisualController.OnWeaponChange(inventoryItems[index].ID);
+        if (inventoryItems[index] is ItemWeapon itemWeapon)
+        {
+            string weaponType = itemWeapon.weapon.WeaponType.ToString();
+            WeaponManager.OnWeaponTypeChanged(weaponType);
+            if (lastEquipedIndex != -1 && lastEquipedIndex != index)
+            {
+                if (inventoryItems[lastEquipedIndex] is ItemWeapon weap)
+                {
+                    weap.isEquipped = false;
+                }
+            }
+
+
+            if (lastEquipedIndex == index)
+            {
+                // already equiped -> unequip
+                lastEquipedIndex = -1;
+                itemWeapon.isEquipped = false;
+                WeaponManager.OnWeaponTypeChanged("unarmed");
+                WeaponVisualController.OnWeaponChange("unarmed");
+            }
+            else
+            {
+                lastEquipedIndex = index;
+                itemWeapon.isEquipped = true;
+            }
+
+        }
+
     }
 
     private void AddItemFreeSlot(InventoryItem item, int quantity)
@@ -127,12 +170,14 @@ public class Inventory : MonoBehaviour
         return itemIndexes;
     }
 
-    private void VerifyItemsForDraw(){
+    private void VerifyItemsForDraw()
+    {
 
-        for (int i = 0; i < inventorySize; i++){
+        for (int i = 0; i < inventorySize; i++)
+        {
             if (inventoryItems[i] == null)
             {
-                InventoryUI.Instance.DrawItem(null, i);                
+                InventoryUI.Instance.DrawItem(null, i);
             }
         }
     }
