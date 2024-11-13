@@ -52,7 +52,16 @@ public class WeaponVisualController : MonoBehaviour
         else if (s.ToLower().Equals("m16a1"))
         {
             SwitchOnWeapons(m161);
-        }else if (s.ToLower().Equals("unarmed"))
+        }
+        else if (s.ToLower().Equals("bat"))
+        {
+            SwitchOnWeapons(baseball);
+        }
+        else if (s.ToLower().Equals("sword"))
+        {
+            SwitchOnWeapons(sword);
+        }
+        else if (s.ToLower().Equals("unarmed"))
         {
             SwitchOffWeapons();
         }

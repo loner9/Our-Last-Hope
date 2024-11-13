@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 890b2ee0770c67b458391da847d4e8c5, type: 3}
-  m_Name: WeaponMachete
+  m_Name: WeaponBat
   m_EditorClassIdentifier: 
-  ID: Sword
-  Icon: {fileID: 92335290, guid: a051cd959536a9c438df58c75e9ec8f5, type: 3}
-  Name: Machete
-  Description: It's a rusty machete
+  ID: Bat
+  Icon: {fileID: 887965356, guid: a051cd959536a9c438df58c75e9ec8f5, type: 3}
+  Name: Baseball Bat
+  Description: Convenience enough to swat zombies off
   ItemType: 0
   IsConsumable: 0
   IsStackable: 0
   MaxStack: 1
   Quantity: 0
-  weapon: {fileID: 11400000, guid: fdad3cf7259c42b42a3c1cce8f575ee8, type: 2}
+  weapon: {fileID: 11400000, guid: a05dc40d0f0547041a678d50eb9c6c66, type: 2}
   isEquipped: 0

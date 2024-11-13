@@ -23,9 +23,9 @@ public class WeaponManager : MonoBehaviour
     {
         controls = new PlayerControls();
         controls.Character.Fire.performed += ctx => Fire();
-        controls.Character.SwitchToMelee.performed += ctx => SwitchToMelee();
-        controls.Character.SwitchToRanged.performed += ctx => SwitchToRanged();
-        controls.Character.Unarmed.performed += ctx => SwitchToUnarmed();
+        // controls.Character.SwitchToMelee.performed += ctx => SwitchToMelee();
+        // controls.Character.SwitchToRanged.performed += ctx => SwitchToRanged();
+        // controls.Character.Unarmed.performed += ctx => SwitchToUnarmed();
     }
 
     private void Start()
