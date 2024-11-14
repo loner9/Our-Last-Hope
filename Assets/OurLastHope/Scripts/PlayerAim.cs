@@ -10,9 +10,7 @@ public class PlayerAim : MonoBehaviour
     private LayerMask aimLayerMask;
     [SerializeField]
     private Transform aim;
-    [SerializeField] private float minCameraDistance = 1.5f;
-    [SerializeField] private float maxCameraDistance = 4f;
-    [SerializeField] private float aimSensitivity = 5f;
+    private Vector3 lookingDirection;
 
     private Vector2 aimInput;
     // Start is called before the first frame update
@@ -25,7 +23,7 @@ public class PlayerAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        aim.position = Vector3.Lerp(aim.position, DesiredAimPosition(), aimSensitivity * Time.deltaTime);
+        aim.position = new Vector3(GetMousePosition().x, transform.position.y + 1.5f, GetMousePosition().z);
     }
 
     private void AssignInputEvents()
@@ -44,21 +42,5 @@ public class PlayerAim : MonoBehaviour
         }
 
         return Vector3.zero;
-    }
-
-    private Vector3 DesiredAimPosition()
-    {
-        Vector3 desiredAimPosition = GetMousePosition();
-        Vector3 aimDirection = (desiredAimPosition - transform.position).normalized;
-
-        float distanceToDesiredPosition = Vector3.Distance(transform.position, desiredAimPosition);
-
-        float clamped = Mathf.Clamp(distanceToDesiredPosition, minCameraDistance, maxCameraDistance);
-        
-        desiredAimPosition = transform.position + aimDirection * clamped;   
-        
-        desiredAimPosition.y = transform.position.y + 1.5f;
-
-        return desiredAimPosition;
     }
 }

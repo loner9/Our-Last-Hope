@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     private Animator animator;
     private Vector3 moveDirection;
-    public Vector2 moveInput { get; private set; }
+    private Vector2 moveInput;
     private Vector2 aimInput;
     public float moveSpeed = 5f;
     public float runSpeed = 10f;
