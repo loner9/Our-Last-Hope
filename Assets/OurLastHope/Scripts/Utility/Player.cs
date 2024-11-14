@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
 
     public PlayerControls Controls => controls;
 
+    public PlayerAim aim {get; private set;}
+
     private bool isInventoryOpen = false;
     public bool IsInventoryOpen => isInventoryOpen;
     [SerializeField]
@@ -27,7 +29,7 @@ public class Player : MonoBehaviour
     private void Awake(){
         playerHealths = GetComponent<PlayerHealths>();
         playerStaminas = GetComponent<PlayerStaminas>();
-
+        aim = GetComponentInChildren<PlayerAim>();
         
         controls = new PlayerControls();
     }
