@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
@@ -43,8 +44,7 @@ public class WeaponVisualController : MonoBehaviour
     }
 
     private void testWeapon(string s)
-    {
-        Debug.Log("test " + s);
+    {   
         if (s.ToLower().Equals("ak12"))
         {
             SwitchOnWeapons(ak12);
@@ -52,6 +52,10 @@ public class WeaponVisualController : MonoBehaviour
         else if (s.ToLower().Equals("m16a1"))
         {
             SwitchOnWeapons(m161);
+        }
+        else if (s.ToLower().Equals("m1911"))
+        {
+            SwitchOnWeapons(m1911);
         }
         else if (s.ToLower().Equals("bat"))
         {
