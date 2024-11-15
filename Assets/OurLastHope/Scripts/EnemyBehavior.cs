@@ -3,21 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [Header("Player Detection")]
-    public Transform player;                  // Referensi ke posisi pemain
-    public float detectionRange = 10f;        // Jarak deteksi musuh terhadap pemain
-    public float stopChaseRange = 15f;        // Jarak di mana musuh akan berhenti mengejar
-
-    [Header("Enemy Health")]
-    public float maxHealth = 100f;            // Health maksimal musuh
-    public float currentHealth;              // Health saat ini
-
     private NavMeshAgent agent;
     private bool isChasing;
+    private bool isAttacking = false;
+    
+    [Header("Player Detection")]
+    public Transform player;                  // Reference to the player's position
+    public float stopChaseRange = 15f;        // Distance at which the enemy stops chasing
+    public float attackRange = 2f;            // Distance at which the enemy can attack
+    public float attackCooldown = 1.5f;       // Cooldown between attacks
 
+    private float nextAttackTime;             // Time when the enemy can attack again
+
+    [Header("Enemy Health")]
+    public float maxHealth = 100f;            // Maximum health of the enemy
+    public float currentHealth;               // Current health of the enemy
+
+    [Header("Patrolling")]
+    public float _range;
+    public Transform centrePoint; // Centre of the area the agent wants to move around in
     [SerializeField] private EnemyHealthBar _healthBar;
 
     private void Awake()
@@ -27,67 +35,124 @@ public class EnemyBehavior : MonoBehaviour
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>(); // Mengambil komponen NavMeshAgent
-        currentHealth = maxHealth;            // Set health awal sesuai maxHealth
-        _healthBar.updateHealthBar(currentHealth,maxHealth);
+        agent = GetComponent<NavMeshAgent>(); // Get the NavMeshAgent component
+        currentHealth = maxHealth;            // Set initial health to maxHealth
+        _healthBar.updateHealthBar(currentHealth, maxHealth);
     }
 
     void Update()
     {
-        if (currentHealth <= 0) 
-        {
-            Die();
-            return;
-        }
-
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
-
-        if (distanceToPlayer <= detectionRange)
+        
+        // Player detection condition
+        if ((distanceToPlayer <= agent.radius) && (!isAttacking))
         {
-            // Jika pemain berada dalam jarak deteksi, musuh mulai mengejar
+            // If the player is within detection range, start chasing
             isChasing = true;
         }
         else if (distanceToPlayer >= stopChaseRange)
         {
-            // Jika pemain menjauh dari jarak berhenti mengejar, musuh berhenti mengejar
+            // If the player is out of stopChaseRange, stop chasing
             isChasing = false;
-            agent.SetDestination(transform.position);  // Musuh berhenti bergerak
         }
-
-        if (isChasing)
+        
+        // Attack the player if within attack range and cooldown is complete
+        if (distanceToPlayer <= attackRange && Time.time >= nextAttackTime)
         {
-            agent.SetDestination(player.position);    // Musuh mengejar pemain
+            isAttacking = true;
+            isChasing = false;
+            DealDamage();
         }
+        if (distanceToPlayer >= attackRange)
+        {
+            isAttacking = false;
+        }
+        Chasing();
     }
-    // Fungsi untuk mendeteksi peluru yang masuk
+
+    // Function to handle bullet collision
     private void OnTriggerEnter(Collider other)
     {
-        // Mengecek jika collider yang masuk memiliki tag "Bullet"
+        // Check if the collider has the tag "Bullet"
         if (other.CompareTag("Bullet"))
         {
-            BulletScript bullet = other.GetComponent<BulletScript>(); // Mendapatkan skrip Bullet
+            BulletScript bullet = other.GetComponent<BulletScript>(); // Get the Bullet script
             if (bullet != null)
             {
-                TakeDamage(bullet.damage); // Mengurangi health dengan damage dari peluru
+                TakeDamage(bullet.damage); // Reduce health by bullet damage
+            }
+            Destroy(other.gameObject);
+        }
+    }
+
+    // Function to chase the player
+    public void Chasing()
+    {
+        // Check if chasing
+        if (isChasing)
+        {
+            agent.SetDestination(player.position); // Enemy chases the player
+        }
+        if (!isChasing&&!isAttacking)
+        {
+            // Random patrol when not chasing the player
+            if (agent.remainingDistance <= agent.stoppingDistance) // Done with path
+            {
+                Vector3 point;
+                if (RandomPoint(centrePoint.position, _range, out point)) // Pass in the centre point and radius of the area
+                {
+                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); // Visualization with gizmos
+                    agent.SetDestination(point);
+                }
             }
         }
     }
 
-    // Fungsi untuk menerima damage
+    // Function to deal damage to the player
+    public void DealDamage()
+    {
+        // Face the player and attack
+        transform.LookAt(player.transform.position);
+        agent.SetDestination(transform.position);
+        
+        // Simulate attack here (e.g., reduce player's health)
+        // For now, we will log that the enemy has attacked
+        Debug.Log("Enemy attacks the player!");
+
+        // Set the next attack time to current time + cooldown
+        nextAttackTime = Time.time + attackCooldown;
+    }
+
+    // Function to receive damage
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;                      // Mengurangi health musuh
-        _healthBar.updateHealthBar(currentHealth,maxHealth);
+        currentHealth -= damage; // Reduce enemy's health
+        _healthBar.updateHealthBar(currentHealth, maxHealth);
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
-    // Fungsi untuk mematikan musuh
+    // Function to handle enemy death
     private void Die()
     {
-        // Misalnya menambahkan efek atau suara kematian di sini
-        Destroy(gameObject);                           // Menghancurkan objek musuh
+        // Optionally, add death effects or sounds here
+        Destroy(gameObject); // Destroy the enemy object
+    }
+
+    // Function to patrol randomly within a given range
+    bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    {
+        Vector3 randomPoint = center + Random.insideUnitSphere * range; // Random point in a sphere 
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) // Documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
+        { 
+            result = hit.position;
+            return true;
+        }
+
+        result = Vector3.zero;
+        return false;
     }
 }
