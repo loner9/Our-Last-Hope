@@ -79,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
             if (!isUnArmedActive)
             {
                 isFiring = true;
+                animator.SetTrigger("Fire");
             }
 
         };
@@ -205,17 +206,17 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("unArmed", false);
             animator.SetFloat("XVelocity", XVelocity, .1f, Time.deltaTime);
             animator.SetFloat("ZVelocity", ZVelocity, .1f, Time.deltaTime);
-            animator.SetBool("meleeWalk", isFiring && moveDirection.magnitude > 0);
-            animator.SetBool("meleeIdle", isFiring && moveDirection.magnitude == 0);
+            // animator.SetBool("meleeWalk", isFiring && moveDirection.magnitude > 0);
+            animator.SetBool("meleeIdle", isFiring);
 
-            if (!isFiring && moveDirection.magnitude == 0)
-            {
-                animator.SetBool("meleeIdle", false);
-            }
-            else if (!isFiring && moveDirection.magnitude > 0)
-            {
-                animator.SetBool("meleeWalk", false);
-            }
+            // if (!isFiring && moveDirection.magnitude == 0)
+            // {
+            //     animator.SetBool("meleeIdle", false);
+            // }
+            // else if (!isFiring && moveDirection.magnitude > 0)
+            // {
+            //     animator.SetBool("meleeWalk", false);
+            // }
 
         }
     }
