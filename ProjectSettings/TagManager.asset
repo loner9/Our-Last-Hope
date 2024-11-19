@@ -9,6 +9,7 @@ TagManager:
   - Audio
   - melee
   - ranged
+  - Bullet
   layers:
   - Default
   - TransparentFX
