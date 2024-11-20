@@ -14,6 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     
     [Header("Player Detection")]
     public Transform player;                  // Reference to the player's position
+    public float detectionRadius = 10f;        // Detection
     public float stopChaseRange = 15f;        // Distance at which the enemy stops chasing
     public float attackRange = 2f;            // Distance at which the enemy can attack
     public float attackCooldown = 1.5f;       // Cooldown between attacks
@@ -47,7 +48,7 @@ public class EnemyBehavior : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
         
         // Player detection condition
-        if ((distanceToPlayer <= agent.radius) && (isAttacking==false))
+        if ((distanceToPlayer <= detectionRadius) && (isAttacking==false))
         {
             // If the player is within detection range, start chasing
             isChasing = true;
@@ -158,5 +159,17 @@ public class EnemyBehavior : MonoBehaviour
 
         result = Vector3.zero;
         return false;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        // Mengatur warna Gizmo menjadi merah
+        Gizmos.color = Color.red;
+        // Menggambar lingkaran yang menunjukkan jangkauan deteksi
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+
+        // Mengatur warna Gizmo menjadi biru untuk jarak berhenti mengejar
+        Gizmos.color = Color.blue;
+        // Menggambar lingkaran yang menunjukkan jarak berhenti mengejar
+        Gizmos.DrawWireSphere(transform.position, stopChaseRange);
     }
 }
