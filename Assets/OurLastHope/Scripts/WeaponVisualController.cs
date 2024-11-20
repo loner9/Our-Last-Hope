@@ -8,6 +8,7 @@ using UnityEngine.Animations.Rigging;
 public class WeaponVisualController : MonoBehaviour
 {
     public static Action<string> OnWeaponChange;
+    public static Action<bool> OnReload;
     [SerializeField] private Transform[] weaponTransform;
     [SerializeField] private Transform mp5;
     [SerializeField] private Transform m1911;
@@ -15,10 +16,7 @@ public class WeaponVisualController : MonoBehaviour
     [SerializeField] private Transform aug;
     [SerializeField] private Transform baseball;
     [SerializeField] private Transform sword;
-    [SerializeField] private Transform knife;
-
-    private Transform currentWeapon;
-
+    [SerializeField] private Transform knife;    private Transform currentWeapon;
     [SerializeField] private Transform leftHand;
 
     private void Start()
@@ -28,20 +26,7 @@ public class WeaponVisualController : MonoBehaviour
 
     private void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.UpArrow))
-        // {
-        //     SwitchOnWeapons(ak12);
-        // }
-
-        // if (Input.GetKeyDown(KeyCode.DownArrow))
-        // {
-        //     SwitchOnWeapons(baseball);
-        // }
-
-        // if (Input.GetKeyDown(KeyCode.LeftArrow))
-        // {
-
-        // }
+       
     }
 
     private void testWeapon(string s)

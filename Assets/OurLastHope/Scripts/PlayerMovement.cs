@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isRangedActive = false;
     private bool isMeleeActive = false;
     private bool isUnArmedActive = true;
+    private bool isReloading = false;
     private bool isFiring = false;
     private void Awake()
     {
@@ -76,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
         player.Controls.Character.Fire.performed += ctx =>
         {
-            if (!isUnArmedActive)
+            if (!isUnArmedActive && !isReloading)
             {
                 isFiring = true;
                 animator.SetTrigger("Fire");
@@ -221,11 +222,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void UpdateWeaponStatus(bool isRanged, bool isMelee, bool isUnArmed)
+    private void UpdateWeaponStatus(bool isRanged, bool isMelee, bool isUnArmed, bool isReload)
     {
         isRangedActive = isRanged;
         isMeleeActive = isMelee;
         isUnArmedActive = isUnArmed;
+        isReloading = isReload;
     }
 
     private void Shoot()

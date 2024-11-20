@@ -6,8 +6,10 @@ using UnityEngine.Animations.Rigging;
 
 public class WeaponManager : MonoBehaviour
 {
-    public static System.Action<bool, bool, bool> OnWeaponStatusChanged;
+    public static System.Action<bool, bool, bool, bool> OnWeaponStatusChanged;
     public static Action<string> OnWeaponTypeChanged;
+    public static Action<string, int, int> OnWeaponChanged;
+    public static Action<int> OnWeaponFired;
     private PlayerControls controls;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
@@ -16,13 +18,24 @@ public class WeaponManager : MonoBehaviour
     private bool isRangedActive = false;
     private bool isMeleeActive = false;
     private bool isUnArmed = true;
+    private bool isReloading = false;
     [SerializeField] private Rig rig;
-
+    [SerializeField] private Animator animator;
+    private string weaponId;
+    private int weaponMags;
+    private int weaponIndex;
 
     private void Awake()
     {
         controls = new PlayerControls();
-        controls.Character.Fire.performed += ctx => Fire();
+        controls.Character.Fire.performed += ctx =>
+        {
+            if (isRangedActive && !isReloading)
+            {
+                Fire();
+            }
+        };
+        controls.Character.Reload.performed += ctx => Reload();
         // controls.Character.SwitchToMelee.performed += ctx => SwitchToMelee();
         // controls.Character.SwitchToRanged.performed += ctx => SwitchToRanged();
         // controls.Character.Unarmed.performed += ctx => SwitchToUnarmed();
@@ -32,6 +45,22 @@ public class WeaponManager : MonoBehaviour
     {
         rig.weight = 0f;
         OnWeaponTypeChanged += SetWeaponType;
+        OnWeaponChanged += WeaponDetail;
+    }
+
+    private void Update()
+    {
+        if (isRangedActive)
+        {
+            if (isReloading)
+            {
+                rig.weight = Mathf.MoveTowards(rig.weight, 0f, 2f * Time.deltaTime);
+            }
+            else
+            {
+                rig.weight = Mathf.MoveTowards(rig.weight, 1f, 4f * Time.deltaTime);
+            }
+        }
     }
 
     private void SetWeaponType(string obj)
@@ -43,26 +72,52 @@ public class WeaponManager : MonoBehaviour
         else if (obj.ToLower().Equals("ranged"))
         {
             SwitchToRanged();
-        }else{
+        }
+        else
+        {
             SwitchToUnarmed();
         }
+    }
+
+    private void WeaponDetail(string id, int mag, int index)
+    {
+        weaponId = id;
+        weaponMags = mag;
+        weaponIndex = index;
     }
 
     private void Fire()
     {
         if (isRangedActive && !isUnArmed)
         {
-            Debug.Log("Fire Ranged Weapon");
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.velocity = firePoint.forward * 20f;
+            int ammo = Inventory.Instance.ConsumeAmmo(weaponIndex);
+            Debug.Log("Ammo: " + ammo);
+            if (ammo != 0)
+            {
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                rb.velocity = firePoint.forward * 20f;
+            }
+
         }
-        else if(isMeleeActive && !isUnArmed)
+        else if (isMeleeActive && !isUnArmed)
         {
             Debug.Log("Fire Melee Weapon");
-        }else{
+        }
+        else
+        {
             Debug.Log("Unarmed");
         }
+    }
+
+    private void Reload()
+    {
+        if (!isRangedActive) return;
+        if (isReloading) return;
+        List<int> indexes = Inventory.Instance.CheckAmmoAvailable(weaponId);
+        if (indexes.Count == 0) return;
+        Inventory.Instance.ReloadAmmo(weaponId, weaponMags, weaponIndex);
+        animator.SetTrigger("Reload");
     }
 
     private void SwitchToMelee()
@@ -72,7 +127,7 @@ public class WeaponManager : MonoBehaviour
         isMeleeActive = true;
         isUnArmed = false;
         UpdateWeaponStatus();
-        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed); // Notify listeners
+        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed, isReloading); // Notify listeners
     }
 
     private void SwitchToRanged()
@@ -82,7 +137,7 @@ public class WeaponManager : MonoBehaviour
         isMeleeActive = false;
         isUnArmed = false;
         UpdateWeaponStatus();
-        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed); // Notify listeners
+        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed, isReloading); // Notify listeners
     }
 
     private void SwitchToUnarmed()
@@ -92,12 +147,24 @@ public class WeaponManager : MonoBehaviour
         isMeleeActive = false;
         isUnArmed = true;
         UpdateWeaponStatus();
-        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed); // Notify listeners
+        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed, isReloading); // Notify listeners
+    }
+
+    public void Reloading()
+    {
+        isReloading = true;
+        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed, isReloading);
+    }
+
+    public void NotReloading()
+    {
+        isReloading = false;
+        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed, isReloading);
     }
 
     private void UpdateWeaponStatus()
     {
-        
+
     }
 
     void OnEnable()

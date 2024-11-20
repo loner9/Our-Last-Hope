@@ -89,6 +89,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""e308ee96-8458-4256-8d0e-3f455c9f4d66"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Unarmed"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7cf24a8a-d9db-4495-bf41-c7dad45f12c4"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -275,6 +295,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Character_SwitchToMelee = m_Character.FindAction("SwitchToMelee", throwIfNotFound: true);
         m_Character_SwitchToRanged = m_Character.FindAction("SwitchToRanged", throwIfNotFound: true);
         m_Character_Unarmed = m_Character.FindAction("Unarmed", throwIfNotFound: true);
+        m_Character_Reload = m_Character.FindAction("Reload", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
@@ -347,6 +368,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_SwitchToMelee;
     private readonly InputAction m_Character_SwitchToRanged;
     private readonly InputAction m_Character_Unarmed;
+    private readonly InputAction m_Character_Reload;
     public struct CharacterActions
     {
         private @PlayerControls m_Wrapper;
@@ -358,6 +380,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @SwitchToMelee => m_Wrapper.m_Character_SwitchToMelee;
         public InputAction @SwitchToRanged => m_Wrapper.m_Character_SwitchToRanged;
         public InputAction @Unarmed => m_Wrapper.m_Character_Unarmed;
+        public InputAction @Reload => m_Wrapper.m_Character_Reload;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -388,6 +411,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Unarmed.started += instance.OnUnarmed;
             @Unarmed.performed += instance.OnUnarmed;
             @Unarmed.canceled += instance.OnUnarmed;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
         }
 
         private void UnregisterCallbacks(ICharacterActions instance)
@@ -413,6 +439,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Unarmed.started -= instance.OnUnarmed;
             @Unarmed.performed -= instance.OnUnarmed;
             @Unarmed.canceled -= instance.OnUnarmed;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
         }
 
         public void RemoveCallbacks(ICharacterActions instance)
@@ -493,6 +522,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSwitchToMelee(InputAction.CallbackContext context);
         void OnSwitchToRanged(InputAction.CallbackContext context);
         void OnUnarmed(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

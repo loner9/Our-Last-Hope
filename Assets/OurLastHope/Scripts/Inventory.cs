@@ -16,6 +16,8 @@ public class Inventory : MonoBehaviour
     [Header("Testing")]
     public InventoryItem testItem;
     private int lastEquipedIndex = -1;
+    public int currentAmmo = 0;
+
 
     private void Awake()
     {
@@ -33,7 +35,7 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            AddItem(testItem, 1);
+            AddItem(testItem, 30);
         }
     }
 
@@ -81,6 +83,43 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public int ConsumeAmmo(int index)
+    {
+        int ammo = 0;
+        if (inventoryItems[index] is ItemWeapon itemWeapon)
+        {
+            if (itemWeapon.currentAmmo > 0)
+            {
+                ammo = itemWeapon.currentAmmo -= 1;
+            }
+        }
+
+        return ammo;
+    }
+
+    public void ReloadAmmo(string item, int quantity, int index)
+    {
+        List<int> indexes = CheckAmmoAvailable(item);
+        int currentAmmo = 0;
+        int quantityToUse = 0;
+        Debug.Log(indexes.Count);
+        if (indexes.Count > 0)
+        {
+            if (inventoryItems[index] is ItemWeapon weap)
+            {
+                currentAmmo = weap.currentAmmo;
+            }
+
+            int ammoDiff = Mathf.Abs(currentAmmo - quantity);
+            quantityToUse = ammoDiff >= inventoryItems[indexes[0]].Quantity ? inventoryItems[indexes[0]].Quantity : ammoDiff;
+            DecreaseItemStockByQuantity(indexes[0], quantityToUse);
+            if (inventoryItems[index] is ItemWeapon itemWeapon)
+            {
+                itemWeapon.currentAmmo += quantityToUse;
+            }
+        }
+    }
+
     public void RemoveItem(int index)
     {
         if (inventoryItems[index] == null) return;
@@ -101,7 +140,9 @@ public class Inventory : MonoBehaviour
         if (inventoryItems[index] is ItemWeapon itemWeapon)
         {
             string weaponType = itemWeapon.weapon.WeaponType.ToString();
+            currentAmmo = itemWeapon.currentAmmo;
             WeaponManager.OnWeaponTypeChanged(weaponType);
+            WeaponManager.OnWeaponChanged(itemWeapon.ID, itemWeapon.weapon.MagazineSize, index);
             if (lastEquipedIndex != -1 && lastEquipedIndex != index)
             {
                 if (inventoryItems[lastEquipedIndex] is ItemWeapon weap)
@@ -155,6 +196,20 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void DecreaseItemStockByQuantity(int index, int quantity)
+    {
+        inventoryItems[index].Quantity -= quantity;
+        if (inventoryItems[index].Quantity <= 0)
+        {
+            inventoryItems[index] = null;
+            InventoryUI.Instance.DrawItem(null, index);
+        }
+        else
+        {
+            InventoryUI.Instance.DrawItem(inventoryItems[index], index);
+        }
+    }
+
     private List<int> CheckItemStock(String itemId)
     {
         List<int> itemIndexes = new List<int>();
@@ -162,6 +217,21 @@ public class Inventory : MonoBehaviour
         {
             if (inventoryItems[i] == null) continue;
             if (inventoryItems[i].ID == itemId)
+            {
+                itemIndexes.Add(i);
+            }
+        }
+
+        return itemIndexes;
+    }
+
+    public List<int> CheckAmmoAvailable(string itemId)
+    {
+        List<int> itemIndexes = new List<int>();
+        for (int i = 0; i < inventoryItems.Length; i++)
+        {
+            if (inventoryItems[i] == null) continue;
+            if (inventoryItems[i].ID.ToLower().Contains(itemId.ToLower()) && inventoryItems[i].Name.ToLower().Contains("ammo"))
             {
                 itemIndexes.Add(i);
             }

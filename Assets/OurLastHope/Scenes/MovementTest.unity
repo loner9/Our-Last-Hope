@@ -171,6 +171,7 @@ MonoBehaviour:
   meleeWeapon: {fileID: 500844049}
   rangedWeapon: {fileID: 1189129633}
   rig: {fileID: 2041040514}
+  animator: {fileID: 5866666021003482732}
 --- !u!1 &84809119
 GameObject:
   m_ObjectHideFlags: 0
@@ -5164,7 +5165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventorySize: 24
   inventoryItems: []
-  testItem: {fileID: 11400000, guid: 0091cd5845f1e1649900599f690de8b6, type: 2}
+  testItem: {fileID: 11400000, guid: 55954d4c760e1ce458644f9bf938436e, type: 2}
+  currentAmmo: 0
 --- !u!114 &1780998387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7472,6 +7474,7 @@ GameObject:
   - component: {fileID: 5866666021003482732}
   - component: {fileID: 5866666021003482734}
   - component: {fileID: 5866666021003482733}
+  - component: {fileID: 5866666021003482735}
   m_Layer: 0
   m_Name: mc_unrig@Idle
   m_TagString: Untagged
@@ -12231,6 +12234,20 @@ MonoBehaviour:
   - m_Rig: {fileID: 2041040514}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &5866666021003482735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148987451052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f294eb1ac74f9114ba7391a8f9fbcb02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponManager: {fileID: 72806479}
+  rig: {fileID: 2041040514}
 --- !u!65 &5875868925883808677
 BoxCollider:
   m_ObjectHideFlags: 0
