@@ -9,7 +9,8 @@ public class EnemyBehavior : MonoBehaviour
 {
     private NavMeshAgent agent;
     private bool isChasing;
-    private bool isAttacking = false;
+    private bool isAttacking = true;
+    public Animator _animator;
     
     [Header("Player Detection")]
     public Transform player;                  // Reference to the player's position
@@ -42,10 +43,11 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
+        _animator.SetFloat("Speed",agent.velocity.magnitude / agent.speed);
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
         
         // Player detection condition
-        if ((distanceToPlayer <= agent.radius) && (!isAttacking))
+        if ((distanceToPlayer <= agent.radius) && (isAttacking==false))
         {
             // If the player is within detection range, start chasing
             isChasing = true;
@@ -89,11 +91,11 @@ public class EnemyBehavior : MonoBehaviour
     public void Chasing()
     {
         // Check if chasing
-        if (isChasing)
+        if ((isChasing==true) && (isAttacking==false))
         {
             agent.SetDestination(player.position); // Enemy chases the player
         }
-        if (!isChasing&&!isAttacking)
+        if ((isChasing==false)&&(isAttacking==false))
         {
             // Random patrol when not chasing the player
             if (agent.remainingDistance <= agent.stoppingDistance) // Done with path
@@ -105,18 +107,20 @@ public class EnemyBehavior : MonoBehaviour
                     agent.SetDestination(point);
                 }
             }
+        }//stop and attack
+        if ((isChasing==false)&&(isAttacking == true))
+        {
+            // Face the player and attack
+            transform.LookAt(player.transform.position);
+            agent.SetDestination(gameObject.transform.position);
         }
     }
 
     // Function to deal damage to the player
     public void DealDamage()
     {
-        // Face the player and attack
-        transform.LookAt(player.transform.position);
-        agent.SetDestination(transform.position);
-        
-        // Simulate attack here (e.g., reduce player's health)
-        // For now, we will log that the enemy has attacked
+        // Simulate attack here 
+        _animator.SetTrigger("Attack");
         Debug.Log("Enemy attacks the player!");
 
         // Set the next attack time to current time + cooldown

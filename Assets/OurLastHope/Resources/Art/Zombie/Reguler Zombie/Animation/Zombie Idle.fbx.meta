@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: c9f9fe6491a325344be56b4154ad6cfd
+guid: 9dce900cddb50de4493bd0a2c21f591d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: T_StrongZombie
-    second: {fileID: 2100000, guid: 05835c4ccbbd69741a93b1b493bccd6c, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
