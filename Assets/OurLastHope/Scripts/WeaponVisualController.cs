@@ -9,12 +9,13 @@ public class WeaponVisualController : MonoBehaviour
 {
     public static Action<string> OnWeaponChange;
     [SerializeField] private Transform[] weaponTransform;
-    [SerializeField] private Transform ak12;
+    [SerializeField] private Transform mp5;
     [SerializeField] private Transform m1911;
     [SerializeField] private Transform m161;
     [SerializeField] private Transform aug;
     [SerializeField] private Transform baseball;
     [SerializeField] private Transform sword;
+    [SerializeField] private Transform knife;
 
     private Transform currentWeapon;
 
@@ -45,9 +46,9 @@ public class WeaponVisualController : MonoBehaviour
 
     private void testWeapon(string s)
     {   
-        if (s.ToLower().Equals("ak12"))
+        if (s.ToLower().Equals("mp5"))
         {
-            SwitchOnWeapons(ak12);
+            SwitchOnWeapons(mp5);
         }
         else if (s.ToLower().Equals("m16a1"))
         {
@@ -57,9 +58,9 @@ public class WeaponVisualController : MonoBehaviour
         {
             SwitchOnWeapons(m1911);
         }
-        else if (s.ToLower().Equals("bat"))
+        else if (s.ToLower().Equals("knife"))
         {
-            SwitchOnWeapons(baseball);
+            SwitchOnWeapons(knife);
         }
         else if (s.ToLower().Equals("sword"))
         {
