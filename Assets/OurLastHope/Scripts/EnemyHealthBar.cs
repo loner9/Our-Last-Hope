@@ -14,6 +14,11 @@ public class EnemyHealthBar : MonoBehaviour
     void Start()
     {
         _slider.gameObject.SetActive(false);
+        GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
+        if (cameraObject != null)
+        {
+            _camera = cameraObject.GetComponent<Camera>();
+        }
     }
 
     // Update is called once per frame

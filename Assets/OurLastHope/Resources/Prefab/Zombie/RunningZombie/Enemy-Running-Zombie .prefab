@@ -575,7 +575,7 @@ MonoBehaviour:
   attackCooldown: 1.5
   maxHealth: 100
   currentHealth: 0
-  _range: 0
+  _range: 2
   centrePoint: {fileID: 2249972577136759581}
   _healthBar: {fileID: 7462246161259640052}
 --- !u!95 &9105085145268682796

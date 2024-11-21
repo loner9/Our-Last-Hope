@@ -13,7 +13,7 @@ public class EnemyBehavior : MonoBehaviour
     public Animator _animator;
     
     [Header("Player Detection")]
-    public Transform player;                  // Reference to the player's position
+    public GameObject player;                  // Reference to the player's position
     public float detectionRadius = 10f;        // Detection
     public float stopChaseRange = 15f;        // Distance at which the enemy stops chasing
     public float attackRange = 2f;            // Distance at which the enemy can attack
@@ -40,12 +40,13 @@ public class EnemyBehavior : MonoBehaviour
         agent = GetComponent<NavMeshAgent>(); // Get the NavMeshAgent component
         currentHealth = maxHealth;            // Set initial health to maxHealth
         _healthBar.updateHealthBar(currentHealth, maxHealth);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
         _animator.SetFloat("Speed",agent.velocity.magnitude / agent.speed);
-        float distanceToPlayer = Vector3.Distance(player.position, transform.position);
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
         
         // Player detection condition
         if ((distanceToPlayer <= detectionRadius) && (isAttacking==false))
@@ -94,7 +95,7 @@ public class EnemyBehavior : MonoBehaviour
         // Check if chasing
         if ((isChasing==true) && (isAttacking==false))
         {
-            agent.SetDestination(player.position); // Enemy chases the player
+            agent.SetDestination(player.transform.position); // Enemy chases the player
         }
         if ((isChasing==false)&&(isAttacking==false))
         {
