@@ -7,7 +7,7 @@ public class BulletScript : MonoBehaviour
     public float damage = 10f; // Properti damage untuk peluru
     [SerializeField] private GameObject explosionPrefab; // Prefab yang akan dimunculkan saat peluru hancur
 
-   /* private void OnCollisionEnter(Collision collision)
+   private void OnCollisionEnter(Collision collision)
     {
         // Logika untuk menghancurkan peluru dan memberikan damage
         if (collision.gameObject.TryGetComponent(out Health targetHealth))

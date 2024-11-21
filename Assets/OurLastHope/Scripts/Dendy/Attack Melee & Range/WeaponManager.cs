@@ -19,6 +19,7 @@ public class WeaponManager : MonoBehaviour
     private bool isMeleeActive = false;
     private bool isUnArmed = true;
     private bool isReloading = false;
+    public static bool isMeleeAttackActive = false;
     [SerializeField] private Rig rig;
     [SerializeField] private Animator animator;
     private string weaponId;
@@ -45,7 +46,11 @@ public class WeaponManager : MonoBehaviour
 
     private void Start()
     {
-        rig.weight = 0f;
+        if (rig != null)
+        {
+            rig.weight = 0f;
+
+        }
         OnWeaponTypeChanged += SetWeaponType;
         OnWeaponChanged += WeaponDetail;
     }
@@ -86,10 +91,6 @@ public class WeaponManager : MonoBehaviour
         weaponId = id;
         weaponMags = mag;
         weaponIndex = index;
-    }
-
-    private void Update()
-    {
     }
 
     private void Fire()

@@ -35,7 +35,7 @@ public class PlayerMovementDendy : MonoBehaviour
         controls.Character.Fire.performed += ctx => isFiring = true;
         controls.Character.Fire.canceled += ctx => isFiring = false;
 
-        WeaponManager.OnWeaponStatusChanged += UpdateWeaponStatus;
+        // WeaponManager.OnWeaponStatusChanged += UpdateWeaponStatus;
         
     }
 
@@ -159,10 +159,10 @@ public class PlayerMovementDendy : MonoBehaviour
     }
 
 
-    private void UpdateWeaponStatus(bool isRanged)
-    {
-        isRangedActive = isRanged;
-    }
+    // private void UpdateWeaponStatus(bool isRanged)
+    // {
+    //     isRangedActive = isRanged;
+    // }
 
     void OnEnable()
     {
