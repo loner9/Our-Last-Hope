@@ -7,7 +7,7 @@ TagManager:
   - medkit
   - Wall
   - Audio
-  - melee
+  - Melee
   - ranged
   - Bullet
   layers:

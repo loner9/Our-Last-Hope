@@ -25,6 +25,8 @@ public class WeaponManager : MonoBehaviour
     private int weaponMags;
     private int weaponIndex;
 
+    [SerializeField] private GameObject muzzleFlashPrefab;
+
     private void Awake()
     {
         controls = new PlayerControls();
@@ -86,6 +88,10 @@ public class WeaponManager : MonoBehaviour
         weaponIndex = index;
     }
 
+    private void Update()
+    {
+    }
+
     private void Fire()
     {
         if (isRangedActive && !isUnArmed)
@@ -97,12 +103,18 @@ public class WeaponManager : MonoBehaviour
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 rb.velocity = firePoint.forward * 20f;
+
+                GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
+                Destroy(muzzleFlash, 0.2f);
             }
 
         }
         else if (isMeleeActive && !isUnArmed)
         {
             Debug.Log("Fire Melee Weapon");
+            isMeleeAttackActive = true;
+            // Reset after a brief moment
+            Invoke("ResetMeleeAttack", 0.5f);
         }
         else
         {
@@ -165,6 +177,11 @@ public class WeaponManager : MonoBehaviour
     private void UpdateWeaponStatus()
     {
 
+    }
+
+    private void ResetMeleeAttack()
+    {
+        isMeleeAttackActive = false;
     }
 
     void OnEnable()
