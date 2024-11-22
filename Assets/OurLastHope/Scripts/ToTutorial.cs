@@ -18,6 +18,7 @@ public class ToTutorial : MonoBehaviour
     }
     
     void OnTriggerEnter(Collider other) {
+        Debug.Log("Collision Detected with: " + other.gameObject.name);
         if (other.gameObject.tag == "Player")
         {
             SceneManager.LoadSceneAsync("Tutorial Level");
