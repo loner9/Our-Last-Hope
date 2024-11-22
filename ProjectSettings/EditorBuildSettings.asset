@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/OurLastHope/Scenes/MovementTest.unity
     guid: 05003acd97707924dbb47c83f5c28c9b
+  - enabled: 1
+    path: Assets/OurLastHope/Scenes/Dendy/MovementTest 1.unity
+    guid: 32a9a03a1b922314a8ab1e2c8b388e7e
+  - enabled: 1
+    path: Assets/OurLastHope/Scenes/Dendy/Level2.unity
+    guid: 92684d460ccd26f41830b271a329204e
   m_configObjects: {}
