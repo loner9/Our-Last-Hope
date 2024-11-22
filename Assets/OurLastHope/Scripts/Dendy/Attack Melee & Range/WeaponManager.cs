@@ -15,6 +15,13 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject meleeWeapon;
     [SerializeField] private GameObject rangedWeapon;
+    [SerializeField] private AudioClip rangedAttackSound; // Suara tembakan
+    [SerializeField] private AudioClip meleeAttackSound; // Suara serangan melee
+    private AudioSource audioSource; // Sumber audio
+    private bool canPlaySound = true;
+    private float soundCooldown = 0.2f; // Waktu jeda antara suara
+    private float soundTimer = 0f;
+
     private bool isRangedActive = false;
     private bool isMeleeActive = false;
     private bool isUnArmed = true;
