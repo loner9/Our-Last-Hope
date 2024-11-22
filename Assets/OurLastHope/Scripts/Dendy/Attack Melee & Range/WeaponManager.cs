@@ -8,7 +8,7 @@ public class WeaponManager : MonoBehaviour
 {
     public static System.Action<bool, bool, bool, bool> OnWeaponStatusChanged;
     public static Action<string> OnWeaponTypeChanged;
-    public static Action<string, int, int> OnWeaponChanged;
+    public static Action<string, int, int, float> OnWeaponChanged;
     public static Action<Transform> OnFirePointChanged;
     public static Action<int> OnWeaponFired;
     private PlayerControls controls;
@@ -33,6 +33,7 @@ public class WeaponManager : MonoBehaviour
     private string weaponId;
     private int weaponMags;
     private int weaponIndex;
+    private float weaponDamage;
 
     [SerializeField] private GameObject muzzleFlashPrefab;
 
@@ -100,11 +101,12 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    private void WeaponDetail(string id, int mag, int index)
+    private void WeaponDetail(string id, int mag, int index, float dmg)
     {
         weaponId = id;
         weaponMags = mag;
         weaponIndex = index;
+        weaponDamage = dmg;
     }
 
     private void Fire()
@@ -116,6 +118,8 @@ public class WeaponManager : MonoBehaviour
             if (ammo != 0)
             {
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                BulletScript bulletScript = bullet.GetComponent<BulletScript>();
+                bulletScript.damage = weaponDamage;
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 rb.velocity = firePoint.forward * 20f;
 
