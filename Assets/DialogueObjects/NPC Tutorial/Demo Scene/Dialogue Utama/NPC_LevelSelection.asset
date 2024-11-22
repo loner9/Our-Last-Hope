@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc92cc2f17423b2408e04324597c279e, type: 3}
+  m_Name: NPC_LevelSelection
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Mau pilih level yang mana?
+  responses:
+  - responseText: Level 2
+    dialogueObject: {fileID: 11400000, guid: 667c10bda7f0f7644b61c7ac30ac0cd2, type: 2}
+    sceneName: Level2
