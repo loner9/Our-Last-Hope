@@ -166,13 +166,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf86c7f65490c44a90e6d7d1053e736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5445910562494945250, guid: c9600d03fce9d91438d88250b833422e, type: 3}
+  bulletPrefab: {fileID: 5445910562494945250, guid: 5edc313e491e0a345866c3a659de4370, type: 3}
   firePoint: {fileID: 580334919}
   meleeWeapon: {fileID: 500844049}
   rangedWeapon: {fileID: 1189129633}
+  rangedAttackSound: {fileID: 0}
+  meleeAttackSound: {fileID: 0}
   rig: {fileID: 2041040514}
   animator: {fileID: 5866666021003482732}
-  muzzleFlashPrefab: {fileID: 404345497676564375, guid: f2b6fd194296eb145b27854520c17a5c, type: 3}
+  muzzleFlashPrefab: {fileID: 404345497676564375, guid: 4ae7454d73e550c41b45b4010c5f8290, type: 3}
 --- !u!1 &84809119
 GameObject:
   m_ObjectHideFlags: 0

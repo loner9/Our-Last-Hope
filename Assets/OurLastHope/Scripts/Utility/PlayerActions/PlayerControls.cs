@@ -98,6 +98,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Test"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb5b67ae-b15a-4910-936f-e0d710363063"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +241,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4c1514c9-5a8c-47d6-be2d-66f44baeaff3"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Test"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -296,6 +316,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Character_SwitchToRanged = m_Character.FindAction("SwitchToRanged", throwIfNotFound: true);
         m_Character_Unarmed = m_Character.FindAction("Unarmed", throwIfNotFound: true);
         m_Character_Reload = m_Character.FindAction("Reload", throwIfNotFound: true);
+        m_Character_Test = m_Character.FindAction("Test", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
@@ -369,6 +390,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_SwitchToRanged;
     private readonly InputAction m_Character_Unarmed;
     private readonly InputAction m_Character_Reload;
+    private readonly InputAction m_Character_Test;
     public struct CharacterActions
     {
         private @PlayerControls m_Wrapper;
@@ -381,6 +403,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @SwitchToRanged => m_Wrapper.m_Character_SwitchToRanged;
         public InputAction @Unarmed => m_Wrapper.m_Character_Unarmed;
         public InputAction @Reload => m_Wrapper.m_Character_Reload;
+        public InputAction @Test => m_Wrapper.m_Character_Test;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -414,6 +437,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
+            @Test.started += instance.OnTest;
+            @Test.performed += instance.OnTest;
+            @Test.canceled += instance.OnTest;
         }
 
         private void UnregisterCallbacks(ICharacterActions instance)
@@ -442,6 +468,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
+            @Test.started -= instance.OnTest;
+            @Test.performed -= instance.OnTest;
+            @Test.canceled -= instance.OnTest;
         }
 
         public void RemoveCallbacks(ICharacterActions instance)
@@ -523,6 +552,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSwitchToRanged(InputAction.CallbackContext context);
         void OnUnarmed(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnTest(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
