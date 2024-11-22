@@ -25,6 +25,11 @@ public class PlayerMovementDendy : MonoBehaviour
     private bool isMoving = false; // Status gerakan pemain
     private bool isAttack = false;
 
+    [Header("Dialog | Dendy")]
+    [SerializeField] private DialogueUI dialogueUI;
+    public DialogueUI DialogueUI => dialogueUI;
+    public IInteractable Interactable { get; set; }
+
     private void Awake()
     {
         controls = new PlayerControls();
@@ -56,6 +61,13 @@ public class PlayerMovementDendy : MonoBehaviour
         AimToMouse();
         AnimatorController();
         PlayFootstepSound();
+
+        if (dialogueUI.IsOpen) return;
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Interactable?.Interact(this);
+            Debug.Log("I Jalan");
+        }
     }
 
     private void AimToMouse()
