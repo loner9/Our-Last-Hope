@@ -11,6 +11,9 @@ public class ButtonController : MonoBehaviour
     public GameObject panelToClose;
     public string sceneToLoad;
 
+    public AudioClip buttonClickSound; // Tambahkan AudioClip untuk suara tombol
+    private AudioSource audioSource;   // Tambahkan AudioSource
+
     private Button button;
     private Image buttonImage;
 
@@ -24,10 +27,19 @@ public class ButtonController : MonoBehaviour
 
         // Assign event listener untuk button click
         button.onClick.AddListener(OnButtonClick);
+
+        // Tambahkan komponen AudioSource
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void OnButtonClick()
     {
+        // Mainkan suara klik tombol
+        if (buttonClickSound != null)
+        {
+            audioSource.PlayOneShot(buttonClickSound);
+        }
+
         // Reset semua button ke idle sprite
         ButtonController[] allButtons = FindObjectsOfType<ButtonController>();
         foreach (ButtonController btn in allButtons)
@@ -54,8 +66,10 @@ public class ButtonController : MonoBehaviour
             SceneManager.LoadScene(sceneToLoad);
         }
 
-        // Untuk keluar dari game
-        // Application.Quit();
+    }
+
+    public void QuitAppliaction() {
+        Application.Quit();
     }
 
     public void ResetToIdle()
