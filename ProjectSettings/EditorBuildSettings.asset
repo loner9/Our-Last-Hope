@@ -6,17 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/OurLastHope/Scenes/Dendy/UI_Main Menu.unity
+    guid: 6058f7445ef75ff4f956e35b5c525d6f
+  - enabled: 0
     path: Assets/OurLastHope/Scenes/MainMenu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/OurLastHope/Scenes/PlayScene.unity
     guid: b1ece2a6da0a28a4abe72f09400f255b
-  - enabled: 1
+  - enabled: 0
     path: Assets/OurLastHope/Scenes/OptionScene.unity
     guid: 7e4ec23312b49574fb4b5bf46afa0de4
-  - enabled: 1
+  - enabled: 0
     path: Assets/OurLastHope/Scenes/creditsscene.unity
     guid: fbed1d95d930dc5419166c64e167e2eb
+  - enabled: 1
+    path: Assets/OurLastHope/Scenes/MainHub.unity
+    guid: 514ac3db4b227654eb1b20910f3d7dee
   - enabled: 1
     path: Assets/OurLastHope/Scenes/MovementTest.unity
     guid: 05003acd97707924dbb47c83f5c28c9b

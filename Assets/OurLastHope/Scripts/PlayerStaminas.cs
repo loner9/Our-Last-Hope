@@ -45,5 +45,6 @@ public class PlayerStaminas : MonoBehaviour
     public void ResetStamina()
     {
         CurrentStamina = stats.maxStamina;
+        stats.stamina = stats.maxStamina;
     }
 }

@@ -20,8 +20,8 @@ public class PlayerMovement : MonoBehaviour
     
     private bool IsRunning;
     private float StaminaRegenTimer = 0.0f;
-    private const float StaminaDecreasePerFrame = 75.0f;
-    private const float StaminaIncreasePerFrame = 15.0f;
+    private const float StaminaDecreasePerFrame = 55.0f;
+    private const float StaminaIncreasePerFrame = 35.0f;
     private float StaminaTimeToRegen = 3.0f;
     private Player player;
     private bool isRangedActive = false;
