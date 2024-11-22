@@ -5,9 +5,9 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public float damage = 10f; // Properti damage untuk peluru
+    
 
-
-    private void OnCollisionEnter(Collision collision)
+   private void OnCollisionEnter(Collision collision)
     {
         // Logika untuk menghancurkan peluru dan memberikan damage
         if (collision.gameObject.TryGetComponent(out Health targetHealth))
@@ -16,10 +16,21 @@ public class BulletScript : MonoBehaviour
         }
 
         // Memunculkan prefab baru dan menambahkan debug
-        Destroy(gameObject);
+        
+        
+            
+            
+            
+            
+        
+        
+        
+            
+            
+            Destroy(gameObject);
+        
 
-
-
+        
     }
 
     private void Start()

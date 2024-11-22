@@ -573,7 +573,7 @@ MonoBehaviour:
   stopChaseRange: 15
   attackRange: 2
   attackCooldown: 1.5
-  maxHealth: 5
+  maxHealth: 100
   currentHealth: 0
   _range: 2
   centrePoint: {fileID: 2249972577136759581}
