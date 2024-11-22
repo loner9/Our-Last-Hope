@@ -29,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
     private bool isUnArmedActive = true;
     private bool isReloading = false;
     private bool isFiring = false;
+
+    [SerializeField] private DialogueUI dialogueUI;
+    public DialogueUI DialogueUI => dialogueUI;
+    public IInteractable Interactable { get; set; }
+
     private void Awake()
     {
         player = GetComponent<Player>();
@@ -92,6 +97,14 @@ public class PlayerMovement : MonoBehaviour
         ApplyMovement();
         ApplyRotation();
         AnimatorController();
+
+        if (dialogueUI == null) return;
+        if (dialogueUI.IsOpen) return;
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Interactable?.Interact(this);
+            Debug.Log("I Jalan");
+        }
     }
 
     private void ApplyRotation()

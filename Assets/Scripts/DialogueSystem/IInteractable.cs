@@ -1,4 +1,4 @@
 public interface IInteractable
 {
-    void Interact(PlayerMovementDendy player);
+    void Interact(PlayerMovement player);
 }

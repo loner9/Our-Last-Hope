@@ -32,14 +32,10 @@ public class InventoryUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        InitInventory();
         controls = new PlayerControls();
 
         controls.UI.Inventory.performed += ctx => ToggleInventory();
-    }
-    
-    private void Start()
-    {
-        InitInventory();
     }
 
     private void ToggleInventory()

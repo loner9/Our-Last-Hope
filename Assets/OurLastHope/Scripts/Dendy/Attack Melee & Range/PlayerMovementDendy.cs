@@ -62,10 +62,11 @@ public class PlayerMovementDendy : MonoBehaviour
         AnimatorController();
         PlayFootstepSound();
 
+        if (dialogueUI == null) return;
         if (dialogueUI.IsOpen) return;
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Interactable?.Interact(this);
+            // Interactable?.Interact(this);
             Debug.Log("I Jalan");
         }
     }

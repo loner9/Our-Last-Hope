@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueActivator : MonoBehaviour, IInteractable
 {
@@ -10,9 +11,14 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         this.dialogueObject = dialogueObject;
     }
 
+    public void ToScene(string sceneName)
+    {
+        SceneManager.LoadSceneAsync(sceneName);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovementDendy player))
+        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
             player.Interactable = this;
             sc.Play();
@@ -21,7 +27,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovementDendy player))
+        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
             if (player.Interactable is DialogueActivator dialogueActivator && dialogueActivator == this)
             {
@@ -30,7 +36,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         }
     }
 
-    public void Interact(PlayerMovementDendy player)
+    public void Interact(PlayerMovement player)
     {
         foreach (DialogueResponseEvents responseEvents in GetComponents<DialogueResponseEvents>())
         {

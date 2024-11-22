@@ -13,7 +13,7 @@ public class DialogueUI : MonoBehaviour
     private ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect;
 
-    public PlayerMovementDendy PMD;
+    public PlayerMovement PM;
     public WeaponManager WM;
 
     private void Start()
@@ -29,7 +29,7 @@ public class DialogueUI : MonoBehaviour
         IsOpen = true;
         dialogueBox.SetActive(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
-        PMD.enabled = false;
+        PM.enabled = false;
         WM.enabled = false;
     }
 
@@ -86,7 +86,7 @@ public class DialogueUI : MonoBehaviour
         IsOpen = false;
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
-        PMD.enabled = true;
+        PM.enabled = true;
         WM.enabled = true;
     }
 }
