@@ -6,6 +6,8 @@ public class LootItem : MonoBehaviour
 {
     [SerializeField]
     private InventoryItem item;
+    [SerializeField] 
+    private int amount = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class LootItem : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if (other.gameObject.tag == "Player")
         {
-            Inventory.Instance.AddItem(item, 1);
+            Inventory.Instance.AddItem(item, amount);
             Destroy(this.gameObject);
         }
     }

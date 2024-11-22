@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ToTutorial : MonoBehaviour
+public class ToScene : MonoBehaviour
 {
+    [SerializeField] string sceneName;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class ToTutorial : MonoBehaviour
         Debug.Log("Collision Detected with: " + other.gameObject.name);
         if (other.gameObject.tag == "Player")
         {
-            SceneManager.LoadSceneAsync("Tutorial Level");
+            SceneManager.LoadSceneAsync(sceneName);
         }
     }
 }

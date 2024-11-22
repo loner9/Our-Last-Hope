@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 890b2ee0770c67b458391da847d4e8c5, type: 3}
   m_Name: WeaponM16A1
   m_EditorClassIdentifier: 
-  ID: M16A1
+  ID: M16
   Icon: {fileID: 34657278, guid: 7da6e095d43ec1c4191a7cf002692fbd, type: 3}
-  Name: M16A1
+  Name: M16
   Description: Standard M16 rifle
   ItemType: 0
   IsConsumable: 0
@@ -23,3 +23,4 @@ MonoBehaviour:
   Quantity: 0
   weapon: {fileID: 11400000, guid: 8effe4303fe1df54f967db42a66e8c89, type: 2}
   isEquipped: 0
+  currentAmmo: 0

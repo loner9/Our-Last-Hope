@@ -116,6 +116,7 @@ public class Inventory : MonoBehaviour
             if (inventoryItems[index] is ItemWeapon itemWeapon)
             {
                 itemWeapon.currentAmmo += quantityToUse;
+                Debug.Log("CURRENT AMMO " + itemWeapon.currentAmmo);
             }
         }
     }

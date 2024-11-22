@@ -9,10 +9,11 @@ public class WeaponManager : MonoBehaviour
     public static System.Action<bool, bool, bool, bool> OnWeaponStatusChanged;
     public static Action<string> OnWeaponTypeChanged;
     public static Action<string, int, int> OnWeaponChanged;
+    public static Action<Transform> OnFirePointChanged;
     public static Action<int> OnWeaponFired;
     private PlayerControls controls;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firePoint;
+    private Transform firePoint;
     [SerializeField] private GameObject meleeWeapon;
     [SerializeField] private GameObject rangedWeapon;
     [SerializeField] private AudioClip rangedAttackSound; // Suara tembakan
@@ -60,6 +61,12 @@ public class WeaponManager : MonoBehaviour
         }
         OnWeaponTypeChanged += SetWeaponType;
         OnWeaponChanged += WeaponDetail;
+        OnFirePointChanged += SetFirePoint;
+    }
+
+    private void SetFirePoint(Transform transform)
+    {
+        firePoint = transform;
     }
 
     private void Update()

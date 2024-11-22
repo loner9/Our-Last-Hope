@@ -16,7 +16,8 @@ public class WeaponVisualController : MonoBehaviour
     [SerializeField] private Transform aug;
     [SerializeField] private Transform baseball;
     [SerializeField] private Transform sword;
-    [SerializeField] private Transform knife;    private Transform currentWeapon;
+    [SerializeField] private Transform knife;    
+    private Transform currentWeapon;
     [SerializeField] private Transform leftHand;
 
     private void Start()
@@ -35,7 +36,7 @@ public class WeaponVisualController : MonoBehaviour
         {
             SwitchOnWeapons(mp5);
         }
-        else if (s.ToLower().Equals("m16a1"))
+        else if (s.ToLower().Equals("m16"))
         {
             SwitchOnWeapons(m161);
         }
@@ -78,6 +79,8 @@ public class WeaponVisualController : MonoBehaviour
     {
         Transform targetTransform = null;
         targetTransform = currentWeapon.GetComponentInChildren<LeftHandTargetTransform>().transform;
+        Transform firePoint = currentWeapon.GetComponentInChildren<FirePointLocator>().transform;
+        WeaponManager.OnFirePointChanged(firePoint);
         if (targetTransform != null)
         {
             leftHand.localPosition = targetTransform.localPosition;
