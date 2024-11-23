@@ -40,6 +40,13 @@ public class WeaponManager : MonoBehaviour
     private void Awake()
     {
         controls = new PlayerControls();
+        // controls.Character.SwitchToMelee.performed += ctx => SwitchToMelee();
+        // controls.Character.SwitchToRanged.performed += ctx => SwitchToRanged();
+        // controls.Character.Unarmed.performed += ctx => SwitchToUnarmed();
+    }
+
+    private void Start()
+    {
         controls.Character.Fire.performed += ctx =>
         {
             if (isRangedActive && !isReloading)
@@ -48,13 +55,7 @@ public class WeaponManager : MonoBehaviour
             }
         };
         controls.Character.Reload.performed += ctx => Reload();
-        // controls.Character.SwitchToMelee.performed += ctx => SwitchToMelee();
-        // controls.Character.SwitchToRanged.performed += ctx => SwitchToRanged();
-        // controls.Character.Unarmed.performed += ctx => SwitchToUnarmed();
-    }
-
-    private void Start()
-    {
+        
         if (rig != null)
         {
             rig.weight = 0f;

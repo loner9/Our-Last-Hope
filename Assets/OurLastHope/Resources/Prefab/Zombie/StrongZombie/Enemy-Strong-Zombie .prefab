@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4049097601131407956, guid: 055b8c78766e9c742b96ac0748ed389e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4654704104174605975, guid: 055b8c78766e9c742b96ac0748ed389e, type: 3}
       propertyPath: m_Name
       value: 3D_StrongZombie

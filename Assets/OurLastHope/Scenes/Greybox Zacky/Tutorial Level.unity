@@ -11094,11 +11094,8 @@ MonoBehaviour:
   - {fileID: 786680537}
   - {fileID: 69406662}
   - {fileID: 860306711}
-  mp5: {fileID: 1570299700}
-  m1911: {fileID: 544516196}
+  mp5: {fileID: 1570299699}
   m161: {fileID: 1037580496}
-  aug: {fileID: 484176443}
-  baseball: {fileID: 69406662}
   sword: {fileID: 786680537}
   knife: {fileID: 860306711}
   leftHand: {fileID: 1322370454}

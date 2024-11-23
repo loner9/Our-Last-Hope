@@ -77,12 +77,14 @@ public class EnemyBehavior : MonoBehaviour
     // Function to handle bullet collision
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Collision Detected with: " + other.gameObject.name);
         // Check if the collider has the tag "Bullet"
         if (other.CompareTag("Bullet"))
         {
             BulletScript bullet = other.GetComponent<BulletScript>(); // Get the Bullet script
             if (bullet != null)
             {
+                Debug.Log("Bullet damage: " + bullet.damage);
                 TakeDamage(bullet.damage); // Reduce health by bullet damage
             }
             Destroy(other.gameObject);
@@ -124,7 +126,7 @@ public class EnemyBehavior : MonoBehaviour
         // Simulate attack here 
         _animator.SetTrigger("Attack");
         Debug.Log("Enemy attacks the player!");
-
+        
         // Set the next attack time to current time + cooldown
         nextAttackTime = Time.time + attackCooldown;
     }
@@ -133,6 +135,7 @@ public class EnemyBehavior : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage; // Reduce enemy's health
+        Debug.Log("Damage Taken: " + damage + ". Health tersisa: " + currentHealth);
         _healthBar.updateHealthBar(currentHealth, maxHealth);
         if (currentHealth <= 0)
         {

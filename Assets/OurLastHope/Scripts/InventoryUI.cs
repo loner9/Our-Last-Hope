@@ -81,6 +81,7 @@ public class InventoryUI : MonoBehaviour
     }
 
     public void EquipItem(){
+        Debug.Log("Equipping " + SelectedSlot.index);
         Inventory.Instance.EquipItem(SelectedSlot.index);
     }
 

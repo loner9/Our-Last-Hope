@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7080092016478552447}
   m_Layer: 0
   m_Name: Projectile Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7159192581924006904}
   m_Layer: 0
   m_Name: Trail
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +138,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8144037321514505314, guid: 68bc3d3fba690334ba0ceed7e6855578, type: 3}
+  - {fileID: 2100000, guid: 0c87f7ec70ad4354d8c7747029f54861, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5132,7 +5132,7 @@ GameObject:
   - component: {fileID: 8186530693078200732}
   m_Layer: 0
   m_Name: Projectile Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
