@@ -7,11 +7,11 @@ public class DoNotDestroy : MonoBehaviour
 {
    private void Awake()
    {
-      GameObject[] audioobj = GameObject.FindGameObjectsWithTag("Audio");
-      if (audioobj.Length > 1)
-      {
-         Destroy(this.gameObject);
-      }
-      DontDestroyOnLoad(this.gameObject);
+      // GameObject[] audioobj = GameObject.FindGameObjectsWithTag("Audio");
+      // if (audioobj.Length > 1)
+      // {
+      //    Destroy(this.gameObject);
+      // }
+      // DontDestroyOnLoad(this.gameObject);
    }
 }

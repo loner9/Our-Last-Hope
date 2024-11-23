@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/OurLastHope/Scenes/Area 1.unity
     guid: c3af2c13ec2879c4e9111e65ea199414
+  - enabled: 0
+    path: Assets/OurLastHope/Scenes/MovementTest.unity
+    guid: 05003acd97707924dbb47c83f5c28c9b
   m_configObjects: {}

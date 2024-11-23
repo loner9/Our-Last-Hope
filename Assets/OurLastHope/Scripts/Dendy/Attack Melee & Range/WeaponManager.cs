@@ -13,7 +13,7 @@ public class WeaponManager : MonoBehaviour
     public static Action<int> OnWeaponFired;
     private PlayerControls controls;
     [SerializeField] private GameObject bulletPrefab;
-    private Transform firePoint;
+    [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject meleeWeapon;
     [SerializeField] private GameObject rangedWeapon;
     [SerializeField] private AudioClip rangedAttackSound; // Suara tembakan
@@ -40,13 +40,6 @@ public class WeaponManager : MonoBehaviour
     private void Awake()
     {
         controls = new PlayerControls();
-        // controls.Character.SwitchToMelee.performed += ctx => SwitchToMelee();
-        // controls.Character.SwitchToRanged.performed += ctx => SwitchToRanged();
-        // controls.Character.Unarmed.performed += ctx => SwitchToUnarmed();
-    }
-
-    private void Start()
-    {
         controls.Character.Fire.performed += ctx =>
         {
             if (isRangedActive && !isReloading)
@@ -55,7 +48,13 @@ public class WeaponManager : MonoBehaviour
             }
         };
         controls.Character.Reload.performed += ctx => Reload();
-        
+        // controls.Character.SwitchToMelee.performed += ctx => SwitchToMelee();
+        // controls.Character.SwitchToRanged.performed += ctx => SwitchToRanged();
+        // controls.Character.Unarmed.performed += ctx => SwitchToUnarmed();
+    }
+
+    private void Start()
+    {
         if (rig != null)
         {
             rig.weight = 0f;

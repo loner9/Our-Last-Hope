@@ -13,7 +13,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
 
     public void ToScene(string sceneName)
     {
-        SceneManager.LoadSceneAsync(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
     private void OnTriggerEnter(Collider other)

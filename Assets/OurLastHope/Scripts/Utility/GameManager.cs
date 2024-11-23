@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ToMainMenu(){
-        SceneManager.LoadSceneAsync("UI_Main Menu");
+        SceneManager.LoadScene("UI_Main Menu");
     }
 
     private void OnEnable()

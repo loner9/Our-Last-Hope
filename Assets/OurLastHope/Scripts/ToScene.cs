@@ -22,7 +22,7 @@ public class ToScene : MonoBehaviour
         Debug.Log("Collision Detected with: " + other.gameObject.name);
         if (other.gameObject.tag == "Player")
         {
-            SceneManager.LoadSceneAsync(sceneName);
+            SceneManager.LoadScene(sceneName);
         }
     }
 }
