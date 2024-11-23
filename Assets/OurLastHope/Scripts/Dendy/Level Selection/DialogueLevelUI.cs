@@ -10,7 +10,7 @@ public class DialogueLevelUI : MonoBehaviour
 
     public bool IsOpen { get; private set; }
 
-    private ResponseHandler responseHandler;
+    private ResponseLevelHandler responseHandler;
     private DialogueLevelTypewriterEffect typewriterEffect;
 
     public PlayerMovementDendy PMD;
@@ -19,7 +19,7 @@ public class DialogueLevelUI : MonoBehaviour
     private void Start()
     {
         typewriterEffect = GetComponent<DialogueLevelTypewriterEffect>();
-        responseHandler = GetComponent<ResponseHandler>();
+        responseHandler = GetComponent<ResponseLevelHandler>();
 
         CloseDialogueBox();
     }

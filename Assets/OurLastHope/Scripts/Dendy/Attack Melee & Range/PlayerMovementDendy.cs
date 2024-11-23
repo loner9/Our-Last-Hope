@@ -23,8 +23,10 @@ public class PlayerMovementDendy : MonoBehaviour
     private bool isFiring = false; // Status tembakan
 
     [Header("Dialog | Dendy")]
-    [SerializeField] private DialogueUI dialogueUI;
-    public DialogueUI DialogueUI => dialogueUI;
+    [SerializeField] private DialogueLevelUI dialogueUI;
+    [SerializeField] private DialogueLevelUI dialogueUIExtended;
+    public DialogueLevelUI DialogueUI => dialogueUI;
+    public DialogueLevelUI DialogueUIExtended => dialogueUIExtended;
     public IInteractable Interactable { get; set; }
 
     private void Awake()
@@ -38,6 +40,7 @@ public class PlayerMovementDendy : MonoBehaviour
         controls.Character.Fire.canceled += ctx => isFiring = false;
 
         WeaponManager.OnWeaponStatusChanged += UpdateWeaponStatus;
+            
     }
 
     private void OnDestroy()

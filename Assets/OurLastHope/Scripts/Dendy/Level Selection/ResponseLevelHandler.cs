@@ -18,6 +18,10 @@ public class ResponseLevelHandler : MonoBehaviour
     private void Start()
     {
         dialogueUI = GetComponent<DialogueLevelUI>();
+        if (dialogueUI == null)
+        {
+            Debug.LogError("DialogueLevelUI tidak ditemukan pada GameObject.");
+        }
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)
@@ -37,7 +41,16 @@ public class ResponseLevelHandler : MonoBehaviour
             GameObject responseButton = Instantiate(responseButtonTemplatePrefab, responseContainer.transform);
             responseButton.SetActive(true);
             responseButton.GetComponent<TMP_Text>().text = response.ResponseText;
-            responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response));
+
+            // Cek apakah scene sudah pernah dimainkan
+            if (!string.IsNullOrEmpty(response.SceneName) && PlayerPrefs.GetInt(response.SceneName, 0) == 0)
+            {
+                responseButton.GetComponent<Button>().interactable = false; // Nonaktifkan tombol jika scene belum pernah dimainkan
+            }
+            else
+            {
+                responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response));
+            }
 
             tempResponseContainers.Add(responseContainer);
         }

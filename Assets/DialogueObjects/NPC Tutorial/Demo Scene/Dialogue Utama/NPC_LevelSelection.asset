@@ -15,6 +15,9 @@ MonoBehaviour:
   dialogue:
   - Mau pilih level yang mana?
   responses:
+  - responseText: Level 1
+    dialogueObject: {fileID: 11400000}
+    sceneName: MovementTest 1
   - responseText: Level 2
-    dialogueObject: {fileID: 11400000, guid: 667c10bda7f0f7644b61c7ac30ac0cd2, type: 2}
+    dialogueObject: {fileID: 11400000}
     sceneName: Level2

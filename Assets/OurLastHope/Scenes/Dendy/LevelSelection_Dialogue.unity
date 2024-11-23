@@ -571,6 +571,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298805112}
   m_CullTransparentMesh: 1
+--- !u!1 &346175581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 346175583}
+  - component: {fileID: 346175582}
+  m_Layer: 0
+  m_Name: Backdoor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &346175582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346175581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ad4c9f2675e3548b3b517daa1b6775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialSceneName: LevelSelection_Dialogue
+  levelOneSceneName: MovementTest 1
+--- !u!4 &346175583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346175581}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.5567436, y: 2.0910747, z: 1.4484552}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &359495248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,7 +1137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38c0c04211e8f249901fd8b30409e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 0b1a2258ad36a7f4181f1776b176287f, type: 2}
+  dialogueObject: {fileID: 11400000, guid: 9d0c7b58b3b7dd641ba17baaf0b3a9e0, type: 2}
   sc: {fileID: 787997314}
 --- !u!65 &480913555
 BoxCollider:
@@ -2133,6 +2179,9 @@ MonoBehaviour:
   responseBox: {fileID: 1852480238}
   responseContainerPrefab: {fileID: 0}
   responseButtonTemplatePrefab: {fileID: 0}
+  dialogueUI: {fileID: 0}
+  responseEvents: []
+  tempResponseContainers: []
 --- !u!114 &749089367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6385,7 +6434,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   aim: {fileID: 1898014656}
-  dialogueUI: {fileID: 4186813667408938340}
+  dialogueUI: {fileID: 8422021791573233660}
+  dialogueUIExtended: {fileID: 8422021791573233660}
 --- !u!1 &2023523637
 GameObject:
   m_ObjectHideFlags: 0
@@ -11152,7 +11202,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5108038879346164040}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb11ed93cb63c44eaf96939dc401e10, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c86f2b838fcf1a4ea2130b5bdbd5a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   responseBox: {fileID: 7133612793249707446}
@@ -11394,17 +11444,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5108038879346164040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b2508ebf187cbf44938f988bc4863a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d8125ff1289dba40a5b74d163814e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  responseBox: {fileID: 7133612793249707446}
-  responseContainerPrefab: {fileID: 5437789466554620279, guid: 57a17228485f28a4aacb8d809f02c42b, type: 3}
-  responseButtonTemplatePrefab: {fileID: 2595426892738631000, guid: 251f7813599d9cd4a88946bc2eb59d27, type: 3}
-  levelNames:
-  - Level2
-  dialogueUI: {fileID: 0}
-  responseEvents: []
-  tempResponseContainers: []
+  typewriterSpeed: 50
 --- !u!1 &8484487911792014689
 GameObject:
   m_ObjectHideFlags: 0
@@ -11758,3 +11801,4 @@ SceneRoots:
   - {fileID: 135254250}
   - {fileID: 1963760719}
   - {fileID: 480913550}
+  - {fileID: 346175583}

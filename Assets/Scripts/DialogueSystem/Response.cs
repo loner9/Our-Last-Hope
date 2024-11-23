@@ -5,8 +5,9 @@ public class Response
 {
     [SerializeField] private string responseText;
     [SerializeField] private DialogueObject dialogueObject;
+    [SerializeField] private string sceneName; // Tambahkan properti ini
 
     public string ResponseText => responseText;
-
     public DialogueObject DialogueObject => dialogueObject;
+    public string SceneName => sceneName; // Tambahkan getter ini
 }
