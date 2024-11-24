@@ -86,11 +86,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!isUnArmedActive)
             {
-                if (isRangedActive && !isReloading)
+                if (isRangedActive && !isReloading && !PauseManager.Instance.IsGamePaused)
                 {
                     animator.SetTrigger("Fire");
                 }
-                else if (isMeleeActive && !isMeleeAttacking)
+                else if (isMeleeActive && !isMeleeAttacking && !PauseManager.Instance.IsGamePaused)
                 {
                     animator.SetTrigger("Fire");
                 }

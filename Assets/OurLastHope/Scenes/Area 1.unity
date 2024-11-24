@@ -14091,6 +14091,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 78592093}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 28190868cb695fb42b9888c396940f51, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 28190868cb695fb42b9888c396940f51, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 28190868cb695fb42b9888c396940f51, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 28190868cb695fb42b9888c396940f51, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5179157
       objectReference: {fileID: 0}
@@ -14588,10 +14600,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8197559857773748632, guid: c7ec90431be1bde4bb669dfafca2f9ff, type: 3}
-      propertyPath: muzzleFlashPrefab
-      value: 
-      objectReference: {fileID: 404345497676564375, guid: 518d7fd2e9d644a43b8cef78e49cbfdd, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -47609,7 +47617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7632811853609503297, guid: dcb4555d90ce2004ea5d6388847028bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -35.264053
+      value: -35.43
       objectReference: {fileID: 0}
     - target: {fileID: 7632811853609503297, guid: dcb4555d90ce2004ea5d6388847028bc, type: 3}
       propertyPath: m_LocalPosition.z
