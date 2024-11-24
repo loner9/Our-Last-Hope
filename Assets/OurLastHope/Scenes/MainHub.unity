@@ -5927,6 +5927,8 @@ MonoBehaviour:
   player: {fileID: 539933871}
   pausePanel: {fileID: 310865590}
   invtory: {fileID: 956939861}
+  completePanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
 --- !u!4 &483817550
 Transform:
   m_ObjectHideFlags: 0
@@ -11183,6 +11185,7 @@ MonoBehaviour:
   itemName: {fileID: 691439908}
   itemDescription: {fileID: 991194445}
   pausePanel: {fileID: 310865590}
+  AmmoPanel: {fileID: 0}
   equipTxt: {fileID: 1924410784}
   player: {fileID: 543182992}
   inventoryTransform: {fileID: 1027371187}
