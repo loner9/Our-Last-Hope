@@ -17,7 +17,7 @@ public class PlayerHealths : MonoBehaviour, IDamagable
     public void takeDamage(float damage)
     {
         stats.health -= damage;
-        if (stats.health <= 0 || stats.health == 0)
+        if (stats.health < 0.0f)
         {
             playerDead();
         }
@@ -35,6 +35,28 @@ public class PlayerHealths : MonoBehaviour, IDamagable
     public bool CanRestoreHealth()
     {
         return stats.health > 0 && stats.health < stats.maxHealth;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("enemyHand"))
+        {
+            if (other.gameObject.name.Equals("reg"))
+            {
+                Debug.Log("reg");
+                takeDamage(1.2f);
+            }
+            else if (other.gameObject.name.Equals("fas"))
+            {
+                Debug.Log("fas");
+                takeDamage(0.7f);
+            }
+            else if (other.gameObject.name.Equals("strong"))
+            {
+                Debug.Log("strong");
+                takeDamage(2f);
+            }
+        }
     }
 
     private void playerDead()

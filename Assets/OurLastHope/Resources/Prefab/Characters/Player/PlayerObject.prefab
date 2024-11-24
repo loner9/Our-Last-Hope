@@ -3388,7 +3388,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.038394086
   m_Height: 0.3900595
@@ -3807,6 +3807,7 @@ GameObject:
   - component: {fileID: 4023481982202428559}
   - component: {fileID: 8691606783478240564}
   - component: {fileID: 5582064075162754262}
+  - component: {fileID: 3014525975473350215}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -3948,6 +3949,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 31f632070c142b641838601df44997e4, type: 2}
+--- !u!136 &3014525975473350215
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3597642947026426346}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.24
+  m_Height: 1.36
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.84, z: -0.12}
 --- !u!1 &3653668634556040102
 GameObject:
   m_ObjectHideFlags: 0
@@ -4051,7 +4075,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.06
   m_Height: 0.81
@@ -4948,8 +4972,8 @@ MonoBehaviour:
   player: {fileID: 4023481982202428559}
   pausePanel: {fileID: 3823818946894947200}
   invtory: {fileID: 2102716223973086265}
-  completePanel: {fileID: 0}
-  gameOverPanel: {fileID: 0}
+  completePanel: {fileID: 7428784494128265423}
+  gameOverPanel: {fileID: 5725027164475026885}
 --- !u!1 &4748016687492723748
 GameObject:
   m_ObjectHideFlags: 0

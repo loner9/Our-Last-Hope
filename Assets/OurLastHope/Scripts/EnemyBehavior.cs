@@ -77,7 +77,6 @@ public class EnemyBehavior : MonoBehaviour
     // Function to handle bullet collision
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision Detected with: " + other.gameObject.name+ ", tag: " + other.gameObject.tag);
         // Check if the collider has the tag "Bullet"
         if (other.CompareTag("Bullet"))
         {
