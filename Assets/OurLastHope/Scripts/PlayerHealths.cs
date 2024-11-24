@@ -8,12 +8,12 @@ public class PlayerHealths : MonoBehaviour, IDamagable
     [SerializeField] private PlayerStats stats;
 
 
-    private void Update(){
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            takeDamage(1f);
-        }
-    }
+    // private void Update(){
+    //     if (Input.GetKeyDown(KeyCode.P))
+    //     {
+    //         takeDamage(1f);
+    //     }
+    // }
     public void takeDamage(float damage)
     {
         stats.health -= damage;
@@ -40,5 +40,6 @@ public class PlayerHealths : MonoBehaviour, IDamagable
     private void playerDead()
     {
         Debug.Log("Player mati");
+        GameManager.Instance.GameOver();
     }
 }

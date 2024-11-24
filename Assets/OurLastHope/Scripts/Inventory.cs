@@ -143,6 +143,7 @@ public class Inventory : MonoBehaviour
             string weaponType = itemWeapon.weapon.WeaponType.ToString();
             currentAmmo = itemWeapon.currentAmmo;
             WeaponManager.OnWeaponTypeChanged(weaponType);
+            Debug.Log("weaponDetail : "+itemWeapon.weapon.Damage);
             WeaponManager.OnWeaponChanged(itemWeapon.ID, itemWeapon.weapon.MagazineSize, index, itemWeapon.weapon.Damage);
             if (lastEquipedIndex != -1 && lastEquipedIndex != index)
             {

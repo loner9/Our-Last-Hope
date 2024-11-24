@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isMeleeActive = false;
     private bool isUnArmedActive = true;
     private bool isReloading = false;
+    private bool isMeleeAttacking = false;
+    private bool isMeleeAttackActive = false;
     private bool isFiring = false;
 
     [SerializeField] private DialogueUI dialogueUI;
@@ -82,10 +84,16 @@ public class PlayerMovement : MonoBehaviour
 
         player.Controls.Character.Fire.performed += ctx =>
         {
-            if (!isUnArmedActive && !isReloading)
+            if (!isUnArmedActive)
             {
-                isFiring = true;
-                animator.SetTrigger("Fire");
+                if (isRangedActive && !isReloading)
+                {
+                    animator.SetTrigger("Fire");
+                }
+                else if (isMeleeActive && !isMeleeAttacking)
+                {
+                    animator.SetTrigger("Fire");
+                }
             }
 
         };
@@ -235,12 +243,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void UpdateWeaponStatus(bool isRanged, bool isMelee, bool isUnArmed, bool isReload)
+    private void UpdateWeaponStatus(bool isRanged, bool isMelee, bool isUnArmed, bool isReload, bool isMeleeAttackActive)
     {
         isRangedActive = isRanged;
         isMeleeActive = isMelee;
         isUnArmedActive = isUnArmed;
         isReloading = isReload;
+        isMeleeAttacking = isMeleeAttackActive;
     }
 
     private void Shoot()

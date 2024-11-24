@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3D_RegulerZombie
       objectReference: {fileID: 0}
+    - target: {fileID: 4560506951352024179, guid: ff7e14a756d218a4995e4539e100d18f, type: 3}
+      propertyPath: m_TagString
+      value: enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5240906698130296387, guid: ff7e14a756d218a4995e4539e100d18f, type: 3}
       propertyPath: _range
       value: 2

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 92335290, guid: a051cd959536a9c438df58c75e9ec8f5, type: 3}
   WeaponType: 1
-  Damage: 7
+  Damage: 5
   MagazineSize: 0
   ReloadTime: 0

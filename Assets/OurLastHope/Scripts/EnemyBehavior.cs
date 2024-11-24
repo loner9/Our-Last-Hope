@@ -77,7 +77,7 @@ public class EnemyBehavior : MonoBehaviour
     // Function to handle bullet collision
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision Detected with: " + other.gameObject.name);
+        Debug.Log("Collision Detected with: " + other.gameObject.name+ ", tag: " + other.gameObject.tag);
         // Check if the collider has the tag "Bullet"
         if (other.CompareTag("Bullet"))
         {
@@ -88,6 +88,13 @@ public class EnemyBehavior : MonoBehaviour
                 TakeDamage(bullet.damage); // Reduce health by bullet damage
             }
             Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("melee")){
+            MeleeScript melee = other.GetComponent<MeleeScript>();
+            if (melee != null){
+                TakeDamage(melee.damage);
+            }
         }
     }
 

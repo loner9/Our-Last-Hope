@@ -19,6 +19,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemDescription;
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject AmmoPanel;
     [SerializeField] private TextMeshProUGUI equipTxt;
     [SerializeField] private GameObject player;
 
@@ -44,7 +45,6 @@ public class InventoryUI : MonoBehaviour
         if (!isInventoryOpen)
         {
             inventoryTransform.gameObject.SetActive(true);
-            player.GetComponent<Animator>().enabled = false;
             PauseManager.Instance.Pause();
         }
         else
@@ -52,7 +52,6 @@ public class InventoryUI : MonoBehaviour
             inventoryTransform.gameObject.SetActive(false);
             descPanel.SetActive(false);
             SelectedSlot = null;
-            player.GetComponent<Animator>().enabled = true;
             PauseManager.Instance.Resume();
         }
 
@@ -83,6 +82,11 @@ public class InventoryUI : MonoBehaviour
     public void EquipItem(){
         Debug.Log("Equipping " + SelectedSlot.index);
         Inventory.Instance.EquipItem(SelectedSlot.index);
+    }
+
+    public void showAmmo()
+    {
+        AmmoPanel.SetActive(true);
     }
 
     public void DrawItem(InventoryItem item, int index)

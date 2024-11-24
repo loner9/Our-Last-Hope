@@ -34,6 +34,10 @@ public class Player : MonoBehaviour
         controls = new PlayerControls();
     }
 
+    private void Start(){
+        resetPlayer();
+    }
+
     private void Update(){
         
     }

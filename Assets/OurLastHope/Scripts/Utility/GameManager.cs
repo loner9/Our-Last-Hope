@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
 
     [SerializeField] private GameObject invtory;
+    [SerializeField] private GameObject completePanel;
+    [SerializeField] private GameObject gameOverPanel;
 
     private void Awake()
     {
@@ -28,7 +30,8 @@ public class GameManager : MonoBehaviour
             pausePanel.SetActive(false);
             PauseManager.Instance.Resume();
             invtory.GetComponent<InventoryUI>().enabled = true;
-        }else
+        }
+        else
         {
             pausePanel.SetActive(true);
             PauseManager.Instance.Pause();
@@ -36,8 +39,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ToMainMenu(){
+    public void GameComplete(){
+        completePanel.SetActive(true);
+        PauseManager.Instance.Pause();
+        invtory.GetComponent<InventoryUI>().enabled = false;
+    }
+
+    public void GameOver(){
+        gameOverPanel.SetActive(true);
+        PauseManager.Instance.Pause();
+        invtory.GetComponent<InventoryUI>().enabled = false;
+    }
+
+    public void ToMainMenu()
+    {
         SceneManager.LoadScene("UI_Main Menu");
+    }
+
+    public void ToMainHub()
+    {
+        SceneManager.LoadScene("MainHub");
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnEnable()

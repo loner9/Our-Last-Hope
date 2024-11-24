@@ -18780,6 +18780,8 @@ MonoBehaviour:
   player: {fileID: 181708977}
   pausePanel: {fileID: 263907016}
   invtory: {fileID: 255704516}
+  completePanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
 --- !u!4 &1669593239
 Transform:
   m_ObjectHideFlags: 0
@@ -22167,6 +22169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5445910562494945250, guid: 5edc313e491e0a345866c3a659de4370, type: 3}
+  firePoint: {fileID: 0}
   meleeWeapon: {fileID: 470904945}
   rangedWeapon: {fileID: 9767039}
   rangedAttackSound: {fileID: 8300000, guid: 951b96d96188f9640b12fa2d7fade185, type: 3}
