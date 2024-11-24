@@ -653,7 +653,7 @@ MonoBehaviour:
   panelToShow: {fileID: 0}
   panelToClose: {fileID: 0}
   sceneToLoad: 
-  buttonClickSound: {fileID: 0}
+  buttonClickSound: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
 --- !u!114 &87498076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7694,7 +7694,7 @@ MonoBehaviour:
   panelToShow: {fileID: 0}
   panelToClose: {fileID: 0}
   sceneToLoad: MainHub
-  buttonClickSound: {fileID: 0}
+  buttonClickSound: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
 --- !u!114 &881331614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7874,7 +7874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7573643463327277226, guid: 42eae63bb7353714795c7c252d08bb8c, type: 3}
       propertyPath: m_PlayOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8719862460400541239, guid: 42eae63bb7353714795c7c252d08bb8c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8635,7 +8635,7 @@ MonoBehaviour:
   panelToShow: {fileID: 0}
   panelToClose: {fileID: 0}
   sceneToLoad: 
-  buttonClickSound: {fileID: 0}
+  buttonClickSound: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
 --- !u!114 &998373943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14997,7 +14997,7 @@ MonoBehaviour:
   panelToShow: {fileID: 569264708}
   panelToClose: {fileID: 0}
   sceneToLoad: 
-  buttonClickSound: {fileID: 0}
+  buttonClickSound: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
 --- !u!114 &1760443245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17628,7 +17628,7 @@ MonoBehaviour:
   panelToShow: {fileID: 0}
   panelToClose: {fileID: 0}
   sceneToLoad: 
-  buttonClickSound: {fileID: 0}
+  buttonClickSound: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
 --- !u!114 &2004183536
 MonoBehaviour:
   m_ObjectHideFlags: 0
