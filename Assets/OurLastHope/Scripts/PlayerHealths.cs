@@ -17,7 +17,7 @@ public class PlayerHealths : MonoBehaviour, IDamagable
     public void takeDamage(float damage)
     {
         stats.health -= damage;
-        if (stats.health < 0.0f)
+        if (stats.health <= 0)
         {
             playerDead();
         }

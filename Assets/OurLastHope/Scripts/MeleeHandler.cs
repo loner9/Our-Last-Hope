@@ -18,13 +18,21 @@ public class MeleeHandler : MonoBehaviour
         
     }
 
+    public void AttackStart(){
+        weaponManager.Attacking();
+    }
+
+    public void AttackEnd(){
+        weaponManager.NotAttacking();
+    }
+
     public void AttackMelee()
     {
         foreach (GameObject weapon in weapons)
         {
             weapon.GetComponent<CapsuleCollider>().enabled = true;
         }
-        weaponManager.Attacking();
+        
     }
 
     public void StopAttackMelee()
@@ -33,7 +41,6 @@ public class MeleeHandler : MonoBehaviour
         {
             weapon.GetComponent<CapsuleCollider>().enabled = false;
         }
-        weaponManager.NotAttacking();
     }
 
 
