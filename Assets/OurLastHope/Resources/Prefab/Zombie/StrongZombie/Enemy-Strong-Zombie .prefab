@@ -405,6 +405,7 @@ GameObject:
   - component: {fileID: 3703923818967388445}
   - component: {fileID: 7152707154188892591}
   - component: {fileID: 4402040397786317871}
+  - component: {fileID: 670914619596219023}
   m_Layer: 0
   m_Name: 3D_StrongZombie
   m_TagString: enemy
@@ -532,6 +533,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 1190097522680308752}
+--- !u!114 &670914619596219023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011447854779942252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578b7961bbd19dd4ebb7cddb5e4c87f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2114092084887219439
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,13 +700,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2361903433335005831}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.008, z: 0.234}
-  m_LocalScale: {x: 0.09999998, y: 0.09999999, z: 0.099999994}
+  m_LocalRotation: {x: -0.29095912, y: -0.25954413, z: -0.91871434, w: -0.06279801}
+  m_LocalPosition: {x: -0.021, y: -0.007, z: 0.068}
+  m_LocalScale: {x: 0.09999994, y: 0.09999996, z: 0.099999964}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 8609427599118274857}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 8878624478166183486}
+  m_LocalEulerAnglesHint: {x: -26.126, y: 39.18, z: 162.738}
 --- !u!33 &1964910744178866795
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -763,7 +776,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.97, y: 4.18, z: 3}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: -1.66, z: 0}
 --- !u!1 &2418181852264221677
 GameObject:
@@ -859,7 +872,6 @@ Transform:
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1190097522680308752}
   - {fileID: 5276188598498671304}
   - {fileID: 3843644385901864655}
   - {fileID: 5984861359537088413}
@@ -1190,6 +1202,7 @@ Transform:
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 0.9999999}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1190097522680308752}
   - {fileID: 7716688577172863548}
   - {fileID: 5271774668164178737}
   - {fileID: 3509344215650031504}
