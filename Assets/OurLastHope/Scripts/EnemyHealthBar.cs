@@ -34,6 +34,13 @@ public class EnemyHealthBar : MonoBehaviour
         {
             _slider.gameObject.SetActive(true);
         }
-        _slider.value = currentValue / maxValue;
+        if (currentValue < 0)
+        {
+            _slider.value = 0;
+        }
+        else
+        {
+            _slider.value = currentValue / maxValue;
+        }
     }
 }
