@@ -48,5 +48,9 @@ MonoBehaviour:
   - {fileID: 3697416628643224649, guid: c14d176a7a16f2b488be9b50e5b783cb, type: 3}
   - {fileID: 2316532225391510100, guid: 14f01211c57c78c479f3cc707e1ddebb, type: 3}
   - {fileID: 8689520553036711528, guid: f4b3137a32f769f4fb82d93279c26108, type: 3}
-  zombiesToSpawn: 5
+  zombieWeight:
+  - 80
+  - 15
+  - 5
+  zombiesToSpawn: 3
   spawnAreaSize: {x: 10, y: 10}
