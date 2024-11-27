@@ -2,25 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDeadHandler : MonoBehaviour
+public class GoalLocator : MonoBehaviour
 {
+    GameObject target;
     // Start is called before the first frame update
     void Start()
     {
-        
+        target = GameObject.FindGameObjectWithTag("GoalArea");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    public void Dead(){
-        Invoke("Destroy", 3.0f);
-    }
-
-    public void Destroy(){
-        Destroy(gameObject.transform.parent.gameObject);
+        transform.LookAt(target.transform.position);
     }
 }

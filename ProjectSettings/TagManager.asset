@@ -13,6 +13,9 @@ TagManager:
   - melee
   - enemy
   - enemyHand
+  - GameComplete
+  - GoalArea
+  - GoalLocator
   layers:
   - Default
   - TransparentFX
@@ -25,9 +28,9 @@ TagManager:
   - Items
   - Player
   - Aim
-  - 
-  - 
-  - 
+  - Goal
+  - Weapon
+  - Enemy
   - 
   - 
   - 

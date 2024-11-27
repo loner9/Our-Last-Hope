@@ -103,7 +103,12 @@ public class EnemyBehavior : MonoBehaviour
     // Function to chase the player
     public void Chasing()
     {
-        if(isDead) return;
+        if (isDead)
+        {
+            transform.LookAt(transform.position);
+            agent.SetDestination(gameObject.transform.position);
+            return;
+        }
         // Check if chasing
         if ((isChasing == true) && (isAttacking == false))
         {
@@ -135,6 +140,7 @@ public class EnemyBehavior : MonoBehaviour
     public void DealDamage()
     {
         // Simulate attack here 
+        _animator.applyRootMotion = true;
         _animator.SetTrigger("Attack");
         Debug.Log("Enemy attacks the player!");
 
@@ -161,7 +167,7 @@ public class EnemyBehavior : MonoBehaviour
         // Destroy(gameObject); // Destroy the enemy object
         CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
         capsuleCollider.enabled = false;
-        transform.LookAt(gameObject.transform.rotation * Vector3.forward);
+        // transform.LookAt(gameObject.transform.rotation * Vector3.forward);
         isDead = true;
         _animator.SetTrigger("Dead");
     }

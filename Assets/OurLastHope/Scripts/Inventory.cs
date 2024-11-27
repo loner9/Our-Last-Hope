@@ -143,7 +143,7 @@ public class Inventory : MonoBehaviour
             string weaponType = itemWeapon.weapon.WeaponType.ToString();
             currentAmmo = itemWeapon.currentAmmo;
             WeaponManager.OnWeaponTypeChanged(weaponType);
-            Debug.Log("weaponDetail : "+itemWeapon.weapon.Damage);
+            Debug.Log("weaponDetail : " + itemWeapon.weapon.Damage);
             WeaponManager.OnWeaponChanged(itemWeapon.ID, itemWeapon.weapon.MagazineSize, index, itemWeapon.weapon.Damage);
             if (lastEquipedIndex != -1 && lastEquipedIndex != index)
             {
@@ -240,6 +240,26 @@ public class Inventory : MonoBehaviour
         }
 
         return itemIndexes;
+    }
+
+    public bool CheckKeysPresent(params string[] keys)
+    {
+        int keyAmount = 0;
+        foreach (string key in keys)
+        {
+            for (int i = 0; i < inventoryItems.Length; i++)
+            {
+                if (inventoryItems[i] == null) continue;
+                if (inventoryItems[i].ID.ToLower().Equals(key.ToLower()))
+                {
+                    keyAmount++;
+                }
+            }
+        }
+        if (keys.Length == keyAmount){
+            return true;
+        }
+        return false;
     }
 
     private void VerifyItemsForDraw()
