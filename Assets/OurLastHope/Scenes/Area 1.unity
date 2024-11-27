@@ -1889,7 +1889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871a0440c07be8241927f9799a7b5ff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
   keys:
   - level1
 --- !u!1001 &66351729
@@ -14784,6 +14783,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 452407569433521719, guid: c7ec90431be1bde4bb669dfafca2f9ff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2282233873155562382, guid: c7ec90431be1bde4bb669dfafca2f9ff, type: 3}
       propertyPath: m_Name
       value: PlayerObject
@@ -14826,6 +14829,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4941161767846992784, guid: c7ec90431be1bde4bb669dfafca2f9ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592136920474652793, guid: c7ec90431be1bde4bb669dfafca2f9ff, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -25924,10 +25931,6 @@ PrefabInstance:
     - target: {fileID: 1711922547782077934, guid: 5309a6e2d7c2be34bb379134ca3fb371, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630495889608431611, guid: 5309a6e2d7c2be34bb379134ca3fb371, type: 3}
-      propertyPath: zombiesToSpawn
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6059441892291754233, guid: 5309a6e2d7c2be34bb379134ca3fb371, type: 3}
       propertyPath: m_Name
