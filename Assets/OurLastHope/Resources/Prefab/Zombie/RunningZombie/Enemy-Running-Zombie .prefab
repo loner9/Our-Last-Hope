@@ -934,6 +934,7 @@ GameObject:
   - component: {fileID: 8133269089931572388}
   - component: {fileID: 1758426155419312133}
   - component: {fileID: 4050429576487003658}
+  - component: {fileID: 4863019847596873880}
   m_Layer: 0
   m_Name: 3D_RunningZombie
   m_TagString: enemy
@@ -1061,6 +1062,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 7483859773244633850}
+--- !u!114 &4863019847596873880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2812132546509732582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578b7961bbd19dd4ebb7cddb5e4c87f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2924131476962502352
 GameObject:
   m_ObjectHideFlags: 0

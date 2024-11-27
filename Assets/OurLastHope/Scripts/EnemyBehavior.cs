@@ -11,7 +11,7 @@ public class EnemyBehavior : MonoBehaviour
     private bool isChasing;
     private bool isAttacking = true;
     public Animator _animator;
-    
+
     [Header("Player Detection")]
     public GameObject player;                  // Reference to the player's position
     public float detectionRadius = 10f;        // Detection
@@ -27,6 +27,7 @@ public class EnemyBehavior : MonoBehaviour
 
     [Header("Patrolling")]
     public float _range;
+    private bool isDead = false;
     public Transform centrePoint; // Centre of the area the agent wants to move around in
     [SerializeField] private EnemyHealthBar _healthBar;
 
@@ -45,11 +46,11 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
-        _animator.SetFloat("Speed",agent.velocity.magnitude / agent.speed);
+        _animator.SetFloat("Speed", agent.velocity.magnitude / agent.speed);
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        
+
         // Player detection condition
-        if ((distanceToPlayer <= detectionRadius) && (isAttacking==false))
+        if ((distanceToPlayer <= detectionRadius) && (isAttacking == false))
         {
             // If the player is within detection range, start chasing
             isChasing = true;
@@ -59,7 +60,7 @@ public class EnemyBehavior : MonoBehaviour
             // If the player is out of stopChaseRange, stop chasing
             isChasing = false;
         }
-        
+
         // Attack the player if within attack range and cooldown is complete
         if (distanceToPlayer <= attackRange && Time.time >= nextAttackTime)
         {
@@ -89,9 +90,11 @@ public class EnemyBehavior : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.CompareTag("melee")){
+        if (other.CompareTag("melee"))
+        {
             MeleeScript melee = other.GetComponent<MeleeScript>();
-            if (melee != null){
+            if (melee != null)
+            {
                 TakeDamage(melee.damage);
             }
         }
@@ -100,12 +103,13 @@ public class EnemyBehavior : MonoBehaviour
     // Function to chase the player
     public void Chasing()
     {
+        if(isDead) return;
         // Check if chasing
-        if ((isChasing==true) && (isAttacking==false))
+        if ((isChasing == true) && (isAttacking == false))
         {
             agent.SetDestination(player.transform.position); // Enemy chases the player
         }
-        if ((isChasing==false)&&(isAttacking==false))
+        if ((isChasing == false) && (isAttacking == false))
         {
             // Random patrol when not chasing the player
             if (agent.remainingDistance <= agent.stoppingDistance) // Done with path
@@ -118,12 +122,13 @@ public class EnemyBehavior : MonoBehaviour
                 }
             }
         }//stop and attack
-        if ((isChasing==false)&&(isAttacking == true))
+        if ((isChasing == false) && (isAttacking == true))
         {
             // Face the player and attack
             transform.LookAt(player.transform.position);
             agent.SetDestination(gameObject.transform.position);
         }
+
     }
 
     // Function to deal damage to the player
@@ -132,7 +137,7 @@ public class EnemyBehavior : MonoBehaviour
         // Simulate attack here 
         _animator.SetTrigger("Attack");
         Debug.Log("Enemy attacks the player!");
-        
+
         // Set the next attack time to current time + cooldown
         nextAttackTime = Time.time + attackCooldown;
     }
@@ -153,7 +158,12 @@ public class EnemyBehavior : MonoBehaviour
     private void Die()
     {
         // Optionally, add death effects or sounds here
-        Destroy(gameObject); // Destroy the enemy object
+        // Destroy(gameObject); // Destroy the enemy object
+        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
+        capsuleCollider.enabled = false;
+        transform.LookAt(gameObject.transform.rotation * Vector3.forward);
+        isDead = true;
+        _animator.SetTrigger("Dead");
     }
 
     // Function to patrol randomly within a given range
@@ -162,7 +172,7 @@ public class EnemyBehavior : MonoBehaviour
         Vector3 randomPoint = center + Random.insideUnitSphere * range; // Random point in a sphere 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) // Documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
-        { 
+        {
             result = hit.position;
             return true;
         }
