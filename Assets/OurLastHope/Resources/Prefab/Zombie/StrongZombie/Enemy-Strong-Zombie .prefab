@@ -441,7 +441,7 @@ Animator:
   m_GameObject: {fileID: 2011447854779942252}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c9f9fe6491a325344be56b4154ad6cfd, type: 3}
-  m_Controller: {fileID: 9100000, guid: 9e275d2636415c54eb44342e05662174, type: 2}
+  m_Controller: {fileID: 9100000, guid: d40a7742100bc5044ad1dee689d577da, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -488,10 +488,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 5062579599371453868}
   player: {fileID: 0}
-  detectionRadius: 10
-  stopChaseRange: 15
-  attackRange: 2
-  attackCooldown: 3
+  detectionRadius: 5.5
+  attackRange: 1
+  attackCooldown: 1.5
   maxHealth: 25
   currentHealth: 0
   _range: 2
@@ -772,11 +771,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 2, y: 3, z: 1.5}
   m_Center: {x: 0, y: -1.66, z: 0}
 --- !u!1 &2418181852264221677
 GameObject:

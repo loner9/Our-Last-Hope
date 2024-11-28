@@ -6,11 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6c9c36fb-e197-4822-a2da-05bf5b997bfc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Our-Last-Hope/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Our-Last-Hope/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Scenes/OptionScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Scenes/OptionScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Scenes/PlayScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Scenes/PlayScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Scenes/creditsscene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Scenes/creditsscene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Prefab/Zombie/RegulerZombie/Enemy-Regular-Zombie.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Prefab/Zombie/RegulerZombie/Enemy-Regular-Zombie.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Prefab/Zombie/RunningZombie/Enemy-Running-Zombie .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Prefab/Zombie/RunningZombie/Enemy-Running-Zombie .prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Prefab/Zombie/StrongZombie/Enemy-Strong-Zombie .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Prefab/Zombie/StrongZombie/Enemy-Strong-Zombie .prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Scripts/EnemyBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Scripts/EnemyBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Scripts/PlayerHealths.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Scripts/PlayerHealths.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +42,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;creating-menu-and-title-screen&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;enemy-behavior&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -105,6 +107,8 @@
       <updated>1729253654979</updated>
       <workItem from="1729253671444" duration="1107000" />
       <workItem from="1729754568069" duration="7832000" />
+      <workItem from="1732695199522" duration="6048000" />
+      <workItem from="1732776531561" duration="1100000" />
     </task>
     <servers />
   </component>

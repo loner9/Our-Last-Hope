@@ -7,13 +7,16 @@ public class PlayerHealths : MonoBehaviour, IDamagable
     [Header("Config")]
     [SerializeField] private PlayerStats stats;
 
-
-    // private void Update(){
+    public bool isreg;
+    public bool isrun;
+    public bool istrong;
+     private void Update(){
     //     if (Input.GetKeyDown(KeyCode.P))
     //     {
     //         takeDamage(1f);
     //     }
-    // }
+    isreg = false;
+     }
     public void takeDamage(float damage)
     {
         stats.health -= damage;
@@ -39,22 +42,27 @@ public class PlayerHealths : MonoBehaviour, IDamagable
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.CompareTag("enemyHand"))
         {
             if (other.gameObject.name.Equals("reg"))
             {
+                isreg = true;
                 Debug.Log("reg");
                 takeDamage(1.2f);
+                
             }
             else if (other.gameObject.name.Equals("fas"))
             {
                 Debug.Log("fas");
                 takeDamage(0.7f);
+                isrun = true;
             }
             else if (other.gameObject.name.Equals("strong"))
             {
                 Debug.Log("strong");
                 takeDamage(2f);
+                istrong = true;
             }
         }
     }
