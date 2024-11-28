@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - medkit
+  - Wall
+  - Audio
+  - Melee
+  - ranged
+  - Bullet
+  - melee
+  - enemy
+  - enemyHand
   layers:
   - Default
   - TransparentFX
@@ -11,11 +20,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Obstacles
+  - Items
+  - Player
+  - Aim
   - 
   - 
   - 
