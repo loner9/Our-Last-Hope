@@ -1,22 +1,27 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 
-public class ResponseHandler : MonoBehaviour
+public class ResponseLevelHandler : MonoBehaviour
 {
     [SerializeField] private RectTransform responseBox;
     [SerializeField] private GameObject responseContainerPrefab;
     [SerializeField] private GameObject responseButtonTemplatePrefab;
 
-    private DialogueUI dialogueUI;
+    private DialogueLevelUI dialogueUI;
     private ResponseEvent[] responseEvents;
 
     private List<GameObject> tempResponseContainers = new List<GameObject>();
 
     private void Start()
     {
-        dialogueUI = GetComponent<DialogueUI>();
+        dialogueUI = GetComponent<DialogueLevelUI>();
+        if (dialogueUI == null)
+        {
+            Debug.LogError("DialogueLevelUI tidak ditemukan pada GameObject.");
+        }
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)
@@ -36,7 +41,16 @@ public class ResponseHandler : MonoBehaviour
             GameObject responseButton = Instantiate(responseButtonTemplatePrefab, responseContainer.transform);
             responseButton.SetActive(true);
             responseButton.GetComponent<TMP_Text>().text = response.ResponseText;
-            responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response));
+
+            // Cek apakah scene sudah pernah dimainkan
+            if (!string.IsNullOrEmpty(response.SceneName) && PlayerPrefs.GetInt(response.SceneName, 0) == 0)
+            {
+                responseButton.GetComponent<Button>().interactable = false; // Nonaktifkan tombol jika scene belum pernah dimainkan
+            }
+            else
+            {
+                responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response));
+            }
 
             tempResponseContainers.Add(responseContainer);
         }
@@ -56,7 +70,6 @@ public class ResponseHandler : MonoBehaviour
 
         if (responseEvents != null)
         {
-            // Temukan indeks event berdasarkan urutan dalam array
             int responseIndex = System.Array.IndexOf(responseEvents, response);
             if (responseIndex >= 0 && responseIndex < responseEvents.Length)
             {
@@ -66,7 +79,11 @@ public class ResponseHandler : MonoBehaviour
 
         responseEvents = null;
 
-        if (response.DialogueObject)
+        if (!string.IsNullOrEmpty(response.SceneName))
+        {
+            SceneManager.LoadScene(response.SceneName);
+        }
+        else if (response.DialogueObject)
         {
             dialogueUI.ShowDialogue(response.DialogueObject);
         }

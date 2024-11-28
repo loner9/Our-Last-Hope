@@ -3,24 +3,24 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
-public class DialogueUI : MonoBehaviour
+public class DialogueLevelUI : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
 
     public bool IsOpen { get; private set; }
-    
-    private ResponseLevelHandler responseHandler;
-    private TypewriterEffect typewriterEffect;
 
-    public PlayerMovement PM;
+    private ResponseLevelHandler responseHandler;
+    private DialogueLevelTypewriterEffect typewriterEffect;
+
+    public PlayerMovementDendy PMD;
     public WeaponManager WM;
 
     private void Start()
     {
-        typewriterEffect = GetComponent<TypewriterEffect>();
+        typewriterEffect = GetComponent<DialogueLevelTypewriterEffect>();
         responseHandler = GetComponent<ResponseLevelHandler>();
-        
+
         CloseDialogueBox();
     }
 
@@ -29,7 +29,7 @@ public class DialogueUI : MonoBehaviour
         IsOpen = true;
         dialogueBox.SetActive(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
-        PM.enabled = false;
+        PMD.enabled = false;
         WM.enabled = false;
     }
 
@@ -47,8 +47,8 @@ public class DialogueUI : MonoBehaviour
             yield return RunTypingEffect(dialogue);
 
             textLabel.text = dialogue;
-            
-            if(i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break;
+
+            if (i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break;
 
             yield return null;
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
@@ -63,7 +63,7 @@ public class DialogueUI : MonoBehaviour
         {
             CloseDialogueBox();
         }
-        
+
     }
 
     private IEnumerator RunTypingEffect(string dialogue)
@@ -86,7 +86,7 @@ public class DialogueUI : MonoBehaviour
         IsOpen = false;
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
-        PM.enabled = true;
+        PMD.enabled = true;
         WM.enabled = true;
     }
 }
