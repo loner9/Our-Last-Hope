@@ -25932,6 +25932,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4630495889608431611, guid: 5309a6e2d7c2be34bb379134ca3fb371, type: 3}
+      propertyPath: zombieWeight.Array.data[0]
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630495889608431611, guid: 5309a6e2d7c2be34bb379134ca3fb371, type: 3}
+      propertyPath: zombieWeight.Array.data[1]
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630495889608431611, guid: 5309a6e2d7c2be34bb379134ca3fb371, type: 3}
+      propertyPath: zombieWeight.Array.data[2]
+      value: 33
+      objectReference: {fileID: 0}
     - target: {fileID: 6059441892291754233, guid: 5309a6e2d7c2be34bb379134ca3fb371, type: 3}
       propertyPath: m_Name
       value: Spawner
