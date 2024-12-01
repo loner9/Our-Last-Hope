@@ -8,6 +8,14 @@ public class SceneTracker : MonoBehaviour
 
     private void Start()
     {
+        // Cek apakah PlayerPrefs kosong atau tidak
+        if (PlayerPrefs.GetInt("HasLaunched", 0) == 0)
+        {
+            // Jika kosong, set PlayerPrefs untuk pertama kali
+            PlayerPrefs.SetInt(levelOneSceneName, 1); // Memberikan akses ke level 1
+            PlayerPrefs.SetInt("HasLaunched", 1); // Menandakan bahwa game telah diluncurkan
+        }
+
         string currentScene = SceneManager.GetActiveScene().name;
         PlayerPrefs.SetInt(currentScene, 1); // Menyimpan state scene yang sedang dimainkan
     }
@@ -26,6 +34,7 @@ public class SceneTracker : MonoBehaviour
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetInt(initialSceneName, 1); // Mengatur level yang bisa diakses sesuai dengan nilai di Inspector
         PlayerPrefs.SetInt(levelOneSceneName, 1); // Mengatur level 1 sesuai dengan nilai di Inspector
+        PlayerPrefs.SetInt("HasLaunched", 1); // Menandakan bahwa game telah diluncurkan setidaknya sekali
 
         Debug.Log($"PlayerPrefs telah direset. Hanya {initialSceneName} dan {levelOneSceneName} yang bisa diakses.");
     }

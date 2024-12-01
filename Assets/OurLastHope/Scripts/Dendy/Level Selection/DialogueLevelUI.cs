@@ -13,7 +13,7 @@ public class DialogueLevelUI : MonoBehaviour
     private ResponseLevelHandler responseHandler;
     private DialogueLevelTypewriterEffect typewriterEffect;
 
-    public PlayerMovementDendy PMD;
+    public PlayerMovement PMD;
     public WeaponManager WM;
 
     private void Start()

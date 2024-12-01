@@ -12,7 +12,7 @@ public class DialogueLevelActivator : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovementDendy player))
+        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
             player.Interactable = this;
             sc.Play();
@@ -21,7 +21,7 @@ public class DialogueLevelActivator : MonoBehaviour, IInteractable
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovementDendy player))
+        if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
             if (player.Interactable is DialogueLevelActivator dialogueActivator && dialogueActivator == this)
             {
@@ -30,7 +30,7 @@ public class DialogueLevelActivator : MonoBehaviour, IInteractable
         }
     }
 
-    public void Interact(PlayerMovementDendy player)
+    public void Interact(PlayerMovement player)
     {
         foreach (DialogueResponseEvents responseEvents in GetComponents<DialogueResponseEvents>())
         {
