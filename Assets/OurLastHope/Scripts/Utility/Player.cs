@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public PlayerControls Controls => controls;
 
     public PlayerAim aim {get; private set;}
+    public PlayerMovement playerMovement {get; private set;}
 
     private bool isInventoryOpen = false;
     public bool IsInventoryOpen => isInventoryOpen;
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
         playerHealths = GetComponent<PlayerHealths>();
         playerStaminas = GetComponent<PlayerStaminas>();
         aim = GetComponentInChildren<PlayerAim>();
+        playerMovement = GetComponent<PlayerMovement>();
         
         controls = new PlayerControls();
     }
