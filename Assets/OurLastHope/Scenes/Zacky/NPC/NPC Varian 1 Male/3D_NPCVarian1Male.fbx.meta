@@ -615,8 +615,8 @@ ModelImporter:
       scale: {x: 1.0000002, y: 1.0000005, z: 1.0000006}
     - name: foot.l
       parentName: leg_stretch.l
-      position: {x: 0.000000007450579, y: 0.44360662, z: -0.000002368965}
-      rotation: {x: 0.43149903, y: -0.50107795, z: 0.37744695, w: 0.6482772}
+      position: {x: -0.00000088661886, y: 0.44363996, z: -0.0000030136466}
+      rotation: {x: 0.39804918, y: -0.5280411, z: 0.41874802, w: 0.62239826}
       scale: {x: 1.0000006, y: 1.0000007, z: 1}
     - name: toes_01.l
       parentName: foot.l
@@ -636,7 +636,7 @@ ModelImporter:
     - name: thigh_stretch.r
       parentName: root.x
       position: {x: 0.09052779, y: 0.000010192395, z: 0.0000006635337}
-      rotation: {x: 0.6784528, y: 0.01841805, z: 0.73402935, w: -0.023742048}
+      rotation: {x: 0.67845273, y: 0.018418048, z: 0.7340293, w: -0.023742044}
       scale: {x: 1.0000061, y: 1.0000008, z: 1.0000001}
     - name: leg_stretch.r
       parentName: thigh_stretch.r

@@ -596,7 +596,7 @@ ModelImporter:
     - name: c_thumb2.r
       parentName: c_thumb1.r
       position: {x: 0.0000000010803342, y: 0.041844904, z: 0.00000001847744}
-      rotation: {x: -0.03619115, y: 0.0053741457, z: 0.00006361862, w: 0.9993304}
+      rotation: {x: -0.036191154, y: 0.0053741457, z: 0.00006361863, w: 0.9993304}
       scale: {x: 1.0000008, y: 1.0000012, z: 0.99999994}
     - name: c_thumb3.r
       parentName: c_thumb2.r
@@ -606,7 +606,7 @@ ModelImporter:
     - name: thigh_stretch.l
       parentName: root.x
       position: {x: -0.09009125, y: -0.0069910316, z: 0.02140707}
-      rotation: {x: -0.6663385, y: 0.01832064, z: 0.7448261, w: 0.029860782}
+      rotation: {x: -0.66633844, y: 0.018320639, z: 0.744826, w: 0.029860778}
       scale: {x: 0.99998134, y: 0.9999991, z: 0.99999934}
     - name: leg_stretch.l
       parentName: thigh_stretch.l
@@ -615,8 +615,8 @@ ModelImporter:
       scale: {x: 1.0000002, y: 1.0000002, z: 1}
     - name: foot.l
       parentName: leg_stretch.l
-      position: {x: -0.0000000080466265, y: 0.43457156, z: -0.0000000035762786}
-      rotation: {x: 0.3727092, y: -0.49620965, z: 0.45726204, w: 0.637005}
+      position: {x: 0.0000009611247, y: 0.43459144, z: -0.0000010609194}
+      rotation: {x: 0.41559383, y: -0.5228856, z: 0.4140599, w: 0.61840683}
       scale: {x: 1.000001, y: 0.9999996, z: 1.0000014}
     - name: toes_01.l
       parentName: foot.l
@@ -636,7 +636,7 @@ ModelImporter:
     - name: thigh_stretch.r
       parentName: root.x
       position: {x: 0.0900912, y: -0.0069868593, z: 0.02140831}
-      rotation: {x: 0.6661914, y: 0.022993479, z: 0.74460036, w: -0.035083525}
+      rotation: {x: 0.66619134, y: 0.022993477, z: 0.7446003, w: -0.03508352}
       scale: {x: 0.99998254, y: 0.9999991, z: 0.99999917}
     - name: leg_stretch.r
       parentName: thigh_stretch.r
@@ -645,8 +645,8 @@ ModelImporter:
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
     - name: foot.r
       parentName: leg_stretch.r
-      position: {x: -2.9802322e-10, y: 0.43457147, z: -0.00000001847744}
-      rotation: {x: 0.37270966, y: 0.49621022, z: -0.45726097, w: 0.63700503}
+      position: {x: -0.00000020861626, y: 0.43457952, z: -0.000000004982325}
+      rotation: {x: 0.40713656, y: 0.5177261, z: -0.42289776, w: 0.6223802}
       scale: {x: 1.0000005, y: 0.99999887, z: 1.000001}
     - name: toes_01.r
       parentName: foot.r
