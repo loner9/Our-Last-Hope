@@ -17,6 +17,7 @@ TagManager:
   - GoalArea
   - GoalLocator
   - VirtualCam
+  - Spawner
   layers:
   - Default
   - TransparentFX

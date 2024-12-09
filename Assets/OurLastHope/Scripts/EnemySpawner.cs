@@ -16,13 +16,17 @@ public class EnemySpawner : MonoBehaviour
 
     private bool spawnTriggered = false; // Untuk mengecek apakah spawn kedua telah dipicu
 
-    void Start()
-    {
+    void Awake(){
         for (int i = 0; i < zombiePrefabs.Length; i++){
             zombieWeights.Add(zombiePrefabs[i], zombieWeight[i]);
         }
+    }
+
+    void Start()
+    {
+        
         // Spawn zombie di awal permainan
-        SpawnZombies();
+        
     }
 
     // Method untuk spawn zombie
@@ -81,5 +85,9 @@ public class EnemySpawner : MonoBehaviour
 
         // Menggambar wire cube untuk mewakili area spawner
         Gizmos.DrawWireCube(transform.position, new Vector3(spawnAreaSize.x, 1, spawnAreaSize.y));
+    }
+
+    void OnEnable(){
+        SpawnZombies();
     }
 }

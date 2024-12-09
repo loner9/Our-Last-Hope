@@ -14,6 +14,9 @@ public class GoalLocator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target.transform.position);
+        if (target != null)
+        {
+            transform.LookAt(target.transform.position);
+        }
     }
 }

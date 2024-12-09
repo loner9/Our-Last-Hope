@@ -3934,6 +3934,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   aim: {fileID: 6578503968258401746}
+  isLookAhead: 1
+  minCameraDistance: 1.5
+  maxCameraDistance: 3
+  aimCameraSensitivity: 5
 --- !u!114 &6471009859137481995
 MonoBehaviour:
   m_ObjectHideFlags: 0
