@@ -460,9 +460,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 5534110549148497713}
   player: {fileID: 0}
-  detectionRadius: 10
-  stopChaseRange: 5
-  attackRange: 1.5
+  detectionRadius: 7
+  attackRange: 1
   attackCooldown: 1.5
   maxHealth: 10
   currentHealth: 0

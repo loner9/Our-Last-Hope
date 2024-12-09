@@ -15,7 +15,6 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Player Detection")]
     public GameObject player;                  // Reference to the player's position
     public float detectionRadius = 10f;        // Detection
-    public float stopChaseRange = 15f;        // Distance at which the enemy stops chasing
     public float attackRange = 2f;            // Distance at which the enemy can attack
     public float attackCooldown = 1.5f;       // Cooldown between attacks
 
@@ -55,18 +54,23 @@ public class EnemyBehavior : MonoBehaviour
             // If the player is within detection range, start chasing
             isChasing = true;
         }
-        else if (distanceToPlayer >= stopChaseRange)
+        else if (distanceToPlayer >= detectionRadius)
         {
             // If the player is out of stopChaseRange, stop chasing
             isChasing = false;
         }
 
         // Attack the player if within attack range and cooldown is complete
-        if (distanceToPlayer <= attackRange && Time.time >= nextAttackTime)
+        if (distanceToPlayer <= attackRange )
         {
             isAttacking = true;
             isChasing = false;
-            DealDamage();
+            if (Time.time >= nextAttackTime)
+            {
+                DealDamage();
+            }
+            
+            
         }
         if (distanceToPlayer >= attackRange)
         {
@@ -114,7 +118,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             agent.SetDestination(player.transform.position); // Enemy chases the player
         }
-        if ((isChasing == false) && (isAttacking == false))
+        else if ((isChasing == false) && (isAttacking == false))
         {
             // Random patrol when not chasing the player
             if (agent.remainingDistance <= agent.stoppingDistance) // Done with path
@@ -127,7 +131,7 @@ public class EnemyBehavior : MonoBehaviour
                 }
             }
         }//stop and attack
-        if ((isChasing == false) && (isAttacking == true))
+        else if ((isChasing == false) && (isAttacking == true))
         {
             // Face the player and attack
             transform.LookAt(player.transform.position);
@@ -196,6 +200,6 @@ public class EnemyBehavior : MonoBehaviour
         // Mengatur warna Gizmo menjadi biru untuk jarak berhenti mengejar
         Gizmos.color = Color.blue;
         // Menggambar lingkaran yang menunjukkan jarak berhenti mengejar
-        Gizmos.DrawWireSphere(transform.position, stopChaseRange);
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
