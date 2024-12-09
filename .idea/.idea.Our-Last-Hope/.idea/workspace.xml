@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6c9c36fb-e197-4822-a2da-05bf5b997bfc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Our-Last-Hope/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Our-Last-Hope/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Prefab/Zombie/RegulerZombie/Enemy-Regular-Zombie.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Prefab/Zombie/RegulerZombie/Enemy-Regular-Zombie.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Prefab/Zombie/RunningZombie/Enemy-Running-Zombie .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Prefab/Zombie/RunningZombie/Enemy-Running-Zombie .prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Prefab/Zombie/StrongZombie/Enemy-Strong-Zombie .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Prefab/Zombie/StrongZombie/Enemy-Strong-Zombie .prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Scripts/EnemyBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Scripts/EnemyBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Art/Zombie/Reguler Zombie/3D_RegulerZombie.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Art/Zombie/Reguler Zombie/3D_RegulerZombie.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Art/Zombie/Zombie Boss/3D_ZombieBoss.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Resources/Art/Zombie/Zombie Boss/3D_ZombieBoss.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Scenes/daun gerak2.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/OurLastHope/Scripts/PlayerHealths.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OurLastHope/Scripts/PlayerHealths.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
@@ -24,6 +23,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/OurLastHope/Scripts/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/OurLastHope/Scripts/BossEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/OurLastHope/Scripts/BossHealthBar.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/OurLastHope/Scripts/CameraShake.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/OurLastHope/Scripts/DoNotDestroy.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -38,27 +40,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;enemy-behavior&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Boss-Behavior-",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "SpellingScopeSettingsId",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\LENOVO\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\LENOVO\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\LENOVO\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\LENOVO\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\LENOVO\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\LENOVO\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.45f1\Editor\Unity.exe" />
@@ -109,6 +111,10 @@
       <workItem from="1729754568069" duration="7832000" />
       <workItem from="1732695199522" duration="6048000" />
       <workItem from="1732776531561" duration="1100000" />
+      <workItem from="1733409243694" duration="2668000" />
+      <workItem from="1733477566406" duration="4660000" />
+      <workItem from="1733727563303" duration="4000" />
+      <workItem from="1733727979168" duration="9159000" />
     </task>
     <servers />
   </component>
