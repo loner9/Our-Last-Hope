@@ -18,6 +18,10 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemDescription;
+    [SerializeField] private TextMeshProUGUI itemDamage;
+    [SerializeField] private TextMeshProUGUI itemRange;
+    [SerializeField] private TextMeshProUGUI itemAccuracy;
+    [SerializeField] private TextMeshProUGUI itemFireRate;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject AmmoPanel;
     [SerializeField] private TextMeshProUGUI equipTxt;
@@ -79,7 +83,8 @@ public class InventoryUI : MonoBehaviour
         Inventory.Instance.RemoveItem(SelectedSlot.index);
     }
 
-    public void EquipItem(){
+    public void EquipItem()
+    {
         Debug.Log("Equipping " + SelectedSlot.index);
         Inventory.Instance.EquipItem(SelectedSlot.index);
     }
@@ -112,6 +117,12 @@ public class InventoryUI : MonoBehaviour
             if (Inventory.Instance.InventoryItems[index] is ItemWeapon itemWeapon)
             {
                 equipTxt.text = itemWeapon.isEquipped ? "Unequip" : "Equip";
+
+                // Tampilkan stat tambahan
+                itemDamage.text = itemWeapon.damage.ToString();
+                itemRange.text = itemWeapon.range.ToString();
+                itemAccuracy.text = itemWeapon.accuracy.ToString();
+                itemFireRate.text = itemWeapon.fireRate.ToString();
             }
         }
     }

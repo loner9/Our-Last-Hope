@@ -9,7 +9,13 @@ public class ItemWeapon : InventoryItem
     public Weapon weapon;
     public bool isEquipped = false;
     public int currentAmmo = 0;
-    
+
+    // Tambahkan stat tambahan
+    public float damage;
+    public float range;
+    public float accuracy;
+    public float fireRate;
+
     public override bool Removable()
     {
         return false;

@@ -26,8 +26,10 @@ public class PlayerMovementDendy : MonoBehaviour
     private bool isAttack = false;
 
     [Header("Dialog | Dendy")]
-    [SerializeField] private DialogueUI dialogueUI;
-    public DialogueUI DialogueUI => dialogueUI;
+    [SerializeField] private DialogueLevelUI dialogueUI;
+    [SerializeField] private DialogueLevelUI dialogueUIExtended;
+    public DialogueLevelUI DialogueUI => dialogueUI;
+    public DialogueLevelUI DialogueUIExtended => dialogueUIExtended;
     public IInteractable Interactable { get; set; }
 
     private void Awake()
@@ -62,13 +64,12 @@ public class PlayerMovementDendy : MonoBehaviour
         AnimatorController();
         PlayFootstepSound();
 
-        if (dialogueUI == null) return;
-        if (dialogueUI.IsOpen) return;
+        /*if (dialogueUI.IsOpen) return;
         if (Input.GetKeyDown(KeyCode.I))
         {
-            // Interactable?.Interact(this);
+            Interactable?.Interact(this);
             Debug.Log("I Jalan");
-        }
+        }*/
     }
 
     private void AimToMouse()

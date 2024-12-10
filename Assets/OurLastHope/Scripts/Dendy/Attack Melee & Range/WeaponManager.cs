@@ -1,7 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System.Collections.Generic;
+using System;
 using UnityEngine.Animations.Rigging;
 
 public class WeaponManager : MonoBehaviour
@@ -16,11 +16,11 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject meleeWeapon;
     [SerializeField] private GameObject rangedWeapon;
-    [SerializeField] private AudioClip rangedAttackSound; // Suara tembakan
-    [SerializeField] private AudioClip meleeAttackSound; // Suara serangan melee
-    private AudioSource audioSource; // Sumber audio
+    [SerializeField] private AudioClip rangedAttackSound;
+    [SerializeField] private AudioClip meleeAttackSound;
+    private AudioSource audioSource;
     private bool canPlaySound = true;
-    private float soundCooldown = 0.2f; // Waktu jeda antara suara
+    private float soundCooldown = 0.2f;
     private float soundTimer = 0f;
 
     private bool isRangedActive = false;
@@ -37,6 +37,10 @@ public class WeaponManager : MonoBehaviour
 
     [SerializeField] private GameObject muzzleFlashPrefab;
 
+    // Variabel baru untuk UI dan Ammo menggunakan TextMeshPro
+    [SerializeField] private TextMeshProUGUI ammoText;
+    private int currentAmmo;
+
     private void Awake()
     {
         controls = new PlayerControls();
@@ -48,9 +52,6 @@ public class WeaponManager : MonoBehaviour
             }
         };
         controls.Character.Reload.performed += ctx => Reload();
-        // controls.Character.SwitchToMelee.performed += ctx => SwitchToMelee();
-        // controls.Character.SwitchToRanged.performed += ctx => SwitchToRanged();
-        // controls.Character.Unarmed.performed += ctx => SwitchToUnarmed();
     }
 
     private void Start()
@@ -58,11 +59,11 @@ public class WeaponManager : MonoBehaviour
         if (rig != null)
         {
             rig.weight = 0f;
-
         }
         OnWeaponTypeChanged += SetWeaponType;
         OnWeaponChanged += WeaponDetail;
         OnFirePointChanged += SetFirePoint;
+        UpdateAmmoUI();
     }
 
     private void SetFirePoint(Transform transform)
@@ -107,7 +108,7 @@ public class WeaponManager : MonoBehaviour
         weaponMags = mag;
         weaponIndex = index;
         weaponDamage = dmg;
-        
+
         GameObject[] handActive = GameObject.FindGameObjectsWithTag("melee");
         foreach (GameObject hand in handActive)
         {
@@ -124,6 +125,9 @@ public class WeaponManager : MonoBehaviour
             Debug.Log("Ammo: " + ammo);
             if (ammo != 0)
             {
+                currentAmmo--;
+                UpdateAmmoUI();
+
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                 BulletScript bulletScript = bullet.GetComponent<BulletScript>();
                 bulletScript.damage = weaponDamage;
@@ -133,11 +137,10 @@ public class WeaponManager : MonoBehaviour
                 GameObject muzzleFlash = Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
                 Destroy(muzzleFlash, 0.2f);
             }
-
         }
         else if (isMeleeActive && !isUnArmed)
         {
-
+            // Implementasi serangan melee
         }
         else
         {
@@ -153,6 +156,9 @@ public class WeaponManager : MonoBehaviour
         if (indexes.Count == 0) return;
         Inventory.Instance.ReloadAmmo(weaponId, weaponMags, weaponIndex);
         animator.SetTrigger("Reload");
+
+        currentAmmo = weaponMags; // Set kembali ke nilai maksimum setelah reload
+        UpdateAmmoUI();
     }
 
     private void SwitchToMelee()
@@ -162,7 +168,7 @@ public class WeaponManager : MonoBehaviour
         isMeleeActive = true;
         isUnArmed = false;
         UpdateWeaponStatus();
-        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed, isReloading, isMeleeAttackActive); // Notify listeners
+        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed, isReloading, isMeleeAttackActive);
     }
 
     private void SwitchToRanged()
@@ -172,7 +178,7 @@ public class WeaponManager : MonoBehaviour
         isMeleeActive = false;
         isUnArmed = false;
         UpdateWeaponStatus();
-        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed, isReloading, isMeleeAttackActive); // Notify listeners
+        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed, isReloading, isMeleeAttackActive);
     }
 
     private void SwitchToUnarmed()
@@ -182,7 +188,7 @@ public class WeaponManager : MonoBehaviour
         isMeleeActive = false;
         isUnArmed = true;
         UpdateWeaponStatus();
-        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed, isReloading, isMeleeAttackActive); // Notify listeners
+        OnWeaponStatusChanged?.Invoke(isRangedActive, isMeleeActive, isUnArmed, isReloading, isMeleeAttackActive);
     }
 
     public void Reloading()
@@ -211,12 +217,17 @@ public class WeaponManager : MonoBehaviour
 
     private void UpdateWeaponStatus()
     {
-
+        // Tambahkan logika untuk memperbarui status senjata di sini
     }
 
     private void ResetMeleeAttack()
     {
         isMeleeAttackActive = false;
+    }
+
+    private void UpdateAmmoUI()
+    {
+        ammoText.text = $"{currentAmmo}";
     }
 
     void OnEnable()

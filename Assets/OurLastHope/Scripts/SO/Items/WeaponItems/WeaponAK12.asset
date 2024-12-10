@@ -22,3 +22,9 @@ MonoBehaviour:
   MaxStack: 1
   Quantity: 0
   weapon: {fileID: 11400000, guid: ac15ab7a11e698b4292f33ca823c42b2, type: 2}
+  isEquipped: 0
+  currentAmmo: 0
+  damage: 6
+  range: 3
+  accuracy: 3
+  fireRate: 10

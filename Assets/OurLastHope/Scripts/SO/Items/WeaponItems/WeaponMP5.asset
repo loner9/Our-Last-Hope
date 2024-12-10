@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WeaponMP5
   m_EditorClassIdentifier: 
   ID: MP5
-  Icon: {fileID: 57700027, guid: 7da6e095d43ec1c4191a7cf002692fbd, type: 3}
+  Icon: {fileID: 21300000, guid: 6b6415b8e3b8867458a6cb733a7899ab, type: 3}
   Name: MP5
   Description: Sub-Machine Gun
   ItemType: 0
@@ -23,3 +23,8 @@ MonoBehaviour:
   Quantity: 0
   weapon: {fileID: 11400000, guid: e6507aab416e3b847a63a1e3ada86389, type: 2}
   isEquipped: 0
+  currentAmmo: 0
+  damage: 5
+  range: 2
+  accuracy: 4
+  fireRate: 8

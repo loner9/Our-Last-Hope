@@ -10,7 +10,7 @@ public class DialogueUI : MonoBehaviour
 
     public bool IsOpen { get; private set; }
     
-    private ResponseHandler responseHandler;
+    private ResponseLevelHandler responseHandler;
     private TypewriterEffect typewriterEffect;
 
     public PlayerMovement PM;
@@ -19,7 +19,7 @@ public class DialogueUI : MonoBehaviour
     private void Start()
     {
         typewriterEffect = GetComponent<TypewriterEffect>();
-        responseHandler = GetComponent<ResponseHandler>();
+        responseHandler = GetComponent<ResponseLevelHandler>();
         
         CloseDialogueBox();
     }
