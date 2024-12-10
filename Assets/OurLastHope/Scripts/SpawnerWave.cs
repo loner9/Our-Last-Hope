@@ -7,6 +7,7 @@ public class SpawnerWave : MonoBehaviour
 {
     [SerializeField] int maxSequence; // Maximum number of sequences (set in Inspector)
     List<GameObject> spawnList = new List<GameObject>();
+    List<bool> spawnActiveList = new List<bool>();
     GameObject[] spawnSequence;
     bool spawnActive = false;
     int currentSequence = 0;
@@ -20,6 +21,7 @@ public class SpawnerWave : MonoBehaviour
         foreach (Transform child in transform)
         {
             spawnList.Add(child.gameObject);
+            spawnActiveList.Add(child.gameObject.activeSelf);
         }
 
         // Sort spawn list by name for consistency
@@ -32,7 +34,7 @@ public class SpawnerWave : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Initialize the first sequence if inactive
         if (!spawnActive)
@@ -52,8 +54,6 @@ public class SpawnerWave : MonoBehaviour
 
     void ProcessSequence()
     {
-        Debug.Log("Sequence: " + currentSequence);
-
         // Deactivate all spawn points
         foreach (GameObject item in spawnList)
         {
@@ -61,21 +61,41 @@ public class SpawnerWave : MonoBehaviour
         }
 
         // Activate the current sequence's spawn point
-        if (currentSequence == maxSequence - 1 || currentSequence >= maxSequence)
+        // if (currentSequence == maxSequence - 1 || currentSequence >= maxSequence)
+        // {
+        //     Debug.Log("Final sequence! Activating all spawners.");
+        //     // Activate all spawners
+        //     foreach (GameObject item in spawnList)
+        //     {
+        //         item.SetActive(true);
+        //     }
+        // }
+        // else
+
+        if (spawnActiveList.All(x => x))
         {
-            Debug.Log("Final sequence! Activating all spawners.");
-            // Activate all spawners
-            foreach (GameObject item in spawnList)
+            currentSequence = maxSequence;
+        }
+
+        for (int i = 0; i < spawnActiveList.Count; i++)
+        {
+            bool currentActive = spawnActiveList[i];
+
+            if (!currentActive)
             {
-                item.SetActive(true);
+                currentSequence = i;
+                spawnActiveList[i] = true;
+                GameObject spawn = spawnList[i];
+                spawn.SetActive(true);
+                break;
             }
         }
-        else if (currentSequence < spawnList.Count)
-        {
-            // Activate the current sequence's spawner
-            GameObject spawn = spawnList[currentSequence];
-            spawn.SetActive(true);
-        }
+        // if (currentSequence < spawnList.Count)
+        // {
+        //     // Activate the current sequence's spawner
+        //     GameObject spawn = spawnList[currentSequence];
+        //     spawn.SetActive(true);
+        // }
 
         // Periodically check if the wave is cleared
         StartCoroutine(CheckZombs());
@@ -85,34 +105,35 @@ public class SpawnerWave : MonoBehaviour
     {
         while (spawnActive)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(2f);
 
             // Check if all zombies are destroyed
             GameObject[] zombies = GameObject.FindGameObjectsWithTag("enemy");
 
             if (zombies.Length == 0)
             {
-                spawnActive = false;
-                currentSequence++;
+                // spawnActive = false;
 
-                if (currentSequence == maxSequence - 1 || currentSequence >= maxSequence)
-                {
-                    Debug.Log("All waves completed!");
-                    GameManager.Instance.GameComplete();
-                }
-                else if (currentSequence < spawnList.Count)
-                {
-                    Invoke(nameof(ProcessSequence), 3.0f); // Start the next sequence after a delay
-                }
-
-                // if (currentSequence < maxSequence)
+                // if (currentSequence == maxSequence - 1 || currentSequence >= maxSequence)
+                // {
+                //     Debug.Log("All waves completed!");
+                //     GameManager.Instance.GameComplete();
+                // }
+                // else if (currentSequence < spawnList.Count)
                 // {
                 //     Invoke(nameof(ProcessSequence), 3.0f); // Start the next sequence after a delay
                 // }
-                // else
-                // {
-                //     Debug.Log("All waves completed!");
-                // }
+
+                if (currentSequence < maxSequence)
+                {
+                    Debug.Log("Wave " + (currentSequence + 1) + " cleared!");
+                    Invoke(nameof(ProcessSequence), 1.0f); // Start the next sequence after a delay
+                }
+                else
+                {
+                    GameManager.Instance.GameComplete();
+                    Debug.Log("All waves completed!");
+                }
             }
         }
     }
