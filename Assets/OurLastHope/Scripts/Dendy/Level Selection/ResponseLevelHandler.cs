@@ -35,20 +35,45 @@ public class ResponseLevelHandler : MonoBehaviour
         {
             // Instantiate responseContainer
             GameObject responseContainer = Instantiate(responseContainerPrefab, responseBox.transform);
+            if (responseContainer == null)
+            {
+                Debug.LogError("responseContainerPrefab instantiation failed.");
+                continue;
+            }
             responseContainer.SetActive(true);
 
             // Instantiate responseButtonTemplate inside the responseContainer
             GameObject responseButton = Instantiate(responseButtonTemplatePrefab, responseContainer.transform);
+            if (responseButton == null)
+            {
+                Debug.LogError("responseButtonTemplatePrefab instantiation failed.");
+                continue;
+            }
             responseButton.SetActive(true);
-            responseButton.GetComponent<TMP_Text>().text = response.ResponseText;
+
+            // Assign sprite and check if it is assigned
+            Image responseImage = responseButton.GetComponent<Image>();
+            if (responseImage != null && response.SceneSprite != null)
+            {
+                responseImage.sprite = response.SceneSprite;
+                Debug.Log("Sprite assigned: " + response.SceneSprite.name + " for response: " + response.SceneName);
+            }
+            else
+            {
+                Debug.LogWarning("Sprite or Image Component is missing for response: " + response.SceneName);
+            }
+
+            /*responseButton.GetComponent<TMP_Text>().text = response.ResponseText; // Tetap digunakan*/
 
             // Cek apakah scene sudah pernah dimainkan
             if (!string.IsNullOrEmpty(response.SceneName) && PlayerPrefs.GetInt(response.SceneName, 0) == 0)
             {
                 responseButton.GetComponent<Button>().interactable = false; // Nonaktifkan tombol jika scene belum pernah dimainkan
+                Debug.Log("Scene belum pernah dimainkan: " + response.SceneName);
             }
             else
             {
+                responseButton.GetComponent<Button>().interactable = true;
                 responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response));
             }
 
@@ -79,17 +104,25 @@ public class ResponseLevelHandler : MonoBehaviour
 
         responseEvents = null;
 
-        if (!string.IsNullOrEmpty(response.SceneName))
+        if (response.SceneSprite != null)
         {
-            SceneManager.LoadScene(response.SceneName);
+            // Logika untuk menampilkan atau menggunakan sceneSprite
+            Debug.Log("Scene Sprite digunakan");
         }
-        else if (response.DialogueObject)
+
+        if (response.DialogueObject != null)
         {
             dialogueUI.ShowDialogue(response.DialogueObject);
         }
         else
         {
             dialogueUI.CloseDialogueBox();
+        }
+
+        // Jika respons memiliki SceneName, simpan untuk memuat nanti
+        if (!string.IsNullOrEmpty(response.SceneName))
+        {
+            dialogueUI.SetNextScene(response.SceneName);
         }
     }
 }

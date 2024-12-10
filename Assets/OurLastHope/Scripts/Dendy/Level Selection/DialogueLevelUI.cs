@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueLevelUI : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class DialogueLevelUI : MonoBehaviour
 
     public PlayerMovement PMD;
     public WeaponManager WM;
+
+    private string nextSceneName;
 
     private void Start()
     {
@@ -52,7 +55,6 @@ public class DialogueLevelUI : MonoBehaviour
 
             yield return null;
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
-
         }
 
         if (dialogueObject.HasResponses)
@@ -62,8 +64,13 @@ public class DialogueLevelUI : MonoBehaviour
         else
         {
             CloseDialogueBox();
-        }
 
+            // Jika ada nama scene yang disetel, muat scene tersebut setelah dialog selesai
+            if (!string.IsNullOrEmpty(nextSceneName))
+            {
+                LoadScene(nextSceneName);
+            }
+        }
     }
 
     private IEnumerator RunTypingEffect(string dialogue)
@@ -74,7 +81,7 @@ public class DialogueLevelUI : MonoBehaviour
         {
             yield return null;
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.LeftAlt))
             {
                 typewriterEffect.Stop();
             }
@@ -88,5 +95,17 @@ public class DialogueLevelUI : MonoBehaviour
         textLabel.text = string.Empty;
         PMD.enabled = true;
         WM.enabled = true;
+    }
+
+    public void SetNextScene(string sceneName)
+    {
+        nextSceneName = sceneName;
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        // Fungsi untuk memuat scene baru berdasarkan nama scene yang diberikan
+        SceneManager.LoadScene(sceneName);
+        Debug.Log("Loading scene: " + sceneName);
     }
 }

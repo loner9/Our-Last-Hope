@@ -30,11 +30,11 @@ public class DialogueLevelResponseEvents : MonoBehaviour
 
             if (events[i] != null)
             {
-                events[i].name = response.ResponseText;
+                events[i].name = response.SceneName; // Menggunakan sceneName sebagai gantinya
                 continue;
             }
 
-            events[i] = new ResponseEvent() { name = response.ResponseText };
+            events[i] = new ResponseEvent() { name = response.SceneName }; // Menggunakan sceneName sebagai gantinya
         }
     }
 }

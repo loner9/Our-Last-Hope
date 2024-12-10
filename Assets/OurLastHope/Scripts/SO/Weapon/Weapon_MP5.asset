@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf6d0f80aed3e4499a61711df0c3bec, type: 3}
   m_Name: Weapon_MP5
   m_EditorClassIdentifier: 
-  Icon: {fileID: 57700027, guid: 7da6e095d43ec1c4191a7cf002692fbd, type: 3}
+  Icon: {fileID: 21300000, guid: 6b6415b8e3b8867458a6cb733a7899ab, type: 3}
   WeaponType: 0
   Damage: 2.7
   MagazineSize: 30

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: NPCTutorial_0 2
   m_EditorClassIdentifier: 
   dialogue:
-  - Baiklah, kamu boleh ke Level 2, sudah siap?
+  - Baiklah, mari saya antar....
   responses: []
