@@ -32,8 +32,11 @@ public class PlayerMovement : MonoBehaviour
     private bool isMeleeAttackActive = false;
     private bool isFiring = false;
 
-    [SerializeField] private DialogueUI dialogueUI;
-    public DialogueUI DialogueUI => dialogueUI;
+    [Header("Dialog | Dendy")]
+    [SerializeField] private DialogueLevelUI dialogueUI;
+    [SerializeField] private DialogueLevelUI dialogueUIExtended;
+    public DialogueLevelUI DialogueUI => dialogueUI;
+    public DialogueLevelUI DialogueUIExtended => dialogueUIExtended;
     public IInteractable Interactable { get; set; }
 
     private void Awake()
@@ -108,10 +111,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (dialogueUI == null) return;
         if (dialogueUI.IsOpen) return;
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Interactable?.Interact(this);
-            Debug.Log("I Jalan");
+            Debug.Log("E Jalan");
         }
     }
 

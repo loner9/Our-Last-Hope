@@ -21,6 +21,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
             player.Interactable = this;
+            if (sc != null)
             sc.Play();
         }
     }

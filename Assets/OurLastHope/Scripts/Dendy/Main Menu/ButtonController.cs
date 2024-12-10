@@ -10,6 +10,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler
 
     public GameObject panelToShow;  // Panel yang akan ditampilkan
     public GameObject panelToClose;  // Panel yang akan ditutup
+    public GameObject panelToClose2;  // Panel kedua yang akan ditutup
     public string sceneToLoad;  // Nama scene yang akan dimuat
 
     public AudioClip buttonClickSound;  // AudioClip untuk suara klik tombol
@@ -65,6 +66,12 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler
             panelToClose.SetActive(false);
         }
 
+        // Menutup panel kedua yang ditentukan
+        if (panelToClose2 != null)
+        {
+            panelToClose2.SetActive(false);
+        }
+
         // Memuat scene yang ditentukan
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
@@ -107,6 +114,11 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler
             if (panelToClose != null)
             {
                 panelToClose.SetActive(true);
+            }
+            // Menampilkan panel kedua yang ditutup
+            if (panelToClose2 != null)
+            {
+                panelToClose2.SetActive(true);
             }
 
             // Mengatur semua tombol kembali ke idle sprite

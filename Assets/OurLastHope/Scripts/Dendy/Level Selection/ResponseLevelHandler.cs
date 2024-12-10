@@ -1,0 +1,128 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine.UI;
+
+public class ResponseLevelHandler : MonoBehaviour
+{
+    [SerializeField] private RectTransform responseBox;
+    [SerializeField] private GameObject responseContainerPrefab;
+    [SerializeField] private GameObject responseButtonTemplatePrefab;
+
+    private DialogueLevelUI dialogueUI;
+    private ResponseEvent[] responseEvents;
+
+    private List<GameObject> tempResponseContainers = new List<GameObject>();
+
+    private void Start()
+    {
+        dialogueUI = GetComponent<DialogueLevelUI>();
+        if (dialogueUI == null)
+        {
+            Debug.LogError("DialogueLevelUI tidak ditemukan pada GameObject.");
+        }
+    }
+
+    public void AddResponseEvents(ResponseEvent[] responseEvents)
+    {
+        this.responseEvents = responseEvents;
+    }
+
+    public void ShowResponses(Response[] responses)
+    {
+        foreach (Response response in responses)
+        {
+            // Instantiate responseContainer
+            GameObject responseContainer = Instantiate(responseContainerPrefab, responseBox.transform);
+            if (responseContainer == null)
+            {
+                Debug.LogError("responseContainerPrefab instantiation failed.");
+                continue;
+            }
+            responseContainer.SetActive(true);
+
+            // Instantiate responseButtonTemplate inside the responseContainer
+            GameObject responseButton = Instantiate(responseButtonTemplatePrefab, responseContainer.transform);
+            if (responseButton == null)
+            {
+                Debug.LogError("responseButtonTemplatePrefab instantiation failed.");
+                continue;
+            }
+            responseButton.SetActive(true);
+
+            // Assign sprite and check if it is assigned
+            Image responseImage = responseButton.GetComponent<Image>();
+            if (responseImage != null && response.SceneSprite != null)
+            {
+                responseImage.sprite = response.SceneSprite;
+                Debug.Log("Sprite assigned: " + response.SceneSprite.name + " for response: " + response.SceneName);
+            }
+            else
+            {
+                Debug.LogWarning("Sprite or Image Component is missing for response: " + response.SceneName);
+            }
+
+            /*responseButton.GetComponent<TMP_Text>().text = response.ResponseText; // Tetap digunakan*/
+
+            // Cek apakah scene sudah pernah dimainkan
+            if (!string.IsNullOrEmpty(response.SceneName) && PlayerPrefs.GetInt(response.SceneName, 0) == 0)
+            {
+                responseButton.GetComponent<Button>().interactable = false; // Nonaktifkan tombol jika scene belum pernah dimainkan
+                Debug.Log("Scene belum pernah dimainkan: " + response.SceneName);
+            }
+            else
+            {
+                responseButton.GetComponent<Button>().interactable = true;
+                responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response));
+            }
+
+            tempResponseContainers.Add(responseContainer);
+        }
+
+        responseBox.gameObject.SetActive(true);
+    }
+
+    private void OnPickedResponse(Response response)
+    {
+        responseBox.gameObject.SetActive(false);
+
+        foreach (GameObject container in tempResponseContainers)
+        {
+            Destroy(container);
+        }
+        tempResponseContainers.Clear();
+
+        if (responseEvents != null)
+        {
+            int responseIndex = System.Array.IndexOf(responseEvents, response);
+            if (responseIndex >= 0 && responseIndex < responseEvents.Length)
+            {
+                responseEvents[responseIndex].OnPickedResponse?.Invoke();
+            }
+        }
+
+        responseEvents = null;
+
+        if (response.SceneSprite != null)
+        {
+            // Logika untuk menampilkan atau menggunakan sceneSprite
+            Debug.Log("Scene Sprite digunakan");
+        }
+
+        if (response.DialogueObject != null)
+        {
+            dialogueUI.ShowDialogue(response.DialogueObject);
+        }
+        else
+        {
+            dialogueUI.CloseDialogueBox();
+        }
+
+        // Jika respons memiliki SceneName, simpan untuk memuat nanti
+        if (!string.IsNullOrEmpty(response.SceneName))
+        {
+            dialogueUI.SetNextScene(response.SceneName);
+        }
+    }
+}
