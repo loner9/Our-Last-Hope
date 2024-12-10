@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/OurLastHope/Scenes/Greybox Zacky/Tutorial Level.unity
     guid: c9a64999fb1b0ff45abba507a459ce9d
   - enabled: 1
-    path: Assets/OurLastHope/Scenes/Area 1.unity
+    path: Assets/OurLastHope/Scenes/Area 1 old.unity
     guid: c3af2c13ec2879c4e9111e65ea199414
   - enabled: 0
     path: Assets/OurLastHope/Scenes/MovementTest.unity
