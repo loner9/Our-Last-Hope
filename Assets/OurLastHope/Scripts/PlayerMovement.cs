@@ -109,11 +109,12 @@ public class PlayerMovement : MonoBehaviour
         ApplyRotation();
         AnimatorController();
 
+        if (dialogueUI == null) return;
         if (dialogueUI.IsOpen) return;
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Interactable?.Interact(this);
-            Debug.Log("I Jalan");
+            Debug.Log("E Jalan");
         }
     }
 

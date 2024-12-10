@@ -227,6 +227,7 @@ public class WeaponManager : MonoBehaviour
 
     private void UpdateAmmoUI()
     {
+        if (ammoText == null) return;
         ammoText.text = $"{currentAmmo}";
     }
 
