@@ -14,8 +14,10 @@ public class DialogueLevelUI : MonoBehaviour
     private ResponseLevelHandler responseHandler;
     private DialogueLevelTypewriterEffect typewriterEffect;
 
-    public PlayerMovement PMD;
-    public WeaponManager WM;
+    public PlayerMovement PlayerMovement;
+    public WeaponManager PlayerWeaponManager;
+    public Animator PlayerAnimator;
+    public PlayerAim PlayerAim;
 
     private string nextSceneName;
 
@@ -32,8 +34,10 @@ public class DialogueLevelUI : MonoBehaviour
         IsOpen = true;
         dialogueBox.SetActive(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
-        PMD.enabled = false;
-        WM.enabled = false;
+        PlayerMovement.enabled = false;
+        PlayerWeaponManager.enabled = false;
+        PlayerAnimator.enabled = false;
+        PlayerAim.enabled = false;
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)
@@ -93,8 +97,10 @@ public class DialogueLevelUI : MonoBehaviour
         IsOpen = false;
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
-        PMD.enabled = true;
-        WM.enabled = true;
+        PlayerMovement.enabled = true;
+        PlayerWeaponManager.enabled = true;
+        PlayerAnimator.enabled = true;
+        PlayerAim.enabled = true;
     }
 
     public void SetNextScene(string sceneName)
