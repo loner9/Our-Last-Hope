@@ -54,6 +54,9 @@ public class InventoryUI : MonoBehaviour
         else
         {
             inventoryTransform.gameObject.SetActive(false);
+            Color itemColor = itemIcon.color;
+            itemIcon.color = new Color(itemColor.r, itemColor.g, itemColor.b,0);
+            itemName.text = "";
             descPanel.SetActive(false);
             SelectedSlot = null;
             PauseManager.Instance.Resume();
@@ -111,6 +114,8 @@ public class InventoryUI : MonoBehaviour
         if (Inventory.Instance.InventoryItems[index] == null) return;
         {
             descPanel.SetActive(true);
+            Color itemColor = itemIcon.color;
+            itemIcon.color = new Color(itemColor.r, itemColor.g, itemColor.b, 1);
             itemIcon.sprite = Inventory.Instance.InventoryItems[index].Icon;
             itemName.text = Inventory.Instance.InventoryItems[index].Name;
             itemDescription.text = Inventory.Instance.InventoryItems[index].Description;
