@@ -5,6 +5,8 @@ public class DialogueLevelActivator : MonoBehaviour, IInteractable
     [SerializeField] private DialogueObject dialogueObject;
     public AudioSource sc;
 
+    public DialogueObject DialogueObject => dialogueObject; // Menambahkan properti ini
+
     public void UpdateDialogueObject(DialogueObject dialogueObject)
     {
         this.dialogueObject = dialogueObject;

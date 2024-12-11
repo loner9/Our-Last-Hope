@@ -6,14 +6,11 @@ public class DialogueActivator : MonoBehaviour, IInteractable
     [SerializeField] private DialogueObject dialogueObject;
     public AudioSource sc;
 
+    public DialogueObject DialogueObject => dialogueObject; // Menambahkan properti ini
+
     public void UpdateDialogueObject(DialogueObject dialogueObject)
     {
         this.dialogueObject = dialogueObject;
-    }
-
-    public void ToScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +19,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         {
             player.Interactable = this;
             if (sc != null)
-            sc.Play();
+                sc.Play();
         }
     }
 
@@ -44,6 +41,15 @@ public class DialogueActivator : MonoBehaviour, IInteractable
             if (responseEvents.DialogueObject == dialogueObject)
             {
                 player.DialogueUI.AddResponseEvents(responseEvents.Events);
+                break;
+            }
+        }
+
+        foreach (DialogueLevelResponseEvents responseEvents in GetComponents<DialogueLevelResponseEvents>())
+        {
+            if (responseEvents.DialogueObject == dialogueObject)
+            {
+                player.DialogueUIExtended.AddResponseEvents(responseEvents.Events);
                 break;
             }
         }

@@ -9,28 +9,43 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private TMP_Text textLabel;
 
     public bool IsOpen { get; private set; }
-    
-    private ResponseLevelHandler responseHandler;
+
+    private ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect;
 
-    public PlayerMovement PM;
-    public WeaponManager WM;
+    public PlayerMovement PlayerMovement;
+    public WeaponManager PlayerWeaponManager;
+    public Animator PlayerAnimator;
+    public PlayerAim PlayerAim;
 
     private void Start()
     {
         typewriterEffect = GetComponent<TypewriterEffect>();
-        responseHandler = GetComponent<ResponseLevelHandler>();
-        
+        responseHandler = GetComponent<ResponseHandler>();
+
+        if (typewriterEffect == null) Debug.LogError("TypewriterEffect is not assigned.");
+        if (responseHandler == null) Debug.LogError("ResponseHandler is not assigned.");
+        if (textLabel == null) Debug.LogError("TextLabel is not assigned.");
+        if (dialogueBox == null) Debug.LogError("DialogueBox is not assigned.");
+
         CloseDialogueBox();
     }
 
     public void ShowDialogue(DialogueObject dialogueObject)
     {
+        if (dialogueObject == null)
+        {
+            Debug.LogError("DialogueObject is null.");
+            return;
+        }
+
         IsOpen = true;
         dialogueBox.SetActive(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
-        PM.enabled = false;
-        WM.enabled = false;
+        PlayerMovement.enabled = false;
+        PlayerWeaponManager.enabled = false;
+        PlayerAnimator.enabled = false;
+        PlayerAim.enabled = false;
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)
@@ -47,8 +62,8 @@ public class DialogueUI : MonoBehaviour
             yield return RunTypingEffect(dialogue);
 
             textLabel.text = dialogue;
-            
-            if(i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break;
+
+            if (i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break;
 
             yield return null;
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
@@ -63,7 +78,6 @@ public class DialogueUI : MonoBehaviour
         {
             CloseDialogueBox();
         }
-        
     }
 
     private IEnumerator RunTypingEffect(string dialogue)
@@ -86,7 +100,9 @@ public class DialogueUI : MonoBehaviour
         IsOpen = false;
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
-        PM.enabled = true;
-        WM.enabled = true;
+        PlayerMovement.enabled = true;
+        PlayerWeaponManager.enabled = true;
+        PlayerAnimator.enabled = true;
+        PlayerAim.enabled = true;
     }
 }

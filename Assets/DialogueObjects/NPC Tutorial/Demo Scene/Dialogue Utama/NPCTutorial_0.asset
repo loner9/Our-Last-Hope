@@ -30,5 +30,9 @@ MonoBehaviour:
   responses:
   - responseText: Masih ada yang belum aku pahami
     dialogueObject: {fileID: 11400000, guid: d1249cab9924296408813640a6012a24, type: 2}
+    sceneSprite: {fileID: 21300000, guid: bbbd26f6957262a469ad19953fad06db, type: 3}
+    sceneName: 
   - responseText: Tidak, penjelasanmu sudah cukup jelas
     dialogueObject: {fileID: 11400000, guid: 7d3a962bd4627af40919c4c273272f98, type: 2}
+    sceneSprite: {fileID: 21300000, guid: bbbd26f6957262a469ad19953fad06db, type: 3}
+    sceneName: 
