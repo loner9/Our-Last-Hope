@@ -53,8 +53,20 @@ PrefabInstance:
       value: 3D_Pharmacy
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b8d14e05c9899f84db341747ab093b6c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b8d14e05c9899f84db341747ab093b6c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076239999573986708, guid: b8d14e05c9899f84db341747ab093b6c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712483885470142265, guid: b8d14e05c9899f84db341747ab093b6c, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
