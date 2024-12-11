@@ -22,6 +22,7 @@ public class CameraObjectTransparency : MonoBehaviour
         for (int i = 0; i < hitCount; i++)
         {
             RaycastHit hit = rayHits[i];
+            // Debug.Log("Hit by ray : " + hit.collider.name);
             Renderer rend = hit.collider.GetComponent<Renderer>();
             if (rend != null)
             {
@@ -31,6 +32,23 @@ public class CameraObjectTransparency : MonoBehaviour
                 if (!previousObstructingObjects.Contains(rend))
                 {
                     SetSurfaceType(rend, true);
+                }
+            }
+            else if (hit.collider.transform.childCount > 0)
+            {
+                foreach (Transform child in hit.collider.transform)
+                {
+                    Renderer childRend = child.GetComponent<Renderer>();
+                    if (childRend != null)
+                    {
+                        currentObstructingObjects.Add(childRend);
+
+                        // Jika objek baru ditemukan, ubah ke Transparent
+                        if (!previousObstructingObjects.Contains(childRend))
+                        {
+                            SetSurfaceType(childRend, true);
+                        }
+                    }
                 }
             }
         }

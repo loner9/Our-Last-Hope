@@ -25,6 +25,7 @@ public class FadeOutObstaclesURP : MonoBehaviour
         foreach (RaycastHit hit in hits)
         {
             Renderer rend = hit.collider.GetComponent<Renderer>();
+            
             if (rend != null)
             {
                 if (fadingOutObjects.ContainsKey(rend))
@@ -35,6 +36,22 @@ public class FadeOutObstaclesURP : MonoBehaviour
                 {
                     Coroutine fadeCoroutine = StartCoroutine(FadeMaterial(rend, 0.3f));
                     fadingOutObjects[rend] = fadeCoroutine;
+                }
+            }else if (hit.collider.transform.childCount > 0){
+                foreach (Transform child in hit.collider.transform){
+                    Renderer childRend = child.GetComponent<Renderer>();
+                    if (childRend != null)
+                    {
+                        if (fadingOutObjects.ContainsKey(childRend))
+                        {
+                            objectsToRestore.Remove(childRend);
+                        }
+                        else
+                        {
+                            Coroutine fadeCoroutine = StartCoroutine(FadeMaterial(childRend, 0.3f));
+                            fadingOutObjects[childRend] = fadeCoroutine;
+                        }
+                    }
                 }
             }
         }

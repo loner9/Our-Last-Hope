@@ -77,6 +77,7 @@ public class InventoryUI : MonoBehaviour
 
     public void UseItem()
     {
+        if (SelectedSlot == null) return;
         Inventory.Instance.UseItem(SelectedSlot.index);
     }
 
@@ -88,6 +89,7 @@ public class InventoryUI : MonoBehaviour
 
     public void EquipItem()
     {
+        if (SelectedSlot == null) return;
         Debug.Log("Equipping " + SelectedSlot.index);
         Inventory.Instance.EquipItem(SelectedSlot.index);
     }
