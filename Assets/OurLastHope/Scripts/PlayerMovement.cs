@@ -97,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
         ApplyRotation();
         AnimatorController();
 
+        if (dialogueUIExtended == null || dialogueUI == null) return;
         if (dialogueUIExtended.IsOpen || dialogueUI.IsOpen) return;
 
         if (Input.GetKeyDown(KeyCode.E))

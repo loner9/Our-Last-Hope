@@ -17,7 +17,10 @@ public class DialogueLevelActivator : MonoBehaviour, IInteractable
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerMovement player))
         {
             player.Interactable = this;
-            sc.Play();
+            if (sc != null)
+            {
+                sc.Play();
+            }
         }
     }
 
