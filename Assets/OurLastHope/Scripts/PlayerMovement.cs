@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         ApplyMovement();
-        ApplyRotation();
+        //ApplyRotation();
         AnimatorController();
 
         if (dialogueUIExtended.IsOpen || dialogueUI.IsOpen) return;
@@ -113,15 +113,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void ApplyRotation()
+    /*private void ApplyRotation()
     {
-        Vector3 lookingDirection = player.aim.GetMousePosition() - transform.position;
+        //Vector3 lookingDirection = player.aim.GetMousePosition() - transform.position;
+        Vector3 lookingDirection = transform.forward;
         lookingDirection.y = 0f;
         lookingDirection.Normalize();
 
         Quaternion desiredDirection = Quaternion.LookRotation(lookingDirection);
         transform.rotation = Quaternion.Slerp(transform.rotation, desiredDirection, turnSpeed * Time.deltaTime);
-    }
+    }*/
 
     private void ApplyMovement()
     {

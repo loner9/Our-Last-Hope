@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc92cc2f17423b2408e04324597c279e, type: 3}
+  m_Name: Narative  2.1 Mulyo
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Pantas saja aku tidak mengenalimu
+  - Hampir semua orang ditempat ini aku kenal loh
+  - Kalau begitu, siapa namamu?
+  responses:
+  - responseText: Namaku Mulyo
+    dialogueObject: {fileID: 11400000, guid: b07d54cf0e9cae741a1e7fba8c4c0500, type: 2}
+    sceneSprite: {fileID: 0}
+    sceneName: 

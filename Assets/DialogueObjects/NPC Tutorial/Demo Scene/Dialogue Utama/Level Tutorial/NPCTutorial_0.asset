@@ -13,22 +13,20 @@ MonoBehaviour:
   m_Name: NPCTutorial_0
   m_EditorClassIdentifier: 
   dialogue:
-  - Hai, aku adalah NPC Tutorial. Coba tekan spasi pada keyboardmu........
+  - "Hai, Namaku Anto. \nCoba tekan spasi pada keyboardmu........"
   - 'Bagus!!
 
     Untuk melanjutkan dialogue, kita harus menekan spasi. Jadi jangan
     lupa yaa!!!'
-  - 'Di dalam dialogue, terkadang ada beberapa dialogue yang membutuhkan response
+  - 'Saat sedang berinteraksi, terkadang ada beberapa dialogue yang membutuhkan response
     atau jawaban dari kita...
 
 '
   - Maka dari itu, kamu wajib merespon NPC tersebut yaa!!
-  - 'Jangan buat dia menunggu jawabanmu terlalu lama....
-
-    xd'
+  - Jangan buat dia menunggu jawabanmu terlalu lama....
   - Gimana, masih ada yang mau ditanyakan?
   responses:
-  - responseText: Masih ada yang belum aku pahami
+  - responseText: Kamu Siapa?
     dialogueObject: {fileID: 11400000, guid: d1249cab9924296408813640a6012a24, type: 2}
     sceneSprite: {fileID: 21300000, guid: bbbd26f6957262a469ad19953fad06db, type: 3}
     sceneName: 

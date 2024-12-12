@@ -10,8 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc92cc2f17423b2408e04324597c279e, type: 3}
-  m_Name: NPCTutorial_0 2
+  m_Name: Narative  2.2 Mulyo
   m_EditorClassIdentifier: 
   dialogue:
-  - Baiklah, mari saya antar....
-  responses: []
+  - Baiklah Mulyo, salam kenal
+  - Namaku Anto
+  - Aku adalah penanggung jawab pusat evakuasi ini
+  - Kamu datang dari mana?
+  responses:
+  - responseText: Aku dari bandung
+    dialogueObject: {fileID: 11400000, guid: a9aa7d86729f76c40b058efb24db998a, type: 2}
+    sceneSprite: {fileID: 0}
+    sceneName: 
