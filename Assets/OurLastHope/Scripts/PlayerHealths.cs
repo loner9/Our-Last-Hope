@@ -64,6 +64,20 @@ public class PlayerHealths : MonoBehaviour, IDamagable
                 takeDamage(2f);
                 istrong = true;
             }
+            else if (other.gameObject.name.Equals("kkiri"))
+            {
+                isreg = true;
+                Debug.Log("reg");
+                takeDamage(7f);
+                
+            }
+            else if (other.gameObject.name.Equals("kkanan"))
+            {
+                Debug.Log("fas");
+                takeDamage(3f);
+                isrun = true;
+            }
+            
         }
     }
 
