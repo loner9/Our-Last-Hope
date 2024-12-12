@@ -97,7 +97,7 @@ public class Inventory : MonoBehaviour
         return ammo;
     }
 
-    public void ReloadAmmo(string item, int quantity, int index)
+    public int ReloadAmmo(string item, int quantity, int index)
     {
         List<int> indexes = CheckAmmoAvailable(item);
         int currentAmmo = 0;
@@ -116,9 +116,14 @@ public class Inventory : MonoBehaviour
             if (inventoryItems[index] is ItemWeapon itemWeapon)
             {
                 itemWeapon.currentAmmo += quantityToUse;
+                currentAmmo = itemWeapon.currentAmmo;
                 Debug.Log("CURRENT AMMO " + itemWeapon.currentAmmo);
             }
+
+            return currentAmmo;
         }
+
+        return currentAmmo;
     }
 
     public void RemoveItem(int index)

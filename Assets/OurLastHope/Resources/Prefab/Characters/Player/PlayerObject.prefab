@@ -2876,7 +2876,7 @@ Transform:
   m_GameObject: {fileID: 1183863853765029239}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.16, y: 0, z: 1.913}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3511,7 +3511,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5512456648991572163}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8854806832270913137}
+        m_TargetAssemblyTypeName: NextLevel, Assembly-CSharp
+        m_MethodName: nextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1278398479096888442
 GameObject:
   m_ObjectHideFlags: 0
@@ -7036,6 +7048,7 @@ Transform:
   - {fileID: 6583581056024384943}
   - {fileID: 8097007887931038158}
   - {fileID: 4268743510432224398}
+  - {fileID: 1247539672450675995}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2325222467676861026
@@ -11402,7 +11415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Carilah NPC Level Selection Untuk memilih level
+  m_text: Bertahanlah dan bersihkan area dari zombie.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11974,7 +11987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5336c7c6090a2b04c848ef7b96126544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3328950978269679435}
+  player: {fileID: 6578503968258401746}
   obstructionLayer:
     serializedVersion: 2
     m_Bits: 2048
@@ -11990,7 +12003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac67a5800f4db9c4bb29145efd22aca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3328950978269679435}
+  player: {fileID: 6578503968258401746}
   obstructionLayer:
     serializedVersion: 2
     m_Bits: 2048
@@ -28296,6 +28309,51 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8916368481055058784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1247539672450675995}
+  - component: {fileID: 8854806832270913137}
+  m_Layer: 0
+  m_Name: nextLevel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1247539672450675995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916368481055058784}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4941161767846992784}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8854806832270913137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916368481055058784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83222d9abffc88845afd75eb531b3a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: Area 3
 --- !u!1 &8952088355085376869
 GameObject:
   m_ObjectHideFlags: 0

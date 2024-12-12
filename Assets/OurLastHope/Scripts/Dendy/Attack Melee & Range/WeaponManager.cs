@@ -154,10 +154,10 @@ public class WeaponManager : MonoBehaviour
         if (isReloading) return;
         List<int> indexes = Inventory.Instance.CheckAmmoAvailable(weaponId);
         if (indexes.Count == 0) return;
-        Inventory.Instance.ReloadAmmo(weaponId, weaponMags, weaponIndex);
+        int ammo = Inventory.Instance.ReloadAmmo(weaponId, weaponMags, weaponIndex);
         animator.SetTrigger("Reload");
 
-        currentAmmo = weaponMags; // Set kembali ke nilai maksimum setelah reload
+        currentAmmo = ammo; // Set kembali ke nilai maksimum setelah reload
         UpdateAmmoUI();
     }
 
