@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyDeadHandler : MonoBehaviour
 {
+    public bool dead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,8 @@ public class EnemyDeadHandler : MonoBehaviour
     }
 
     public void Dead(){
-        Invoke("Destroy", 3.0f);
+        dead = true;
+        Invoke("Destroy", 30.0f);
     }
 
     public void Destroy(){

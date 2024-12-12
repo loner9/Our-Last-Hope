@@ -31,7 +31,11 @@ public class PauseManager : MonoBehaviour
         zombies = GameObject.FindGameObjectsWithTag("enemy");
         foreach (GameObject zombie in zombies)
         {
-            zombie.GetComponent<EnemyBehavior>().enabled = true;
+            if (zombie.GetComponent<EnemyBehavior>() != null){
+                zombie.GetComponent<EnemyBehavior>().enabled = true;
+            }else {
+                zombie.GetComponent<BossEnemy>().enabled = true;
+            }
             zombie.GetComponent<NavMeshAgent>().enabled = true;
             zombie.GetComponent<Animator>().enabled = true;
         }
@@ -46,7 +50,11 @@ public class PauseManager : MonoBehaviour
         zombies = GameObject.FindGameObjectsWithTag("enemy");
         foreach (GameObject zombie in zombies)
         {
-            zombie.GetComponent<EnemyBehavior>().enabled = false;
+            if (zombie.GetComponent<EnemyBehavior>() != null){
+                zombie.GetComponent<EnemyBehavior>().enabled = false;
+            }else {
+                zombie.GetComponent<BossEnemy>().enabled = false;
+            }
             zombie.GetComponent<NavMeshAgent>().enabled = false;
             zombie.GetComponent<Animator>().enabled = false;
         }
