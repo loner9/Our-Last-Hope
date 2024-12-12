@@ -109,8 +109,12 @@ public class SpawnerWave : MonoBehaviour
 
             // Check if all zombies are destroyed
             GameObject[] zombies = GameObject.FindGameObjectsWithTag("enemy");
+            // if (zombies.All(x => x.GetComponent<EnemyDeadHandler>().dead == true)){
 
-            if (zombies.Length == 0)
+            // }
+
+            // if (zombies.Length == 0)
+            if (zombies.All(x => x.GetComponent<EnemyDeadHandler>().dead == true))
             {
                 // spawnActive = false;
 

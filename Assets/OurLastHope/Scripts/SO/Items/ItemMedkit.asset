@@ -21,4 +21,4 @@ MonoBehaviour:
   IsStackable: 1
   MaxStack: 10
   Quantity: 0
-  HealthValue: 2
+  HealthValue: 3

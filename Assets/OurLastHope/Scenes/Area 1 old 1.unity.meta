@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/OurLastHope/Scenes/Area 1 old 1.unity.meta
 guid: fd1699679c56d3f4c834df62c8897ef5
+========
+guid: f7677eaebc46a1842a3d634fedc56100
+folderAsset: yes
+>>>>>>>> Boss-Behavior-:Assets/OurLastHope/Resources/Art/Environment/Materials.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -34,9 +34,10 @@ public class EnemyHealthBar : MonoBehaviour
         {
             _slider.gameObject.SetActive(true);
         }
-        if (currentValue < 0)
+        if (currentValue <= 0)
         {
             _slider.value = 0;
+            _slider.gameObject.SetActive(false);
         }
         else
         {
