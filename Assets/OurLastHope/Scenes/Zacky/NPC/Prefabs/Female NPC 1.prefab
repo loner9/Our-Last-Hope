@@ -118,7 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5036715298031604469}
   animator: {fileID: 5654392823757872847}
-  idleTime: 3
+  idleTime: 5
   patrolRadius: 10
 --- !u!195 &5036715298031604469
 NavMeshAgent:
