@@ -25,18 +25,25 @@ public class GameManager : MonoBehaviour
 
     public void TogglePause()
     {
-        if (pausePanel.activeSelf)
-        {
-            pausePanel.SetActive(false);
-            PauseManager.Instance.Resume();
-            invtory.GetComponent<InventoryUI>().enabled = true;
-        }
-        else
+        // if (pausePanel.activeSelf)
+        // {
+        //     pausePanel.SetActive(false);
+        //     PauseManager.Instance.Resume();
+        //     invtory.GetComponent<InventoryUI>().enabled = true;
+        // }
+        // else
         {
             pausePanel.SetActive(true);
             PauseManager.Instance.Pause();
             invtory.GetComponent<InventoryUI>().enabled = false;
         }
+    }
+
+    public void ToggleResume()
+    {
+        pausePanel.SetActive(false);
+        PauseManager.Instance.Resume();
+        invtory.GetComponent<InventoryUI>().enabled = true;
     }
 
     public void GameComplete(){
