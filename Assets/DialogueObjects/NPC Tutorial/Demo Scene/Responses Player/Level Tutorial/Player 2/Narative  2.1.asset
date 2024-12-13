@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc92cc2f17423b2408e04324597c279e, type: 3}
+  m_Name: Narative  2.1
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Gausah formal begitu, panggil aja Bian
+  - Saya pemandu jalan disini
+  - Kamu mau kemana?
+  responses:
+  - responseText: Saya mau ke titik evakuasi
+    dialogueObject: {fileID: 11400000, guid: aeeff03e46b9bf04ab27161459f28941, type: 2}
+    sceneSprite: {fileID: 0}
+    sceneName: 
+  - responseText: Saya mau cari angin
+    dialogueObject: {fileID: 11400000, guid: 9e22acdfbecb34449bf45cc1ae30e2e5, type: 2}
+    sceneSprite: {fileID: 0}
+    sceneName: 

@@ -18,7 +18,7 @@ MonoBehaviour:
   - Aku adalah penanggung jawab pusat evakuasi ini
   - Kamu datang dari mana?
   responses:
-  - responseText: Aku dari bandung
+  - responseText: Aku dari Jakarta
     dialogueObject: {fileID: 11400000, guid: a9aa7d86729f76c40b058efb24db998a, type: 2}
     sceneSprite: {fileID: 0}
     sceneName: 

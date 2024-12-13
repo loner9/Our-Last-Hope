@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - Pantas saja aku tidak mengenalimu
-  - Hampir semua orang ditempat ini aku kenal loh
+  - Karena hampir semua orang ditempat ini aku mengenalinya
   - Kalau begitu, siapa namamu?
   responses:
   - responseText: Namaku Mulyo

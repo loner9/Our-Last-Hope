@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Narative  1
   m_EditorClassIdentifier: 
   dialogue:
-  - Akhirnya aku sampai di pusat evakuasi setelah perjalanan panjang yang aku lalui
-  - Sepertinya aku akan aman disini
-  - Atau mungkin memulai kehidupan baru di dunia yang kiamat ini
-  - Ada penjaga disana, aku harus menemuinya dulu untuk perkenalan
+  - Akhirnya aku sampai di pusat evakuasi setelah perjalanan yang tidak mudah
+  - Aku bisa bernafas lega dan memulai kehidupan baru disini
+  - Sepertinya penjaga itu mengawasiku
+  - Aku harus menemuinya untuk meminta pertolongan
   responses: []

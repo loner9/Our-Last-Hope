@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Narative  2
   m_EditorClassIdentifier: 
   dialogue:
-  - Berhenti disana!!
-  - Wajahmu asing, apakah kamu orang baru?
+  - Tolong jangan mendekat!!
+  - Aku akan melakukan pemeriksaan terlebih dahulu
+  - Tunggu sebentar, wajahmu begitu asing, apakah kamu orang baru?
   responses:
   - responseText: Iya benar, aku baru saja tiba di tempat ini
     dialogueObject: {fileID: 11400000, guid: c53ed65607b659e4ca0cebfb76506b19, type: 2}
