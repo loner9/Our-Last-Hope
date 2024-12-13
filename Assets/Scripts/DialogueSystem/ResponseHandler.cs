@@ -10,6 +10,7 @@ public class ResponseHandler : MonoBehaviour
     [SerializeField] private GameObject responseButtonTemplatePrefab;
 
     private DialogueUI dialogueUI;
+    private DialogueUIAwake dialogueUI1;
     private ResponseEvent[] responseEvents;
 
     private List<GameObject> tempResponseContainers = new List<GameObject>();
@@ -17,6 +18,7 @@ public class ResponseHandler : MonoBehaviour
     private void Start()
     {
         dialogueUI = GetComponent<DialogueUI>();
+        dialogueUI1 = GetComponent<DialogueUIAwake>();
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)
@@ -69,10 +71,12 @@ public class ResponseHandler : MonoBehaviour
         if (response.DialogueObject)
         {
             dialogueUI.ShowDialogue(response.DialogueObject);
+            //dialogueUI1.ShowDialogue(response.DialogueObject);
         }
         else
         {
             dialogueUI.CloseDialogueBox();
+            //dialogueUI1.CloseDialogueBox();
         }
     }
 }
