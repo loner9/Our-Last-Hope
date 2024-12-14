@@ -12111,6 +12111,7 @@ GameObject:
   - component: {fileID: 8691606783478240564}
   - component: {fileID: 5582064075162754262}
   - component: {fileID: 3014525975473350215}
+  - component: {fileID: 6160884406132915797}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -12284,6 +12285,20 @@ CapsuleCollider:
   m_Height: 1.36
   m_Direction: 1
   m_Center: {x: 0, y: 0.84, z: -0.12}
+--- !u!114 &6160884406132915797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3597642947026426346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0baea312bb2014792bfe18b37fc289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnSpeed: 10
+  applyBool: 1
 --- !u!1 &3653668634556040102
 GameObject:
   m_ObjectHideFlags: 0
@@ -20190,7 +20205,7 @@ MonoBehaviour:
   panelToShow: {fileID: 0}
   panelToClose: {fileID: 0}
   panelToClose2: {fileID: 0}
-  sceneToLoad: 1
+  sceneToLoad: MainHub Sore
   buttonClickSound: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
   buttonHoverSound: {fileID: 8300000, guid: 7e5745afffbcd0e4aaa8fce19523a3d2, type: 3}
 --- !u!114 &3433688749621969595
@@ -29487,12 +29502,9 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2469595760163226845, guid: b6c0692570fe9a043a71f8dd043b0231, type: 3}
       insertIndex: 0
-      addedObject: {fileID: 6573295490719837875}
-    - targetCorrespondingSourceObject: {fileID: 2469595760163226845, guid: b6c0692570fe9a043a71f8dd043b0231, type: 3}
-      insertIndex: 1
       addedObject: {fileID: 675492359082506006}
     - targetCorrespondingSourceObject: {fileID: 2469595760163226845, guid: b6c0692570fe9a043a71f8dd043b0231, type: 3}
-      insertIndex: 2
+      insertIndex: 1
       addedObject: {fileID: 8749713805389148052}
     - targetCorrespondingSourceObject: {fileID: 2469595760163226845, guid: b6c0692570fe9a043a71f8dd043b0231, type: 3}
       insertIndex: -1
@@ -29506,6 +29518,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2469595760163226845, guid: b6c0692570fe9a043a71f8dd043b0231, type: 3}
       insertIndex: -1
       addedObject: {fileID: 55234094916563901}
+    - targetCorrespondingSourceObject: {fileID: 2469595760163226845, guid: b6c0692570fe9a043a71f8dd043b0231, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6573295490719837875}
     - targetCorrespondingSourceObject: {fileID: 1793810059484006404, guid: b6c0692570fe9a043a71f8dd043b0231, type: 3}
       insertIndex: 2
       addedObject: {fileID: 7207874577828027654}

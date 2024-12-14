@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class showObjectDialogueBridge : MonoBehaviour {
 
     public GameObject showObject;
-    public int sceneIndex;
+    public string sceneName;
 
     public bool showBool;
 
@@ -18,7 +18,7 @@ public class showObjectDialogueBridge : MonoBehaviour {
     }
 
     public void ChangeScene() {
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(sceneName);
     }
    
 }

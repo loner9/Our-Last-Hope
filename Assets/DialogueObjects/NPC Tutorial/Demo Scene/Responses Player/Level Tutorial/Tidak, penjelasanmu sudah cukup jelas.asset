@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Tidak, penjelasanmu sudah cukup jelas
   m_EditorClassIdentifier: 
   dialogue:
-  - Hebat, kalau ada yang mau ditanyakan, kamu bisa datang lagi menemuiku.
+  - Baiklah Mul, jangan sungkan untuk bertanya!. Ngomong ngomong jika kamu ingin
+    kembali, berjalanlah melewati gerbang hingga melalui tenda ya!
   responses: []

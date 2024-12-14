@@ -75,6 +75,8 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler
         // Memuat scene yang ditentukan
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
+            Debug.Log("Memuat scene: " + sceneToLoad);
+            if (sceneToLoad == "MainHub Sore" && PlayerPrefs.GetInt("HasLaunched", 0) == 0) return;
             SceneManager.LoadScene(sceneToLoad);
         }
     }
