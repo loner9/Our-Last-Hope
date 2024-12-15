@@ -17,6 +17,7 @@ public class DialogueUIAwake : MonoBehaviour
     public WeaponManager PlayerWeaponManager;
     public PlayerAim PlayerAim;
     public ApplyRotation ApplyRotation;
+    public ObjectController ObjectController;
 
     [SerializeField] private DialogueObject narativeDialogue;
 
@@ -52,6 +53,7 @@ public class DialogueUIAwake : MonoBehaviour
         PlayerWeaponManager.enabled = false;
         PlayerAim.enabled = false;
         ApplyRotation.applyBool = false;
+        ObjectController.enabled = false;
     }
 
     public void AddResponseEvents(ResponseEvent[] responseEvents)
@@ -113,6 +115,7 @@ public class DialogueUIAwake : MonoBehaviour
         PlayerWeaponManager.enabled = true;
         //PlayerAim.enabled = true;
         //ApplyRotation.applyBool = true;
+        ObjectController.enabled = true;
 
         Debug.Log("Dialogue box closed.");
     }

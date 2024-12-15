@@ -24,6 +24,7 @@ public class TypewriterEffect : MonoBehaviour
         typingCoroutine = StartCoroutine(TypeText(textToType, textLabel));
         if (dialogueAudio != null)
         {
+            dialogueAudio.loop = true;
             dialogueAudio.Play();
         }
     }

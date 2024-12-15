@@ -27,9 +27,9 @@ public class GameManager : MonoBehaviour
     {
         if (pausePanel.activeSelf)
         {
-            pausePanel.SetActive(false);
+            /*pausePanel.SetActive(false);
             PauseManager.Instance.Resume();
-            invtory.GetComponent<InventoryUI>().enabled = true;
+            invtory.GetComponent<InventoryUI>().enabled = true;*/
         }
         else
         {
