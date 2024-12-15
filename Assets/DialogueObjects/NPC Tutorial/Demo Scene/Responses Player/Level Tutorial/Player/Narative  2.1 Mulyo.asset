@@ -17,7 +17,7 @@ MonoBehaviour:
   - Karena hampir semua orang ditempat ini aku mengenalinya
   - Kalau begitu, siapa namamu?
   responses:
-  - responseText: Namaku Mulyo
+  - responseText: Namaku Mulyono, kamu bisa memanggilku Mulyo
     dialogueObject: {fileID: 11400000, guid: b07d54cf0e9cae741a1e7fba8c4c0500, type: 2}
     sceneSprite: {fileID: 0}
     sceneName: 

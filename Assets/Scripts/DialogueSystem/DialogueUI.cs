@@ -88,7 +88,7 @@ public class DialogueUI : MonoBehaviour
         {
             yield return null;
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.LeftAlt))
             {
                 typewriterEffect.Stop();
             }

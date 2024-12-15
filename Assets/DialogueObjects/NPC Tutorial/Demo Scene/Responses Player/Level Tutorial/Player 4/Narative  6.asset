@@ -16,10 +16,10 @@ MonoBehaviour:
   - Kamu sudah puas kelilingnya?
   responses:
   - responseText: Sudah, aku perlu istirahat
-    dialogueObject: {fileID: 11400000, guid: 1f0f98371941b7648a45d2c71b6cd2ae, type: 2}
+    dialogueObject: {fileID: 11400000, guid: 66b6e9f4d3357d046a44e038dab6569c, type: 2}
     sceneSprite: {fileID: 0}
-    sceneName: 
+    sceneName: MainHub Sore
   - responseText: Belum nih, aku masih mau mencoba beberapa senjata lagi
     dialogueObject: {fileID: 11400000, guid: 32e8e48a6101970499bec12024b2d2b3, type: 2}
     sceneSprite: {fileID: 0}
-    sceneName: 
+    sceneName: MainHub Sore

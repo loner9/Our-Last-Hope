@@ -15,5 +15,5 @@ MonoBehaviour:
   dialogue:
   - Selanjutnya, aku akan memberitahumu mengenai "HINT CONTROLL" yang akan membantumu
     menyelesaikan permainan
-  - Tekan tombol F1 untuk membukan panel hint
+  - Tekan tombol F1 untuk membuka Hint Panel
   responses: []

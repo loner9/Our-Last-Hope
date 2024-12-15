@@ -15,7 +15,7 @@ MonoBehaviour:
   dialogue:
   - Baiklah, kamu boleh masuk ke dalam
   - Kamu boleh taruh barang bawaanmu di tenda yang ada di depan pusat kesehatan
-  - Setelah itu, kamu temui aku di titik evakuasi
+  - Setelah itu, kamu temui aku di Training Camp
   responses:
   - responseText: Terima kasih banyak
     dialogueObject: {fileID: 11400000, guid: 16c21fd2c8e99714c96c2ada8748bc98, type: 2}

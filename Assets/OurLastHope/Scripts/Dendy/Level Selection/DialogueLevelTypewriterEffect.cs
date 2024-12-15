@@ -7,6 +7,7 @@ using TMPro;
 public class DialogueLevelTypewriterEffect : MonoBehaviour
 {
     [SerializeField] private float typewriterSpeed = 50f;
+    [SerializeField] private AudioSource dialogueAudio;
 
     public bool IsRunning { get; private set; }
 
@@ -18,7 +19,6 @@ public class DialogueLevelTypewriterEffect : MonoBehaviour
 
     private Coroutine typingCoroutine;
     private TMP_Text textLabel;
-
     private string textToType;
 
     public void Run(string textToType, TMP_Text textLabel)
@@ -27,6 +27,11 @@ public class DialogueLevelTypewriterEffect : MonoBehaviour
         this.textLabel = textLabel;
 
         typingCoroutine = StartCoroutine(TypeText());
+        if (dialogueAudio != null)
+        {
+            dialogueAudio.loop = true;
+            dialogueAudio.Play();
+        }
     }
 
     public void Stop()
@@ -78,6 +83,11 @@ public class DialogueLevelTypewriterEffect : MonoBehaviour
     {
         IsRunning = false;
         textLabel.maxVisibleCharacters = textToType.Length;
+
+        if (dialogueAudio != null)
+        {
+            dialogueAudio.Stop();
+        }
     }
 
     private bool IsPunctuation(char character, out float waitTime)

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Narative  2.2 Mulyo
   m_EditorClassIdentifier: 
   dialogue:
-  - Baiklah Mulyo, salam kenal
+  - Baiklah Mulyono, salam kenal
   - Namaku Anto
   - Aku adalah penanggung jawab pusat evakuasi ini
+  - Atau lebih dikenal sebagai Main Hub
   - Kamu datang dari mana?
   responses:
   - responseText: Aku dari Jakarta

@@ -17,9 +17,17 @@ MonoBehaviour:
   responses:
   - responseText: Bagaimana cara melanjutkan dialogue?
     dialogueObject: {fileID: 11400000, guid: ab755b18058a3e2428bc54b3e5001cfd, type: 2}
-  - responseText: Apa itu response?
-    dialogueObject: {fileID: 0}
+    sceneSprite: {fileID: 0}
+    sceneName: 
   - responseText: Apakah dialogue ini bisa dilewati?
     dialogueObject: {fileID: 11400000, guid: cf5fee21894da064f8ea2becc3d87791, type: 2}
+    sceneSprite: {fileID: 0}
+    sceneName: 
   - responseText: Aku akan kembali lagi nanti
     dialogueObject: {fileID: 11400000, guid: bf1a60eca02fe124485c3199a9bd3f85, type: 2}
+    sceneSprite: {fileID: 0}
+    sceneName: 
+  - responseText: Sudah cukup, aku mau kembali ke MainHub
+    dialogueObject: {fileID: 11400000, guid: da6ef2bfa073252468eb61f69205fb07, type: 2}
+    sceneSprite: {fileID: 0}
+    sceneName: MainHub Sore

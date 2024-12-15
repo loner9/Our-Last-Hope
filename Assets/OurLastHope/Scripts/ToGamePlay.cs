@@ -7,7 +7,8 @@ using UnityEngine.Video;
 public class ToGamePlay : MonoBehaviour
 {
     VideoPlayer videoPlayer;
-    [SerializeField] string sceneName;
+    //[SerializeField] string sceneName;
+    [SerializeField] GameObject fadeIn;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,8 @@ public class ToGamePlay : MonoBehaviour
     IEnumerator checkFinished(){
         yield return new WaitForSeconds(0.5f);
         if(!videoPlayer.isPlaying){
-            SceneManager.LoadScene(sceneName);
+            //SceneManager.LoadScene(sceneName);
+            fadeIn.SetActive(true);
         }
     }
 }
