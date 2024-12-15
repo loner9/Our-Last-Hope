@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 7092668379018764903}
   - component: {fileID: 5929272429635527088}
   - component: {fileID: 2580153160995871141}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftHandTargetDummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4774,7 +4774,7 @@ GameObject:
   - component: {fileID: 8314293995343567806}
   - component: {fileID: 8436436743423351475}
   - component: {fileID: 8952232067411002288}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftHandTargetDummy (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9731,7 +9731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4979894781845181788}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10688,7 +10688,7 @@ GameObject:
   - component: {fileID: 353549685263948744}
   - component: {fileID: 7899039089180793359}
   - component: {fileID: 6167230955692528260}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: 3D_Knife
   m_TagString: melee
   m_Icon: {fileID: 0}
@@ -11338,7 +11338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6820643525216729601}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12313,7 +12313,7 @@ GameObject:
   - component: {fileID: 2488384445316422005}
   - component: {fileID: 991305096213231942}
   - component: {fileID: 5615752093081556315}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: 3D_Machete
   m_TagString: melee
   m_Icon: {fileID: 0}
@@ -24473,7 +24473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5915706006179780696}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24952,7 +24952,7 @@ GameObject:
   - component: {fileID: 5674744281852990211}
   - component: {fileID: 8931860759079564051}
   - component: {fileID: 6581283714658608137}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bat
   m_TagString: melee
   m_Icon: {fileID: 0}
@@ -25076,7 +25076,7 @@ GameObject:
   - component: {fileID: 4182977682358613272}
   - component: {fileID: 6544774563825237078}
   - component: {fileID: 2225170306904057259}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LeftHandTargetDummy (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
