@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/OurLastHope/Scenes/Area 2 new.unity.meta
 guid: 705fe36fdd01b2a40b54215db00b9538
+========
+guid: 93075bed9950252408ce406c0d61b2ef
+folderAsset: yes
+>>>>>>>> feature/fade_out:Assets/OurLastHope/Scenes/Zacky/Texture.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

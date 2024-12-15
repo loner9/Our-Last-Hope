@@ -8,21 +8,30 @@ public class EnemyDeadHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void Dead(){
+    public void Dead()
+    {
         dead = true;
         Invoke("Destroy", 30.0f);
     }
 
-    public void Destroy(){
-        Destroy(gameObject.transform.parent.gameObject);
+    public void Destroy()
+    {
+        if (gameObject.transform.parent != null)
+        {
+            Destroy(gameObject.transform.parent.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

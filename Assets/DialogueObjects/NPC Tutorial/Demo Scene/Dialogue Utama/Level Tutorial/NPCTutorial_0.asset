@@ -26,7 +26,7 @@ MonoBehaviour:
   - Jangan buat dia menunggu jawabanmu terlalu lama....
   - Gimana, masih ada yang mau ditanyakan?
   responses:
-  - responseText: Kamu Siapa?
+  - responseText: Masih Ada yang belum aku pahami
     dialogueObject: {fileID: 11400000, guid: d1249cab9924296408813640a6012a24, type: 2}
     sceneSprite: {fileID: 21300000, guid: bbbd26f6957262a469ad19953fad06db, type: 3}
     sceneName: 

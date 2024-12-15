@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3D_WoodenWall-2,5m
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 30b4f639d8a00774a904d52cc0d2737c, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 30b4f639d8a00774a904d52cc0d2737c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

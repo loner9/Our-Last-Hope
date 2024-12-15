@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/OurLastHope/Scenes/Area 5.unity.meta
 guid: 162462e6737d67d4580ca3e05eadbe39
 DefaultImporter:
+========
+guid: 3f0538115b5a7414c87747dccea62822
+NativeFormatImporter:
+>>>>>>>> feature/fade_out:Assets/New Terrain 6.asset.meta
   externalObjects: {}
+  mainObjectFileID: 15600000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
