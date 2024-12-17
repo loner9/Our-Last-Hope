@@ -17,6 +17,7 @@ public class DialogueUI : MonoBehaviour
     public WeaponManager PlayerWeaponManager;
     public Animator PlayerAnimator;
     public PlayerAim PlayerAim;
+    public event Action OnDialogueClose;
 
     private void Start()
     {
@@ -77,6 +78,7 @@ public class DialogueUI : MonoBehaviour
         else
         {
             CloseDialogueBox();
+            OnDialogueClose?.Invoke(); // Panggil event saat dialog selesai
         }
     }
 
@@ -104,5 +106,10 @@ public class DialogueUI : MonoBehaviour
         PlayerWeaponManager.enabled = true;
         PlayerAnimator.enabled = true;
         PlayerAim.enabled = true;
+    }
+
+    public void InvokeOnDialogueClose()
+    {
+        OnDialogueClose?.Invoke();
     }
 }

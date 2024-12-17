@@ -10,13 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc92cc2f17423b2408e04324597c279e, type: 3}
-  m_Name: NPC_LevelSelection
+  m_Name: NPC_LevelSelection 1
   m_EditorClassIdentifier: 
   dialogue:
   - Hai anak muda, selamat datang di Main Hub.
   - Izinkan aku memandu perjalananmu.
   - Kalau boleh tau, kamu mau pergi kemana?
   responses:
+  - responseText: 
+    dialogueObject: {fileID: 11400000, guid: 667c10bda7f0f7644b61c7ac30ac0cd2, type: 2}
+    sceneSprite: {fileID: 21300000, guid: 5b7cff11d2f48714da07d13b78ab3fe0, type: 3}
+    sceneName: Tutorial Level
   - responseText: 
     dialogueObject: {fileID: 11400000, guid: 667c10bda7f0f7644b61c7ac30ac0cd2, type: 2}
     sceneSprite: {fileID: 21300000, guid: 0895c1ed0a10470428c3556a1fd39db2, type: 3}

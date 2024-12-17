@@ -19,7 +19,3 @@ MonoBehaviour:
     dialogueObject: {fileID: 11400000, guid: 66b6e9f4d3357d046a44e038dab6569c, type: 2}
     sceneSprite: {fileID: 0}
     sceneName: MainHub Sore
-  - responseText: Belum nih, aku masih mau mencoba beberapa senjata lagi
-    dialogueObject: {fileID: 11400000, guid: 32e8e48a6101970499bec12024b2d2b3, type: 2}
-    sceneSprite: {fileID: 0}
-    sceneName: MainHub Sore
