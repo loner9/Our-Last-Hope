@@ -530,6 +530,7 @@ GameObject:
   - component: {fileID: 1014602325}
   - component: {fileID: 1014602324}
   - component: {fileID: 1014602323}
+  - component: {fileID: 1014602327}
   m_Layer: 5
   m_Name: Transisi
   m_TagString: Untagged
@@ -621,6 +622,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1014602327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014602322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad4be9933efd7640b26da03f585b7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject1: {fileID: 1846012560}
 --- !u!1 &1123793642
 GameObject:
   m_ObjectHideFlags: 0
